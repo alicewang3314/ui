@@ -25,7 +25,7 @@
     <div class="main">
       <ng-container *ngIf="iterationReport">
         <div class="items" *ngFor="let team of iterationReport.teams">
-          <tfs-report-card [team]="team"></tfs-report-card>
+          <tfs-report-card [name]="'current'" [team]="team"></tfs-report-card>
         </div>
       </ng-container>
       <ng-container *ngIf="!iterationReport">
@@ -45,7 +45,7 @@
     <div class="main">
       <ng-container *ngIf="allPendingReport">
         <div class="items" *ngFor="let team of allPendingReport.teams">
-          <tfs-report-card [team]="team"></tfs-report-card>
+          <tfs-report-card [name]="'all'" [team]="team"></tfs-report-card>
         </div>
       </ng-container>
     </div>

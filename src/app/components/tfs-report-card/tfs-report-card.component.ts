@@ -15,6 +15,8 @@ export class TFSReportCard {
     this.data = val;
   }
 
+  @Input() name: string;
+
   get team(): any {
     return this.data;
   }
