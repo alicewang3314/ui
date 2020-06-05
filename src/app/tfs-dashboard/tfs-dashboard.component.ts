@@ -115,21 +115,20 @@ export class TfsDashboardComponent implements OnInit, OnChanges {
           }
         }
       );
+    } else {
 
-      return;
-    }
+      this.settingService.getProjectsTeamsFromDb().subscribe(
+        s => {
+          this.userSettings = s
 
-    this.settingService.getProjectsTeamsFromDb().subscribe(
-      s => {
-        this.userSettings = s
-
-        if (this.userSettings && this.userSettings.tfsProjTeams) {
-          this.cacheService.getAllPendingReport(this.userSettings.tfsProjTeams).subscribe(
-            resp => this.allPendingReport = resp
-          );
+          if (this.userSettings && this.userSettings.tfsProjTeams) {
+            this.cacheService.getAllPendingReport(this.userSettings.tfsProjTeams).subscribe(
+              resp => this.allPendingReport = resp
+            );
+          }
         }
-      }
-    );
+      );
+    }
   }
 
   BacktoList() {
