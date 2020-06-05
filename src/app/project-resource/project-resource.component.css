@@ -1,0 +1,18 @@
+table{
+    width: 100%;
+}
+
+.title{
+    width: 100%;
+    text-align: center;
+    color: rgb(255, 255, 255, .7);
+}
+
+.projTitle{
+    color: white;
+    font-size: larger;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+  }

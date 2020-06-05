@@ -1,0 +1,43 @@
+<mat-card *ngIf="team.iteration && team.currentTasks">
+  <mat-card-header>
+    <mat-card-title>{{ team.title }}</mat-card-title>
+    <mat-card-subtitle *ngIf="team.iteration">
+      {{ team.iteration.name }} ({{team.iteration.fromDate | date: "shortDate"}} -
+      {{ team.iteration.toDate | date: "shortDate" }})
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="report-entry">
+      <span class="report-label">Active Tasks </span>{{ team.currentStats.activeTasks }}
+    </div>
+    <div class="report-entry">
+      <span class="report-label">New Tasks </span> {{ team.currentStats.newTasks }}
+    </div>
+    <hr />
+    <div class="report-entry">
+      <span class="report-label">Original Estimate </span>
+      <span class="status-orig">{{team.currentStats.originalEstimate | number: "1.1-2"}}</span>
+    </div>
+    <div class="report-entry">
+      <span class=" report-label">Completed Work </span>
+      <span class="status-compl">{{team.currentStats.completedWork | number: "1.1-2"}}</span>
+    </div>
+    <div class="report-entry">
+      <span class="report-label">Remaining Work </span>
+      <span class="status-rem">{{team.currentStats.remainingWork | number: "1.1-2"}}</span>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-stroked-button (click)="getReport(team.title)">
+      Details
+    </button>
+  </mat-card-actions>
+</mat-card>
+<mat-card class="no-data" *ngIf="!(team.iteration && team.currentTasks)">
+  <mat-card-header>
+    <mat-card-title>{{ team.title }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="status-layout">No data</div>
+  </mat-card-content>
+</mat-card>

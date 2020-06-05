@@ -1,0 +1,22 @@
+<div class="container">
+  <mat-toolbar color="primary">
+    <div> <a [routerLink]="[ '/home' ]">
+        <div>Captor Dashboard</div>
+      </a>
+    </div>
+    <div class="menuSettings">
+      <div [matMenuTriggerFor]="menu3">
+        <mat-icon>settings</mat-icon>
+      </div>
+      <mat-menu #menu3="matMenu">
+        <a [routerLink]="[ '/tfsDashSettings' ]"><button mat-menu-item>TFS Teams Settings</button></a>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
+  <div class="baseMaster">
+    <div class="mainMaster">
+      <loader></loader>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

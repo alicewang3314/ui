@@ -1,0 +1,66 @@
+.report-entry {
+  margin-right: 6%;
+}
+
+.report-label {
+  width: 60%;
+  float: left;
+}
+
+.status-orig {
+  color: rgb(238, 238, 113);
+}
+
+.status-compl {
+  color: rgb(189, 236, 118);
+}
+
+.status-rem {
+  color: rgb(245, 121, 76);
+}
+
+.no-data .status-layout {
+  text-align: center;
+  margin-top: 60px;
+}
+
+hr {
+  border: transparent;
+}
+
+/* TODO: review below */
+mat-card {
+  margin-bottom: 5px;
+  padding: 12px;
+  height: 270px !important;
+  text-align: center;
+  box-shadow: 0 2px 6px 1px rgba(238, 178, 224, 0.6) !important;
+}
+
+mat-card:hover {
+  box-shadow: 0 3px 12px 1px rgba(238, 178, 224, 0.6) !important
+}
+
+mat-card-header.mat-card-header>div.mat-card-header-text {
+  margin: 0px 0px 0px 0px !important;
+  color: dodgerblue;
+}
+
+mat-card-header {
+  justify-content: center;
+}
+
+mat-card-subtitle {
+  height: 25px;
+}
+
+mat-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: right;
+}
+
+.mat-card-actions {
+  text-align: right;
+}

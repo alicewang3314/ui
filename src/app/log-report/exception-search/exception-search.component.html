@@ -1,0 +1,100 @@
+<div class="pageTitle">
+    <span> Exception Search</span>
+</div>
+
+<div class="fieldContainer">
+    <div class="field">
+        <mat-form-field>
+            <mat-label>Environment</mat-label>
+            <mat-select [(value)]="environment">
+                <mat-option value="dev">
+                    DEV
+                </mat-option>
+                <mat-option value="uat">
+                    UAT
+                </mat-option>
+                <mat-option value="prod">
+                    PROD
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="field">
+        <mat-form-field>
+            <mat-label>Application</mat-label>
+            <mat-select [(value)]="application">
+                <mat-option value="note">
+                    Note
+                </mat-option>
+                <mat-option value="Vans">
+                    Vans
+                </mat-option>
+                <mat-option value="captor">
+                    Captor
+                </mat-option>
+                <mat-option value="cdws">
+                    CDWS
+                </mat-option>
+                <mat-option value="rar">
+                    RAR
+                </mat-option>
+                <mat-option value="REPORTSBATCH">
+                    REPORTSBATCH
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="field">
+        <mat-form-field>
+            <input matInput [matDatepicker]="fromDatePicker" placeholder="From Date" [(ngModel)]="fromDatePickerValue">
+            <mat-datepicker-toggle matSuffix [for]="fromDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #fromDatePicker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div class="field">
+        <mat-form-field>
+            <input matInput [matDatepicker]="toDatePicker" placeholder="To Date" [(ngModel)]="toDatePickerValue">
+            <mat-datepicker-toggle matSuffix [for]="toDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #toDatePicker></mat-datepicker>
+        </mat-form-field>
+    </div>
+
+    <div class="fieldButton">
+        <button mat-raised-button (click)="search()">
+            Search
+        </button>
+    </div>
+
+</div>
+<p></p>
+
+<ng-container *ngIf="dataSource && dataSource.length > 0">
+
+    <table mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="correlationId">
+            <th mat-header-cell *matHeaderCellDef> Correlation Id </th>
+            <td mat-cell *matCellDef="let row"> {{row.correlationId}} </td>
+        </ng-container>
+        <ng-container matColumnDef="time">
+            <th mat-header-cell *matHeaderCellDef> Time </th>
+            <td mat-cell *matCellDef="let row"> {{row.time}} </td>
+        </ng-container>
+        <ng-container matColumnDef="exceptionMessage">
+            <th mat-header-cell *matHeaderCellDef> Exception Message</th>
+            <td mat-cell *matCellDef="let row" class="colStackTrace"> {{row.exceptionMessage}} </td>
+        </ng-container>
+        <ng-container matColumnDef="stackTrace">
+            <th mat-header-cell *matHeaderCellDef class="colHideMobile"> Stack Trace</th>
+            <td mat-cell *matCellDef="let row" class="colStackTrace colHideMobile"> {{row.stackTrace}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [length]= "pagLength" [pageSize]="10" [pageSizeOptions]="[10, 25, 50]" (page)="onPagChange($event)">
+    </mat-paginator>
+
+</ng-container>

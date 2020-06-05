@@ -1,0 +1,128 @@
+<div class="home-container">
+  <mat-tab-group mat-align-tabs="center" [selectedIndex]="selectedTabIndex.value"
+    (selectedTabChange)="onTabChange($event.index)">
+    <div class="tab-content">
+      <mat-tab label="Application Bugs">
+        <div class="buttonPlaceholder">
+          <button mat-raised-button color="primary" (click)="clearBugsDashboard()">
+            <mat-icon>refresh</mat-icon>
+          </button>
+        </div>
+        <div class="tab-body-wrapper">
+          <div class="top-wrapper">
+            <bug-card class='card-total' [data]="totalBugs"></bug-card>
+            <bug-card class='card-critical' [data]="criticalBugs"></bug-card>
+            <bug-card class='card-high' [data]="highBugs"></bug-card>
+          </div>
+          <div class="middle-wrapper">
+            <mat-card class='custom-mat-card large card-breakdown'>
+              <mat-card-header>
+                <mat-card-title class="card-title">Bugs Breakdown</mat-card-title>
+              </mat-card-header>
+              <mat-divider></mat-divider>
+              <mat-card-content>
+                <div class="chartContainer">
+                  <ngx-charts-bar-vertical-stacked #chart2 [view]="[700, 350]" [scheme]="stackColorScheme"
+                    [results]="bugStackCnt" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis"
+                    [barPadding]="35" [legend]="showLegend" [showXAxisLabel]="false" [showYAxisLabel]="showYAxisLabel"
+                    [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [maxXAxisTickLength]="10">
+                  </ngx-charts-bar-vertical-stacked>
+                </div>
+              </mat-card-content>
+            </mat-card>
+            <div class="middle-wrapper_inner-wrapper">
+              <bug-card class='card-medium' [data]="mediumBugs"></bug-card>
+              <bug-card class='card-low' [data]="lowBugs"></bug-card>
+            </div>
+          </div>
+          <!-- </div> -->
+          <!-- TODO: REVIEW-->
+          <mat-card class="lower-wrapper">
+            <div class="active-bugs">
+              <mat-card-header>
+                <mat-card-title class="card-title">Total Active Bugs</mat-card-title>
+              </mat-card-header>
+              <mat-divider></mat-divider>
+              <mat-card-content>
+                <ngx-charts-pie-chart #chart1 [tooltipDisabled]="false" [view]="[400,400]" [scheme]="donutColorScheme"
+                  [results]="donutData" arcWidth="0.6" doughnut="true" (select)="reloadBugDetails($event)"
+                  [legend]="false" [legendPosition]="'right'" [labels]="false">
+                </ngx-charts-pie-chart>
+              </mat-card-content>
+            </div>
+            <div class="bugs-details">
+              <mat-card-header>
+                <mat-card-title class="card-title">Bugs Details</mat-card-title>
+              </mat-card-header>
+              <mat-divider></mat-divider>
+              <mat-card-content>
+                <mat-form-field>
+                  <mat-label>Severity</mat-label>
+                  <mat-select [(value)]="selectedSeverity" (selectionChange)="onBugDropdownChange($event)">
+                    <mat-option value="all">All</mat-option>
+                    <mat-option value="1 - Critical">1 - Critical Bugs</mat-option>
+                    <mat-option value="2 - High">2 - High Bugs</mat-option>
+                    <mat-option value="3 - Medium">3 - Medium Bugs</mat-option>
+                    <mat-option value="4 - Low">4 - Low Bugs</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <div class="mat-table-div">
+                  <table mat-table [dataSource]="filteredBugDetails" class="mat-elevation-z8">
+                    <ng-container matColumnDef="id">
+                      <th mat-header-cell class="table-col" *matHeaderCellDef> Id </th>
+                      <td mat-cell class="table-col" *matCellDef="let element"> {{element.id}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="title">
+                      <th mat-header-cell class="table-col" *matHeaderCellDef> Title </th>
+                      <td mat-cell class="table-col" *matCellDef="let element"> {{element.title}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="severity">
+                      <th mat-header-cell class="table-col" *matHeaderCellDef> Severity </th>
+                      <td mat-cell class="table-col" *matCellDef="let element"> {{element.severity}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="createdBy">
+                      <th mat-header-cell class="table-col" *matHeaderCellDef> Assigned By </th>
+                      <td mat-cell class="table-col" *matCellDef="let element"> {{element.createdBy}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="createdDate">
+                      <th mat-header-cell class="table-col" *matHeaderCellDef> Assigned Date </th>
+                      <td mat-cell class="table-col" *matCellDef="let element"> {{element.createdDate}} </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [class.mat-elevation-z2]="true"></tr>
+                  </table>
+                </div>
+              </mat-card-content>
+            </div>
+          </mat-card>
+        </div>
+      </mat-tab>
+    </div>
+    <!-- end of bug table -->
+    <mat-tab label="Error Logs">
+      <app-log-dashboard></app-log-dashboard>
+      <div class="main">
+        <div class="itemsLog">
+          <a [routerLink]="[ '/logDashboard' ]">
+            <mat-card class="wideCard">
+              <iframe [src]="iframeLogSourceUrl" frameborder="0" width="100%" height="300px"></iframe>
+              <div class="titleText">Error Logs</div>
+            </mat-card>
+          </a>
+        </div>
+        <div class="itemsLog">
+          <a [routerLink]="[ '/logDashboard' ]">
+            <mat-card class="wideCard">
+              <iframe [src]="iframeLogSourceUrl" frameborder="0" width="100%" height="300px"></iframe>
+              <div class="titleText">Errors - Past 1 day</div>
+            </mat-card>
+          </a>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="TFS Tasks">
+      <app-tfs-dashboard></app-tfs-dashboard>
+    </mat-tab>
+  </mat-tab-group>
+</div>

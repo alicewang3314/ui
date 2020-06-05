@@ -1,0 +1,17 @@
+.fieldContainer{
+    display: flex;
+    flex-flow: row wrap;
+    /* justify-content: space-evenly;  */
+}
+
+.field{
+    flex-basis: auto;
+    margin-right: 15px;
+    align-self: center;
+}
+
+.fieldButton{
+    height: 33px;
+    margin: 10px;
+    flex-basis: 55px;
+}

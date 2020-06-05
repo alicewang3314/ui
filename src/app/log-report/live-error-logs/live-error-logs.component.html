@@ -1,0 +1,53 @@
+<!-- <div class="pageTitle fieldContainer">
+    <span>Log Dashboard</span>    
+</div> -->
+<div class="fieldContainer">
+
+    <div class="field">
+        <mat-form-field>
+            <mat-label>Environment</mat-label>
+            <mat-select [(value)]="env">
+                <mat-option value="uat">
+                    UAT
+                </mat-option>
+                <mat-option value="prod">
+                    Prod
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="field">
+        <mat-form-field>
+            <mat-label>Type</mat-label>
+            <mat-select [(value)]="dashBoardType">
+                <mat-option value="chart">
+                    Chart
+                </mat-option>
+                <mat-option value="table">
+                    Table
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="field">
+        <mat-form-field>
+            <mat-select placeholder="Application" [(ngModel)]="application" name="application">
+                <mat-option *ngFor="let item of applications" [value]="item.value">
+                    {{item.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="field">
+        <button mat-raised-button (click)="search()">
+            Get Live Errors
+        </button>
+    </div>
+
+</div>
+
+<p></p>
+<iframe [src]="iframeSourceUrl" height="800px" width="100%" frameborder="0"></iframe>

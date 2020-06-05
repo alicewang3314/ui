@@ -1,0 +1,59 @@
+<div class="spinner" *ngIf="showSpinner">
+  <mat-spinner></mat-spinner>
+</div>
+<div class="mainReport">
+  <a [routerLink]="[ '/changesetReport' ]">
+    <div><button mat-raised-button>Changesets Report</button></div>
+  </a>
+  <a [routerLink]="[ '/bugReport' ]">
+    <div><button mat-raised-button>Bugs Report</button></div>
+  </a><a [routerLink]="[ '/bugTagReport' ]">
+    <div><button mat-raised-button>Bug Tag Report</button></div>
+  </a>
+</div>
+<mat-tab-group mat-align-tabs="center" [selectedIndex]="selectedTabIndex.value"
+  (selectedTabChange)="onTabChange($event.index)">
+  <mat-tab label="Current Iteration">
+    <div *ngIf="iterationReport" class="dashboardButtons">
+      <button mat-raised-button color="primary" (click)="refresh()">
+        <mat-icon>refresh</mat-icon>
+      </button>
+      <button mat-raised-button color="primary" (click)="GoToResourceStats()">
+        View By Resource
+      </button>
+    </div>
+    <div class="main">
+      <ng-container *ngIf="iterationReport">
+        <div class="items" *ngFor="let team of iterationReport.teams">
+          <tfs-report-card [team]="team"></tfs-report-card>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!iterationReport">
+        <div class="addMessage"> Please add teams using TFS Team settings</div>
+      </ng-container>
+    </div>
+  </mat-tab>
+  <mat-tab label="All Pending">
+    <div *ngIf="allPendingReport" class="dashboardButtons">
+      <button mat-raised-button color="primary" (click)="refresh()">
+        <mat-icon>refresh</mat-icon>
+      </button>
+      <button mat-raised-button color="primary" (click)="GoToPendingResourceStats()">
+        View By Resource
+      </button>
+    </div>
+    <div class="main">
+      <ng-container *ngIf="allPendingReport">
+        <div class="items" *ngFor="let team of allPendingReport.teams">
+          <tfs-report-card [team]="team"></tfs-report-card>
+        </div>
+      </ng-container>
+    </div>
+  </mat-tab>
+
+</mat-tab-group>
+<!-- <mat-card-actions>
+  <button mat-stroked-button (click)="BacktoList()">
+    Back to List
+  </button>
+</mat-card-actions> -->

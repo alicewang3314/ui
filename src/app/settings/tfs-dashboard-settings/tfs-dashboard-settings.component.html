@@ -1,0 +1,20 @@
+<!-- <app-report-title [title]="'Select Teams from Projects'" [description]="''">
+
+</app-report-title> -->
+
+<!-- <div *ngFor="let tfsProj of tfsproject">
+    {{tfsProj.name}}
+</div> -->
+<button mat-raised-button (click)="Save()" class="btnSave" color="primary">Save</button>
+<mat-accordion #acc>
+    <mat-expansion-panel *ngFor="let proj of projects">
+        <mat-expansion-panel-header>
+            {{proj.name}}
+        </mat-expansion-panel-header>
+        <mat-list>
+            <mat-list-item *ngFor="let team of proj.teams">
+                <mat-checkbox [(ngModel)]="team.selected" [value]="team.value">{{team.name}}</mat-checkbox>
+            </mat-list-item>
+        </mat-list>
+    </mat-expansion-panel>
+</mat-accordion>

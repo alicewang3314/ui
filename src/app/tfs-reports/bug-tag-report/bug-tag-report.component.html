@@ -1,0 +1,20 @@
+<!-- <div class="pageTitle">
+    <span>Bugs Tag Report</span>
+    <div><small>Get Bug details for a given Tag</small></div>
+</div> -->
+
+<app-report-title [title]="'Bugs Tag Report'"
+    [description]="'Get Bug details for a given Tag'">
+</app-report-title>
+
+<form (ngSubmit)="onSubmit()" #formChgSet="ngForm">
+    <div class="main-tfs-report">
+
+        <mat-form-field class="item-tfs-report">
+            <input matInput placeholder="Tag" [(ngModel)]="tag" name="tag" required>
+        </mat-form-field>
+
+    </div>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="!formChgSet.form.valid">Generate</button>
+</form>
