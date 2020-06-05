@@ -90,6 +90,7 @@ export class TfsDashboardComponent implements OnInit, OnChanges {
       });
     }
     else {
+      console.log('all pending report')
       this.Tasks$.subscribe(user => {
         Object.keys(user).length === 0 ? (user = this.cacheService.data) : user;
         this.cacheService.getAllPendingReport(user).subscribe(resp => {
@@ -117,13 +118,17 @@ export class TfsDashboardComponent implements OnInit, OnChanges {
       );
     } else {
 
+      console.log('pending', this.selectedTabIndex.value)
       this.settingService.getProjectsTeamsFromDb().subscribe(
         s => {
           this.userSettings = s
 
           if (this.userSettings && this.userSettings.tfsProjTeams) {
             this.cacheService.getAllPendingReport(this.userSettings.tfsProjTeams).subscribe(
-              resp => this.allPendingReport = resp
+              resp => {
+                this.allPendingReport = resp;
+                console.log('pending',resp)
+              }
             );
           }
         }

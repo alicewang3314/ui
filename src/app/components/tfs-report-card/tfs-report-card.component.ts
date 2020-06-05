@@ -4,12 +4,24 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'tfs-report-card',
   templateUrl: './tfs-report-card.component.html',
-  styleUrls: ['./tfs-report-card.component.css']
+  styleUrls: ['./tfs-report-card.component.css'],
 })
 export class TFSReportCard {
-  @Input() team: any;
+  data: any;
 
-  constructor(private router: Router) { }
+  @Input()
+  set team(val: any) {
+    console.log(val);
+    this.data = val;
+  }
+
+  get team(): any {
+    return this.data;
+  }
+
+  constructor(private router: Router) {
+    // this.changeDetect.detectChanges()
+  }
 
   getReport(title: string) {
     this.router.navigate(["/dashboard/project", title], {
