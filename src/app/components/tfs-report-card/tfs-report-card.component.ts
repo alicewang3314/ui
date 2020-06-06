@@ -12,6 +12,7 @@ export class TFSReportCard {
 
   @Input()
   set team(val: any) {
+    console.log(val);
     this._team = val;
   }
 
@@ -19,13 +20,16 @@ export class TFSReportCard {
     return this._team;
   }
 
-  @Input() 
+  @Input()
   set name(val: string) {
-    this._name = name;
+    console.log(val);
+    this._name = val;
   }
 
-  get name(): string {
-    return this._name;
+  get isValidReport(): boolean {
+    return this._name === 'all' ?
+      !!this.team.currentTasks :
+      this.team.currentTasks && this.team.iteration
   }
 
   constructor(private router: Router) {
