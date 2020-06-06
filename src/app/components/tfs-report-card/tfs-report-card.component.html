@@ -33,7 +33,7 @@
     </button>
   </mat-card-actions>
 </mat-card>
-<mat-card class="no-data" *ngIf="!team.currentTasks || (!team.iteration && name === 'current')">
+<mat-card class="no-data" *ngIf="!((name === 'all' || team.iteration) &&  team.currentTasks)">
   <mat-card-header>
     <mat-card-title>{{ team.title }}</mat-card-title>
   </mat-card-header>
