@@ -120,6 +120,7 @@ export class HomePageComponent implements OnInit {
 
     this.cacheService.getBugsDashboardData().subscribe(
       resp => {
+        console.log(`>>>>>>>>>`, JSON.stringify(resp));
         this.respBugApi = resp;
         this.getBugReportsData(resp);
         this.calculateCardData(resp);

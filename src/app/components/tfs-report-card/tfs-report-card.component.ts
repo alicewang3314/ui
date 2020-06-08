@@ -15,22 +15,22 @@ export class TFSReportCard {
     this._team = val;
   }
 
-  get team(): any {
-    return this._team;
-  }
-
   @Input()
   set name(val: string) {
     this._name = val;
   }
 
+  constructor(private router: Router) {
+  }
+
+  get team(): any {
+    return this._team;
+  }
+  
   get isValidReport(): boolean {
     return this._name === 'all' ?
       !!this.team.currentTasks :
       this.team.currentTasks && this.team.iteration
-  }
-
-  constructor(private router: Router) {
   }
 
   getReport(title: string) {
