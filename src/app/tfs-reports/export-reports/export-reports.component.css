@@ -1,0 +1,8 @@
+.export-report-container {
+  margin: 3em;
+}
+
+.export-report-container mat-expansion-panel {
+  margin-left: 3em;
+  margin-right: 3em;
+}
