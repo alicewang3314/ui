@@ -10,3 +10,19 @@
 .export-report-container mat-expansion-panel:last-child {
   margin-bottom: 3vh;
 }
+
+
+::ng-deep mat-expansion-panel-header {
+  height: 80px !important;
+}
+
+::ng-deep mat-expansion-panel-header span.mat-content {
+  flex-direction: column;
+  align-items: center;
+}
+
+::ng-deep mat-panel-title {
+  font-size: 1.2em !important;
+  line-height: 1.4em;
+  font-weight: bold;
+}
