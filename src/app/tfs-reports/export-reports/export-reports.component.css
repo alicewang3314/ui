@@ -1,8 +1,12 @@
-.export-report-container {
-  margin: 3em;
+.export-report-container mat-expansion-panel {
+  margin-left: 2vw;
+  margin-right: 2vw;
 }
 
-.export-report-container mat-expansion-panel {
-  margin-left: 3em;
-  margin-right: 3em;
+.export-report-container mat-expansion-panel:first-child {
+  margin-top: 3vh;
+}
+
+.export-report-container mat-expansion-panel:last-child {
+  margin-bottom: 3vh;
 }
