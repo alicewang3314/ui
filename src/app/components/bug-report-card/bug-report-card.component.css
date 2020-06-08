@@ -1,5 +1,5 @@
 .card-container {
-  height: 187px;
+  min-height: 187px;
 }
 
 .resolved,

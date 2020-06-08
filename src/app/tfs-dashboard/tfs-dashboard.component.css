@@ -5,6 +5,10 @@
   margin: auto;
 }
 
+.items {
+  flex: 1 1 30%;
+}
+
 .spinner {
   position: fixed;
   top: 200px;
@@ -31,11 +35,11 @@ mat-tab-group {
   color: white;
 }
 
-.items {
+/* .items {
   flex-basis: 350px;
   margin: 10px;
   max-width: 350px;
-}
+} */
 
 /* 
 .statsLayout {
@@ -113,15 +117,10 @@ mat-card-header {
 /* .no_data {
   height: 170px;
 } */
-
-.no_data .statsLayout {
-  text-align: center;
-  margin-top: 60px;
-}
-
+/* 
 .no_data_pending {
   height: 139px;
-}
+} */
 
 /* .no_data_pending .statsLayout {
   position: relative;
