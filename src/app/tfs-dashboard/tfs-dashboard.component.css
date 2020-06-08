@@ -5,8 +5,8 @@
   margin: auto;
 }
 
-.items {
-  flex: 1 1 30%;
+.reports-wrapper {
+  flex: 0 1 30%;
 }
 
 .spinner {
@@ -109,25 +109,6 @@ mat-card-header.mat-card-header>div.mat-card-header-text {
 mat-card-header {
   justify-content: center;
 }
-
-/* .statsLayout {
-  text-align: center;
-} */
-
-/* .no_data {
-  height: 170px;
-} */
-/* 
-.no_data_pending {
-  height: 139px;
-} */
-
-/* .no_data_pending .statsLayout {
-  position: relative;
-  top: 40%;
-  margin-left: 40%; 
-} 
-*/
 
 .addMessage {
   margin-top: 10px;

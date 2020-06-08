@@ -12,7 +12,6 @@ export class TFSReportCard {
 
   @Input()
   set team(val: any) {
-    console.log(val);
     this._team = val;
   }
 
@@ -22,7 +21,6 @@ export class TFSReportCard {
 
   @Input()
   set name(val: string) {
-    console.log(val);
     this._name = val;
   }
 
