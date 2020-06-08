@@ -8,7 +8,7 @@ import { FormControl } from '@angular/forms';
 import { BarHorizontalComponent, BaseChartComponent } from '@swimlane/ngx-charts';
 import * as _ from 'lodash';
 //TODO: remove dev setting
-// import { rawBugReport } from 'src/app/mock';
+import { rawBugReport } from 'src/app/mock';
 
 // refactoring
 import { BugReportCard } from 'src/app/types';
@@ -118,22 +118,23 @@ export class HomePageComponent implements OnInit {
     this.iframeLiveLogSourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.getLiveDashboardSrcUrl());
     this.iframeLogSourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.getLogDashboardSrcUrl());
 
-    this.cacheService.getBugsDashboardData().subscribe(
-      resp => {
-        console.log(`>>>>>>>>>`, JSON.stringify(resp));
-        this.respBugApi = resp;
-        this.getBugReportsData(resp);
-        this.calculateCardData(resp);
-        this.getDonutChartData(resp);
-        this.calculateStackData(resp);
-      });
+    // this.cacheService.getBugsDashboardData().subscribe(
+    //   resp => {
+    //     console.log(`>>>>>>>>>`, JSON.stringify(resp));
+    //     this.respBugApi = resp;
+    //     this.getBugReportsData(resp);
+    //     this.calculateCardData(resp);
+    //     this.getDonutChartData(resp);
+    //     this.calculateStackData(resp);
+    //   });
 
     // TODO: remove local dev setup
-    // this.respBugApi = rawBugReport;
-    // this.getBugReportsData(rawBugReport);
-    // this.calculateCardData(rawBugReport);
-    // this.getDonutChartData(rawBugReport);
-    // this.calculateStackData(rawBugReport);
+    this.respBugApi = rawBugReport;
+    console.log(rawBugReport);
+    this.getBugReportsData(rawBugReport);
+    this.calculateCardData(rawBugReport);
+    this.getDonutChartData(rawBugReport);
+    this.calculateStackData(rawBugReport);
   }
 
   selectedAreaPath: any;
@@ -173,8 +174,8 @@ export class HomePageComponent implements OnInit {
     });
     Object.assign(this.criticalBugs, {
       total: filter(total, 'severity', '1 - Critical').length,
-      resolved: filter(resolved, 'severity', '1 - Critica').length,
-      active: filter(active, 'severity', '1 - Critica').length,
+      resolved: filter(resolved, 'severity', '1 - Critical').length,
+      active: filter(active, 'severity', '1 - Critical').length,
     });
     Object.assign(this.highBugs, {
       total: filter(total, 'severity', '2 - High').length,
