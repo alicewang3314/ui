@@ -36,7 +36,6 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 //import { IndexPageComponent } from "./index-page/index-page.component";
 import { InterceptorService } from './interceptor.service';
 import { TfsDashboardHomeComponent } from './tfs-dashboard-home/tfs-dashboard-home.component';
-import { TfsReportsModule } from './tfs-reports/tfs-reports.module';
 import { TfsDashboardSettingsComponent } from './settings/tfs-dashboard-settings/tfs-dashboard-settings.component';
 import { LogDashboardComponent } from './log-report/log-dashboard/log-dashboard.component';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -44,11 +43,11 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 // import { LogDashboardComponent } from './log-dashboard/log-dashboard.component';
-
-import { BugReportCard, BugDetailsDialog, LoaderComponent,TFSReportCard } from './components';
+// TODO: Refactoring cleanup
+import { BugReportCard, BugDetailsDialog, LoaderComponent, TFSReportCard } from './components';
+import { TfsReportsModule } from './tfs-reports/tfs-reports.module';
 
 @NgModule({
-
   declarations: [
     AppComponent,
     TfsDashboardComponent,

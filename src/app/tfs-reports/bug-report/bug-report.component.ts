@@ -37,8 +37,6 @@ export class BugReportComponent implements OnInit {
   }
 
   onSubmit() {
-
-
     this.tfsReportService.apiBugsReport(this.fromDate, this.toDate, this.project, "")
       .subscribe(resp => {
         if (!resp) {

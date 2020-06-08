@@ -18,6 +18,9 @@ import { BugChangetReportComponent } from './tfs-reports/bug-changet-report/bug-
 import { BugTagReportComponent } from './tfs-reports/bug-tag-report/bug-tag-report.component';
 import { TfsDashboardSettingsComponent } from './settings/tfs-dashboard-settings/tfs-dashboard-settings.component';
 
+//TODO: refactoring clean up
+import { ExportReports } from './tfs-reports/export-reports/export-reports.component';
+
 const routes: Routes = [
   //{ path: 'dashboard', component: TfsDashboardComponent },
   // { path: '', redirectTo: '/index', pathMatch:"full" },

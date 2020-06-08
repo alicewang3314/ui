@@ -1,9 +1,8 @@
-<app-report-title [title]="'Bug Report (by Date Range)'" [description]="'Get Bug details by date range and Project.'">
-</app-report-title>
+<!-- <app-report-title [title]="'Bug Report (by Date Range)'" [description]="'Get Bug details by date range and Project.'">
+</app-report-title> -->
 
 <form (ngSubmit)="onSubmit()" #formChgSet="ngForm">
     <div class="main-tfs-report">
-
         <mat-form-field class="item-tfs-report">
             <input matInput [matDatepicker]="fromDatee" placeholder="From Date" [(ngModel)]="fromDate" name="fromDate"
                 required>

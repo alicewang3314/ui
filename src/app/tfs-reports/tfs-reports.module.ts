@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }   from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from "@angular/material/select";
 import { ChangesetReportComponent } from './changeset-report/changeset-report.component';
 import { BugReportComponent } from './bug-report/bug-report.component';
@@ -13,12 +13,13 @@ import { BugChangetReportComponent } from './bug-changet-report/bug-changet-repo
 import { BugTagReportComponent } from './bug-tag-report/bug-tag-report.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ReportTitleComponent } from './common/report-title/report-title.component';
-
-
+import { ExportReports } from './export-reports/export-reports.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
-  declarations: [ ChangesetReportComponent, BugReportComponent, BugChangetReportComponent, BugTagReportComponent, ReportTitleComponent],
-  imports: [    CommonModule,    
+  declarations: [ChangesetReportComponent, BugReportComponent, BugChangetReportComponent, BugTagReportComponent, ExportReports, ReportTitleComponent],
+  imports: [
+    CommonModule,
     BrowserModule,
     FormsModule,
     MatInputModule,
@@ -26,10 +27,12 @@ import { ReportTitleComponent } from './common/report-title/report-title.compone
     MatToolbarModule,
     MatDatepickerModule,
     MatSnackBarModule,
-    MatSelectModule    
+    MatSelectModule,
+    MatExpansionModule,
   ],
-  exports:[
-    ReportTitleComponent
+  exports: [
+    ReportTitleComponent,
+    ExportReports,
   ]
 })
 export class TfsReportsModule { }
