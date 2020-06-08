@@ -1,12 +1,14 @@
 .main {
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
   margin: auto;
+  justify-content: center;
+  width: fit-content;
 }
 
 .reports-wrapper {
   flex: 0 1 30%;
+  margin: 0 10px 10px 10px;
 }
 
 .spinner {
@@ -34,18 +36,6 @@ mat-tab-group {
   text-decoration: none;
   color: white;
 }
-
-/* .items {
-  flex-basis: 350px;
-  margin: 10px;
-  max-width: 350px;
-} */
-
-/* 
-.statsLayout {
-  display: flex;
-  justify-content: space-between;
-} */
 
 .dashboardButtons {
   display: flex;
