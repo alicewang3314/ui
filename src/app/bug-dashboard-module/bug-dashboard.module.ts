@@ -1,6 +1,5 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -19,7 +18,6 @@ import { CacheService } from 'src/app/services/cache.service';
   declarations: [BugDetailsDialog, BugReportCardComponent, BugDashboardComponent],
   imports: [
     CommonModule,
-    BrowserModule,
     FormsModule,
     MatInputModule,
     MatButtonModule,

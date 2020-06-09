@@ -20,7 +20,6 @@ import { TfsDashboardSettingsComponent } from './settings/tfs-dashboard-settings
 
 //TODO: refactoring clean up
 import { ExportReports } from './tfs-reports-module/export-reports/export-reports.component';
-import { } from '';
 
 const routes: Routes = [
   //{ path: 'dashboard', component: TfsDashboardComponent },
