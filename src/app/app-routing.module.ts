@@ -20,6 +20,7 @@ import { TfsDashboardSettingsComponent } from './settings/tfs-dashboard-settings
 
 //TODO: refactoring clean up
 import { ExportReports } from './tfs-reports-module/export-reports/export-reports.component';
+import { BugDashboardComponent } from 'src/app/bug-dashboard-module/bug-dashboard/bug-dashbard.component';
 
 const routes: Routes = [
   //{ path: 'dashboard', component: TfsDashboardComponent },
@@ -55,6 +56,7 @@ const routes: Routes = [
   { path: "bugChangeSetReport", component: BugChangetReportComponent },
   { path: "bugTagReport", component: BugTagReportComponent },
   { path: "tfsDashSettings", component: TfsDashboardSettingsComponent },
+  // { path: 'bug-dashboard', component: BugDashboardComponent },
   { path: 'bug-dashboard', loadChildren: () => import('src/app/bug-dashboard-module/bug-dashboard.module').then(m => m.BugDashboardModule) },
   {
     path: '**',

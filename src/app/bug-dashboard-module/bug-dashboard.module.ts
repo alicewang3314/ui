@@ -8,6 +8,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from "@angular/material/select";
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { BugDashboardModule } from './bug-dashboard.routing.module';
 
 import { BugDashboardComponent } from './bug-dashboard/bug-dashbard.component';
 import { BugDetailsDialog } from './bug-detail-dialog/bug-detail-dialog.component';
@@ -26,6 +27,7 @@ import { CacheService } from 'src/app/services/cache.service';
     MatSnackBarModule,
     MatSelectModule,
     MatExpansionModule,
+    BugDashboardModule,
   ],
   exports: [
     BugDashboardComponent
