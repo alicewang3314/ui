@@ -39,10 +39,9 @@ mat-tab-group {
 
 .dashboard-buttons {
   display: flex;
-  height: 65px;
-  padding: 20px;
+  padding: 1.2em;
   justify-content: flex-end;
-  margin: 10px 10px 0 0;
+  /* margin: 10px 10px 0 0; */
 }
 
 .dashboard-buttons button {
