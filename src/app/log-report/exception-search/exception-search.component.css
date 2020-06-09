@@ -42,10 +42,10 @@ mat-tab-group{
     justify-content: space-between;
 }
 
-.dashboardButtons{
+.dashboard-buttons{
     display: flex;
     justify-content: flex-end;
-    margin: 10px 10px 0 0;
+    padding: 1.2em;
 }
 
 .mat-card-actions{

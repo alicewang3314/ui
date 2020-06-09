@@ -41,7 +41,6 @@ mat-tab-group {
   display: flex;
   padding: 1.2em;
   justify-content: flex-end;
-  /* margin: 10px 10px 0 0; */
 }
 
 .dashboard-buttons button {
