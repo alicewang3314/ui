@@ -11,7 +11,7 @@ import { Observable, throwError as _observableThrow, of as _observableOf } from 
 import { environment } from 'src/environments/environment';
 import { APIS } from 'src/app/constants'
 
-import { ApiException } from '../tfs-reports/tfs-report-service.';
+import { ApiException } from '../tfs-reports-module/tfs-report-service.';
 
 import { TfsProject, Settings } from 'src/app/types';
 

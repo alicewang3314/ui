@@ -79,3 +79,28 @@ a {
   min-width: 1250px !important;
   overflow: auto;
 }
+
+.nav-wrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: nowrap;
+  display: -ms-flexbox;
+  justify-content: flex-end;
+  font-size: x-small;
+}
+
+.nav-wrapper a {
+  margin-left: 40px;
+}
+
+.nav-wrapper a:not(:last-of-type) {
+  margin-left: 2em;
+}
+
+.nav-wrapper a:hover, .nav-wrapper a.active  {
+  color: rgba(0, 0, 0, 0.66);
+  transition: all .4;
+}
+
+
+

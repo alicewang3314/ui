@@ -10,7 +10,7 @@ import { IterationReport } from "../dto/iterationReport";
 import { mergeMap, catchError, publishReplay, refCount } from 'rxjs/operators';
 import { Observable, of, throwError } from 'rxjs';
 import { environment } from "src/environments/environment";
-import { ApiException } from '../tfs-reports/tfs-report-service.';
+import { ApiException } from '../tfs-reports-module/tfs-report-service.';
 import { APIS } from 'src/app/constants';
 
 @Injectable({

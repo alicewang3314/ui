@@ -12,14 +12,15 @@ import { LogDashboardComponent } from './log-report/log-dashboard/log-dashboard.
 import { MostFrequentErrorsDashbComponent } from './log-report/most-frequent-errors-dashb/most-frequent-errors-dashb.component';
 import { LiveErrorLogsComponent } from './log-report/live-error-logs/live-error-logs.component';
 import { TfsDashboardHomeComponent } from './tfs-dashboard-home/tfs-dashboard-home.component';
-import { ChangesetReportComponent } from './tfs-reports/changeset-report/changeset-report.component';
-import { BugReportComponent } from './tfs-reports/bug-report/bug-report.component';
-import { BugChangetReportComponent } from './tfs-reports/bug-changet-report/bug-changet-report.component';
-import { BugTagReportComponent } from './tfs-reports/bug-tag-report/bug-tag-report.component';
+import { ChangesetReportComponent } from './tfs-reports-module/changeset-report/changeset-report.component';
+import { BugReportComponent } from './tfs-reports-module/bug-report/bug-report.component';
+import { BugChangetReportComponent } from './tfs-reports-module/bug-changet-report/bug-changet-report.component';
+import { BugTagReportComponent } from './tfs-reports-module/bug-tag-report/bug-tag-report.component';
 import { TfsDashboardSettingsComponent } from './settings/tfs-dashboard-settings/tfs-dashboard-settings.component';
 
 //TODO: refactoring clean up
-import { ExportReports } from './tfs-reports/export-reports/export-reports.component';
+import { ExportReports } from './tfs-reports-module/export-reports/export-reports.component';
+import { } from '';
 
 const routes: Routes = [
   //{ path: 'dashboard', component: TfsDashboardComponent },
@@ -55,6 +56,7 @@ const routes: Routes = [
   { path: "bugChangeSetReport", component: BugChangetReportComponent },
   { path: "bugTagReport", component: BugTagReportComponent },
   { path: "tfsDashSettings", component: TfsDashboardSettingsComponent },
+  { path: 'bug-dashboard', loadChildren: () => import('src/app/bug-dashboard-module/bug-dashboard.module').then(m => m.BugDashboardModule) },
   {
     path: '**',
     component: HomePageComponent

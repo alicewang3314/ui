@@ -1,0 +1,23 @@
+<mat-card class="card-container">
+  <mat-card-header>
+    <mat-card-title class="card-title">{{data.title}}</mat-card-title>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <mat-grid-list rows="2" cols="2" rowHeight="60px">
+      <mat-grid-tile class="mat-total" colspan="2">
+        <h4>{{data.total}}</h4>
+      </mat-grid-tile>
+      <mat-grid-tile class="resolved">
+        {{data.resolved}}
+        <br />
+        Resolved
+      </mat-grid-tile>
+      <mat-grid-tile class="active">
+        {{data.active}}
+        <br />
+        Active
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+</mat-card>

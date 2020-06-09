@@ -45,7 +45,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 // import { LogDashboardComponent } from './log-dashboard/log-dashboard.component';
 // TODO: Refactoring cleanup
 import { BugReportCard, BugDetailsDialog, LoaderComponent, TFSReportCard } from './components';
-import { TfsReportsModule } from './tfs-reports/tfs-reports.module';
+import { TfsReportsModule } from './tfs-reports-module/tfs-reports.module';
+import { BugDashboardModule } from 'src/app/bug-dashboard-module/bug-dashboard.module'
 
 @NgModule({
   declarations: [
@@ -99,7 +100,8 @@ import { TfsReportsModule } from './tfs-reports/tfs-reports.module';
     TfsReportsModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    BugDashboardModule,
   ],
   // entryComponents: [
   //   BugDetailsDialog
