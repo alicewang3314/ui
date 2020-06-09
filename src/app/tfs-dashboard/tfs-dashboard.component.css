@@ -37,13 +37,14 @@ mat-tab-group {
   color: white;
 }
 
-.dashboardButtons {
+.dashboard-buttons {
   display: flex;
+  height: 65px;
   justify-content: flex-end;
   margin: 10px 10px 0 0;
 }
 
-.dashboardButtons button {
+.dashboard-buttons button {
   margin-left: 15px;
 }
 
@@ -115,4 +116,8 @@ mat-card-header {
 
 hr {
   border: transparent;
+}
+
+.menuSettings {
+
 }
