@@ -40,6 +40,7 @@ mat-tab-group {
 .dashboard-buttons {
   display: flex;
   height: 65px;
+  padding: 20px;
   justify-content: flex-end;
   margin: 10px 10px 0 0;
 }
