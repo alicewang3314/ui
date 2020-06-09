@@ -1,14 +1,16 @@
-import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from "@angular/material/select";
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { BugDashboardModule } from './bug-dashboard.routing.module';
+import { BugDashboardRoutingModule } from './bug-dashboard.routing.module';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { BugDashboardComponent } from './bug-dashboard/bug-dashbard.component';
 import { BugDetailsDialog } from './bug-detail-dialog/bug-detail-dialog.component';
@@ -27,7 +29,9 @@ import { CacheService } from 'src/app/services/cache.service';
     MatSnackBarModule,
     MatSelectModule,
     MatExpansionModule,
-    BugDashboardModule,
+    MatCardModule,
+    NgxChartsModule,
+    BugDashboardRoutingModule,
   ],
   exports: [
     BugDashboardComponent
