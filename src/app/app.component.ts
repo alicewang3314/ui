@@ -11,17 +11,19 @@ export class AppComponent {
   title = "tfs-reports";
   mode = new FormControl('over');
   pagesWithSetting = ['tfs-dashboard'];
+  path: string;
 
   constructor(private router: Router) { }
 
   get hasSetting(): boolean {
-    let path =  this.router.url;
+    let path = this.router.url;
     path = path.startsWith('/') ? path.substring(1) : path;
-    const pathArr = path.split('/');
-    return this.pagesWithSetting.indexOf(pathArr[0]) !== -1;
+    this.path = path.split('/')[0];
+
+    return this.pagesWithSetting.indexOf(this.path) !== -1;
   }
 
-  getSetting(): void {
-
+  public getSetting(): void {
+    this.router.navigate([this.path + '/settings']);
   }
 }
