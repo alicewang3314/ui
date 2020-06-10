@@ -18,3 +18,16 @@
   color: #ece8e8;
 }
 
+.mat-card-content {
+  font-size: 22px;
+}
+
+mat-card {
+  font-size: 16px;
+  box-shadow: 0 2px 6px 1px rgba(238, 178, 224, 0.6) !important
+}
+
+mat-card:hover {
+  box-shadow: 0 4px 12px 1px rgba(238, 178, 224, 0.6) !important
+}
+

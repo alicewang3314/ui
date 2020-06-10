@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { CacheService } from "../services/cache.service";
+import { CacheService } from 'src/app/services/cache.service';
 import { ActivatedRoute } from "@angular/router";
-import { ResourceStats } from "../dto/iterationReport";
+import { ResourceStats } from "src/app/dto/iterationReport";
 
 @Component({
   selector: "app-project-resource",

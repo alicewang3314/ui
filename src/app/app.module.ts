@@ -6,6 +6,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { FilterPipe } from "src/app/pipes";
 import { AppComponent } from "./app.component";
 import { LogReportModule } from "././log-report/log-report.module";
+
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -26,46 +27,48 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { TfsDashboardComponent } from "./tfs-dashboard/tfs-dashboard.component";
-import { ProjectDetailsComponent } from "./project-details/project-details.component";
-import { ResourceStatisticsComponent } from "./resource-statistics/resource-statistics.component";
-import { ProjectResourceComponent } from "./project-resource/project-resource.component";
+// import { TfsDashboardComponent } from "./tfs-dashboard/tfs-dashboard.component";
+//import { ProjectDetailsComponent } from "./tfs-reports-module/project-details/project-details.component";
+// import { ResourceStatisticsComponent } from "./tfs-reports-module/resource-statistics/resource-statistics.component";
+//import { ProjectResourceComponent } from "./tfs-reports-module/project-resource/project-resource.component";
 import { HomePageComponent, } from "./home-page/home-page.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 //import { IndexPageComponent } from "./index-page/index-page.component";
 import { InterceptorService } from './interceptor.service';
 import { TfsDashboardHomeComponent } from './tfs-dashboard-home/tfs-dashboard-home.component';
-import { TfsDashboardSettingsComponent } from './settings/tfs-dashboard-settings/tfs-dashboard-settings.component';
+// import { TfsDashboardSettingsComponent } from './settings/tfs-dashboard-settings/tfs-dashboard-settings.component';
 import { LogDashboardComponent } from './log-report/log-dashboard/log-dashboard.component';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatPaginatorModule } from '@angular/material/paginator';
+
 
 // import { LogDashboardComponent } from './log-dashboard/log-dashboard.component';
 // TODO: Refactoring cleanup
-import { BugReportCard, BugDetailsDialog, LoaderComponent, TFSReportCard } from './components';
+import { BugDetailsDialog, LoaderComponent } from './components';
 import { TfsReportsModule } from './tfs-reports-module/tfs-reports.module';
 import { BugDashboardModule } from 'src/app/bug-dashboard-module/bug-dashboard.module'
 
 @NgModule({
   declarations: [
     AppComponent,
-    TfsDashboardComponent,
-    ProjectDetailsComponent,
-    ResourceStatisticsComponent,
-    ProjectResourceComponent,
+    // TfsDashboardComponent,
+    //ProjectDetailsComponent,
+    //ResourceStatisticsComponent,
+    //ProjectResourceComponent,
     HomePageComponent,
     //IndexPageComponent,
     LoaderComponent,
     FilterPipe,
     TfsDashboardHomeComponent,
-    TfsDashboardSettingsComponent,
+    // TfsDashboardSettingsComponent,
     //TODO: refactoring clean up
     LogDashboardComponent,
     BugDetailsDialog,
-    BugReportCard,
-    TFSReportCard,
+    // BugReportCard,
+    //TFSReportCard,
   ],
   imports: [
     BrowserModule,
@@ -97,11 +100,11 @@ import { BugDashboardModule } from 'src/app/bug-dashboard-module/bug-dashboard.m
     MatSlideToggleModule,
     NgxChartsModule,
     LogReportModule,
-    TfsReportsModule,
     MatNativeDateModule,
     MatDatepickerModule,
     MatPaginatorModule,
     BugDashboardModule,
+    TfsReportsModule,
   ],
   // entryComponents: [
   //   BugDetailsDialog

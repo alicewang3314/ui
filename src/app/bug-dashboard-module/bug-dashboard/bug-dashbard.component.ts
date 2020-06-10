@@ -7,6 +7,9 @@ import { BugReportCard } from 'src/app/types';
 // import { CacheService } from 'src/app/services/cache.service';
 import { BugDashboardService } from '../bug-dashboard.service';
 
+// TODO: remove dev setup
+import { rawBugReport } from 'src/app/mock';
+
 @Component({
   selector: 'bug-dashboard',
   templateUrl: './bug-dashboard.component.html',
@@ -86,28 +89,25 @@ export class BugDashboardComponent {
 
   constructor(
     private service: BugDashboardService,
-    public dialog: MatDialog) {
-  }
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit() {
-    // this.selectedTabIndex.setValue(this.cacheService.selectHomeTabIndex);
-
-    this.service.getBugReport()
-      .subscribe((resp: any[]) => {
-        this.respBugApi = resp;
-        this.getBugReportsData(resp);
-        this.calculateCardData(resp);
-        this.getDonutChartData(resp);
-        this.calculateStackData(resp);
-      });
+    // this.service.getBugReport().subscribe((resp: any[]) => {
+    //   this.respBugApi = resp;
+    //   this.getBugReportsData(resp);
+    //   this.calculateCardData(resp);
+    //   this.getDonutChartData(resp);
+    //   this.calculateStackData(resp);
+    // });
 
     // TODO: remove local dev setup
-    // this.respBugApi = rawBugReport;
-    // console.log(rawBugReport);
-    // this.getBugReportsData(rawBugReport);
-    // this.calculateCardData(rawBugReport);
-    // this.getDonutChartData(rawBugReport);
-    // this.calculateStackData(rawBugReport);
+    this.respBugApi = rawBugReport;
+    console.log(rawBugReport);
+    this.getBugReportsData(rawBugReport);
+    this.calculateCardData(rawBugReport);
+    this.getDonutChartData(rawBugReport);
+    this.calculateStackData(rawBugReport);
   }
 
   getBugReportsData(temp) {

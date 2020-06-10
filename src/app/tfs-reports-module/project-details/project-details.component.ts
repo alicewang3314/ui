@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { Location } from "@angular/common";
-import { CacheService } from "../services/cache.service";
+import { CacheService } from "../../services/cache.service";
 import { MatTableDataSource } from "@angular/material/table";
 import { ActivatedRoute, ParamMap } from "@angular/router";
 import { MatSort } from "@angular/material/sort";
@@ -9,8 +9,8 @@ import {
   IterationReport,
   ResourceStats,
   Iteration
-} from "../dto/iterationReport";
-import { SettingService } from '../services/setting.service';
+} from "../../dto/iterationReport";
+import { SettingService } from '../../services/setting.service';
 
 @Component({
   selector: "app-team-details",

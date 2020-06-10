@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './tfs-report-card.component.html',
   styleUrls: ['./tfs-report-card.component.css'],
 })
-export class TFSReportCard {
+export class TFSReportCardComponent {
   private _team: any;
   private _name: string;
 

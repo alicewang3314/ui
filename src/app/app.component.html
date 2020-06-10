@@ -7,38 +7,31 @@
     </div>
 
     <div class="nav-wrapper">
-      <a [routerLink]="[ '/home' ]">
+      <a [routerLink]="[ '/bug-dashboard' ]">
         Application Bugs
       </a>
       <a [routerLink]="[ '/home' ]">
         Error Logs
       </a>
-      <a [routerLink]="[ '/home' ]">
+      <a [routerLink]="[ '/tfs-dashboard' ]">
         TFS Tasks
       </a>
-      <a [routerLink]="[ '/home' ]">
+      <a [routerLink]="[ '/tfs-dashboard/export' ]">
         Export Reports
       </a>
       <a [matMenuTriggerFor]="menu3">
         <mat-icon>settings</mat-icon>
         <mat-menu #menu3="matMenu">
-          <button mat-menu-item [routerLink]="[ '/tfsDashSettings' ]">TFS Teams Settings</button>
+          <button mat-menu-item [routerLink]="[ '/tfs-dashboard/settings' ]">TFS Teams Settings</button>
         </mat-menu>
       </a>
     </div>
-
-
-
-
     <!-- <div class="menuSettings">
       <div [matMenuTriggerFor]="menu3">
         <mat-icon>settings</mat-icon>
       </div>
     </div> -->
-
-
   </mat-toolbar>
-
   <div class="baseMaster">
     <div class="mainMaster">
       <loader></loader>

@@ -1,17 +1,17 @@
-<div class="tab-body-wrapper">
+<div class="container">
   <div class="top-wrapper">
     <bug-card class='card-total' [data]="totalBugs"></bug-card>
     <bug-card class='card-critical' [data]="criticalBugs"></bug-card>
     <bug-card class='card-high' [data]="highBugs"></bug-card>
   </div>
   <div class="middle-wrapper">
-    <mat-card class='custom-mat-card large card-breakdown'>
+    <mat-card class='card-breakdown'>
       <mat-card-header>
         <mat-card-title class="card-title">Bugs Breakdown</mat-card-title>
       </mat-card-header>
       <mat-divider></mat-divider>
       <mat-card-content>
-        <div class="chartContainer">
+        <div class="chart-container">
           <ngx-charts-bar-vertical-stacked #chart2 [view]="[700, 350]" [scheme]="stackColorScheme"
             [results]="bugStackCnt" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [barPadding]="35"
             [legend]="showLegend" [showXAxisLabel]="false" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"

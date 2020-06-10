@@ -1,13 +1,13 @@
 import { Component, OnInit, ViewChild, Input } from "@angular/core";
-import { CacheService } from "../services/cache.service";
+import { CacheService } from "../../services/cache.service";
 import { MatTableDataSource } from "@angular/material/table";
 import { ActivatedRoute } from "@angular/router";
 import { MatSort } from "@angular/material/sort";
-import { ResourceStats } from "../dto/iterationReport";
+import { ResourceStats } from "../../dto/iterationReport";
 import { analyzeAndValidateNgModules } from "@angular/compiler";
 import { Router } from "@angular/router";
 import { Location } from "@angular/common";
-import { SettingService } from '../services/setting.service';
+import { SettingService } from 'src/app/services/setting.service';
 @Component({
   selector: "app-resource-statistics",
   templateUrl: "./resource-statistics.component.html",

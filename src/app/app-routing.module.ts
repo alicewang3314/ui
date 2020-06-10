@@ -1,8 +1,8 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { TfsDashboardComponent } from "./tfs-dashboard/tfs-dashboard.component";
-import { ProjectDetailsComponent } from "./project-details/project-details.component";
-import { ProjectResourceComponent } from "./project-resource/project-resource.component";
+// import { TfsDashboardComponent } from "./tfs-dashboard/tfs-dashboard.component";
+// import { ProjectDetailsComponent } from "./tfs-reports-module/project-details/project-details.component";
+//import { ProjectResourceComponent } from "./tfs-reports-module/project-resource/project-resource.component";
 import { HomePageComponent } from "./home-page/home-page.component";
 //import { IndexPageComponent } from "./index-page/index-page.component";
 import { LogReportModule } from './log-report/log-report.module';
@@ -12,15 +12,14 @@ import { LogDashboardComponent } from './log-report/log-dashboard/log-dashboard.
 import { MostFrequentErrorsDashbComponent } from './log-report/most-frequent-errors-dashb/most-frequent-errors-dashb.component';
 import { LiveErrorLogsComponent } from './log-report/live-error-logs/live-error-logs.component';
 import { TfsDashboardHomeComponent } from './tfs-dashboard-home/tfs-dashboard-home.component';
-import { ChangesetReportComponent } from './tfs-reports-module/changeset-report/changeset-report.component';
-import { BugReportComponent } from './tfs-reports-module/bug-report/bug-report.component';
-import { BugChangetReportComponent } from './tfs-reports-module/bug-changet-report/bug-changet-report.component';
-import { BugTagReportComponent } from './tfs-reports-module/bug-tag-report/bug-tag-report.component';
-import { TfsDashboardSettingsComponent } from './settings/tfs-dashboard-settings/tfs-dashboard-settings.component';
+// import { ChangesetReportComponent } from './tfs-reports-module/changeset-report/changeset-report.component';
+// import { BugReportComponent } from './tfs-reports-module/bug-report/bug-report.component';
+// import { BugChangetReportComponent } from './tfs-reports-module/bug-changet-report/bug-changet-report.component';
+// import { BugTagReportComponent } from './tfs-reports-module/bug-tag-report/bug-tag-report.component';
+// import { TfsDashboardSettingsComponent } from './settings/tfs-dashboard-settings/tfs-dashboard-settings.component';
 
 //TODO: refactoring clean up
-import { ExportReports } from './tfs-reports-module/export-reports/export-reports.component';
-import { BugDashboardComponent } from 'src/app/bug-dashboard-module/bug-dashboard/bug-dashbard.component';
+// import { ExportReports } from './tfs-reports-module/export-reports/export-reports.component';
 
 const routes: Routes = [
   //{ path: 'dashboard', component: TfsDashboardComponent },
@@ -36,27 +35,14 @@ const routes: Routes = [
   {
     path: 'tfsDashHome', component: TfsDashboardHomeComponent
   },
-  {
-    path: 'dashboard/project/:title',
-    component: ProjectDetailsComponent
-  },
-  {
-    path: 'dashboard/resourceStats',
-    component: ProjectResourceComponent
-  },
-
-  { path: 'tfsboard', component: TfsDashboardComponent },
+  // { path: 'tfsboard', component: TfsDashboardComponent },
   { path: 'log', component: MostFrequentExceptionsComponent },
   { path: 'exceptionSearch', component: ExceptionSearchComponent },
   { path: 'logDashboard', component: LogDashboardComponent },
   { path: 'mostFrequentDashB', component: MostFrequentErrorsDashbComponent },
   { path: 'liveErrors', component: LiveErrorLogsComponent },
-  { path: "changesetReport", component: ChangesetReportComponent },
-  { path: "bugReport", component: BugReportComponent },
-  { path: "bugChangeSetReport", component: BugChangetReportComponent },
-  { path: "bugTagReport", component: BugTagReportComponent },
-  { path: "tfsDashSettings", component: TfsDashboardSettingsComponent },
-  // { path: 'bug-dashboard', component: BugDashboardComponent },
+  // refactoring
+  { path: 'tfs-dashboard', loadChildren: () => import('src/app/tfs-reports-module/tfs-reports.module').then(m => m.TfsReportsModule) },
   { path: 'bug-dashboard', loadChildren: () => import('src/app/bug-dashboard-module/bug-dashboard.module').then(m => m.BugDashboardModule) },
   {
     path: '**',
