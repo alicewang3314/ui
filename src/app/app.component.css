@@ -10,10 +10,8 @@ mat-toolbar {
 }
 
 mat-toolbar>div {
-  margin-right: 30px;
   font-size: smaller;
   cursor: pointer;
-
 }
 
 mat-icon {
@@ -87,21 +85,19 @@ a {
   display: -ms-flexbox;
   justify-content: flex-end;
   font-size: x-small;
+  margin: 0;
+}
+
+.settings {
+  width: 60px;
 }
 
 .nav-wrapper a {
-  margin-left: 40px;
-}
-
-.nav-wrapper a:not(:last-of-type) {
   margin-left: 2em;
 }
 
-.nav-wrapper a:hover, .nav-wrapper a.active  {
+.nav-wrapper a:hover,
+.nav-wrapper a.active {
   color: rgba(0, 0, 0, 0.66);
   transition: all .4;
 }
-
-
-
-

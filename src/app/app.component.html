@@ -19,18 +19,15 @@
       <a [routerLink]="[ '/tfs-dashboard/export' ]">
         Export Reports
       </a>
-      <a [matMenuTriggerFor]="menu3">
-        <mat-icon>settings</mat-icon>
-        <mat-menu #menu3="matMenu">
-          <button mat-menu-item [routerLink]="[ '/tfs-dashboard/settings' ]">TFS Teams Settings</button>
-        </mat-menu>
-      </a>
+      <span class="settings">
+        <a [matMenuTriggerFor]="menu3" *ngIf="hasSetting">
+          <mat-icon>settings</mat-icon>
+          <mat-menu #menu3="matMenu">
+            <button mat-menu-item onclick="getSetting">TFS Teams Settings</button>
+          </mat-menu>
+        </a>
+      </span>
     </div>
-    <!-- <div class="menuSettings">
-      <div [matMenuTriggerFor]="menu3">
-        <mat-icon>settings</mat-icon>
-      </div>
-    </div> -->
   </mat-toolbar>
   <div class="baseMaster">
     <div class="mainMaster">
