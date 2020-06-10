@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CacheService } from 'src/app/services/cache.service';
 import { Router } from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-tfs-dashboard-settings',
@@ -16,7 +17,8 @@ export class TfsDashboardSettingsComponent implements OnInit {
   constructor(private settingService: SettingService, 
     private cacheService: CacheService,
     private router: Router,
-    private matSnackBar: MatSnackBar) { }
+    private matSnackBar: MatSnackBar,
+    private location: Location) { }
 
   tfsprojectK: any;
   savedValues: {} | undefined;
@@ -90,7 +92,8 @@ export class TfsDashboardSettingsComponent implements OnInit {
             this.settingService.clearCache();
             this.cacheService.clearCache();
             this.cacheService.selectHomeTabIndex = 2;
-            this.router.navigate(["/"]);
+            // this.router.navigate.;
+            this.location.back();
           }
           else {
             this.matSnackBar.open("Error in updating settings", null, { duration: 3000, horizontalPosition: 'left' });
@@ -107,7 +110,8 @@ export class TfsDashboardSettingsComponent implements OnInit {
             this.settingService.clearCache();
             this.cacheService.clearCache();
             this.cacheService.selectHomeTabIndex = 2;
-            this.router.navigate(["/"]);
+            // this.router.navigate(["/"]);
+            this.location.back();
           }
           else {
             this.matSnackBar.open("Error in adding settings", null, { duration: 3000, horizontalPosition: 'left' });
@@ -116,8 +120,6 @@ export class TfsDashboardSettingsComponent implements OnInit {
         }
       );
     }
-
-    
   }
 
   private GetIsSelected(projName, teamName): boolean {
