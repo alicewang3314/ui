@@ -1,37 +1,39 @@
-<mat-accordion class="export-report-container">
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Changeset Report
-      </mat-panel-title>
-      <mat-panel-description>
-        Get changesets for a given date range for a project and path.
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <app-changeset-report></app-changeset-report>
-  </mat-expansion-panel>
+<div class="container">
+  <mat-accordion class="export-report-container">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Changeset Report
+        </mat-panel-title>
+        <mat-panel-description>
+          Get changesets for a given date range for a project and path.
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-changeset-report></app-changeset-report>
+    </mat-expansion-panel>
 
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Bugs Report
-      </mat-panel-title>
-      <mat-panel-description>
-        Get bug details by date range and project.
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <app-bug-report></app-bug-report>
-  </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Bugs Report
+        </mat-panel-title>
+        <mat-panel-description>
+          Get bug details by date range and project.
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-bug-report></app-bug-report>
+    </mat-expansion-panel>
 
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Bugs Tag Report
-      </mat-panel-title>
-      <mat-panel-description>
-        Get Bug details for a given Tag
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <app-bug-tag-report></app-bug-tag-report>
-  </mat-expansion-panel>
-</mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Bugs Tag Report
+        </mat-panel-title>
+        <mat-panel-description>
+          Get Bug details for a given Tag
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-bug-tag-report></app-bug-tag-report>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

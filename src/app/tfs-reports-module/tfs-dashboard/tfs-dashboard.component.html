@@ -4,7 +4,7 @@
 <mat-tab-group mat-align-tabs="center" [selectedIndex]="selectedTabIndex.value"
   (selectedTabChange)="onTabChange($event.index)">
   <mat-tab label="Current Iteration">
-    <div class="container">
+    <div class="tfs-report-container">
       <div *ngIf="iterationReport" class="dashboard-buttons">
         <button mat-raised-button color="primary" (click)="refresh()">
           <mat-icon>refresh</mat-icon>

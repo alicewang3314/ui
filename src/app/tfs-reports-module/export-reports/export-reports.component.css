@@ -1,16 +1,7 @@
-.export-report-container mat-expansion-panel {
-  margin-left: 2vw;
-  margin-right: 2vw;
+.container {
+  height: 100vh;
+  padding-top: 7vh;
 }
-
-.export-report-container mat-expansion-panel:first-child {
-  margin-top: 3vh;
-}
-
-.export-report-container mat-expansion-panel:last-child {
-  margin-bottom: 3vh;
-}
-
 
 ::ng-deep mat-expansion-panel-header {
   height: 80px !important;

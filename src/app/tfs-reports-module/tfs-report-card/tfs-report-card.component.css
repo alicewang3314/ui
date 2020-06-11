@@ -32,7 +32,7 @@ hr {
 mat-card {
   margin-bottom: 5px;
   padding: 12px;
-  height: 270px !important;
+  height: 300px !important;
   text-align: center;
   box-shadow: 0 2px 6px 1px rgba(238, 178, 224, 0.6) !important;
 }
@@ -58,9 +58,5 @@ mat-card-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: right;
-}
-
-.mat-card-actions {
   text-align: right;
 }

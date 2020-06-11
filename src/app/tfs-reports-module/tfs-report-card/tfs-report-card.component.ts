@@ -34,7 +34,7 @@ export class TFSReportCardComponent {
   }
 
   getReport(title: string) {
-    this.router.navigate(["/dashboard/project", title], {
+    this.router.navigate(["/tfs-dashboard/project", title], {
       queryParams: { current: 1 }
     });
   }
