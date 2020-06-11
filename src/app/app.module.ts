@@ -32,18 +32,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-// import { TfsDashboardComponent } from "./tfs-dashboard/tfs-dashboard.component";
-//import { ProjectDetailsComponent } from "./tfs-reports-module/project-details/project-details.component";
-// import { ResourceStatisticsComponent } from "./tfs-reports-module/resource-statistics/resource-statistics.component";
-//import { ProjectResourceComponent } from "./tfs-reports-module/project-resource/project-resource.component";
 import { HomePageComponent, } from "./home-page/home-page.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-//import { IndexPageComponent } from "./index-page/index-page.component";
 import { InterceptorService } from './interceptor.service';
-import { TfsDashboardHomeComponent } from './tfs-dashboard-home/tfs-dashboard-home.component';
-// import { TfsDashboardSettingsComponent } from './settings/tfs-dashboard-settings/tfs-dashboard-settings.component';
 import { LogDashboardComponent } from './log-report/log-dashboard/log-dashboard.component';
-
 
 // import { LogDashboardComponent } from './log-dashboard/log-dashboard.component';
 // TODO: Refactoring cleanup
@@ -54,21 +46,11 @@ import { BugDashboardModule } from 'src/app/bug-dashboard-module/bug-dashboard.m
 @NgModule({
   declarations: [
     AppComponent,
-    // TfsDashboardComponent,
-    //ProjectDetailsComponent,
-    //ResourceStatisticsComponent,
-    //ProjectResourceComponent,
     HomePageComponent,
-    //IndexPageComponent,
     LoaderComponent,
     FilterPipe,
-    TfsDashboardHomeComponent,
-    // TfsDashboardSettingsComponent,
-    //TODO: refactoring clean up
     LogDashboardComponent,
     BugDetailsDialog,
-    // BugReportCard,
-    //TFSReportCard,
   ],
   imports: [
     BrowserModule,

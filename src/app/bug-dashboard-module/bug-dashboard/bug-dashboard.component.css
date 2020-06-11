@@ -1,6 +1,13 @@
-
 .container {
-  padding: 1em;
+  display: flex;
+  justify-content: center;
+}
+
+.bug-dashboard {
+  flex: 0 1 70%;
+  min-width: 1220px;
+  /* max-width: 2000px; */
+  padding: 2em 3em;
 }
 
 mat-card {
@@ -62,6 +69,8 @@ mat-card:hover {
   overflow-y: hidden;
   fill: white;
   background-color: #212121;
+  display: flex;
+  justify-content: center;
 }
 
 .card-low,
@@ -111,3 +120,4 @@ mat-card:hover {
 bug-card:not(:last-child) {
   margin-right: 1.2em;
 }
+
