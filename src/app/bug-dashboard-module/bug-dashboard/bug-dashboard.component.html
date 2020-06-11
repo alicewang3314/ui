@@ -1,4 +1,4 @@
-<div class="container">
+<div class="bug-dashboard-container">
   <div class="bug-dashboard"> 
     <div class="top-wrapper">
       <bug-card class='card-total' [data]="totalBugs"></bug-card>
@@ -13,7 +13,7 @@
         <mat-divider></mat-divider>
         <mat-card-content>
           <div class="chart-container">
-            <ngx-charts-bar-vertical-stacked #chart2 [view]="[750, 350]" [scheme]="stackColorScheme"
+            <ngx-charts-bar-vertical-stacked #chart2 [view]="[700, 350]" [scheme]="stackColorScheme"
               [results]="bugStackCnt" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [barPadding]="35"
               [legend]="showLegend" [showXAxisLabel]="false" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
               [yAxisLabel]="yAxisLabel" [maxXAxisTickLength]="10">

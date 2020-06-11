@@ -1,5 +1,6 @@
 .card-container {
   min-height: 187px;
+  padding-bottom: 1em;
 }
 
 .resolved,
@@ -20,6 +21,7 @@
 
 .mat-card-content {
   font-size: 22px;
+  margin-bottom: 16px !important;
 }
 
 mat-card {

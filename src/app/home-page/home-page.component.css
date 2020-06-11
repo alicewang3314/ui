@@ -173,7 +173,7 @@ mat-menu {
   min-width: 1250px;
   overflow: auto;
 }
-
+/* 
 .card-title {
   color: #ece8e8;
 }
@@ -186,18 +186,13 @@ mat-menu {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-}
+} */
 
-.card-total,
+/* .card-total,
 .card-critical,
 .card-high {
   flex: 1 1 0;
   margin-bottom: 1.2em;
-}
-
-.card-breakdown {
-  flex: 2 1 0;
-  margin-right: 1.2em;
 }
 
 .middle-wrapper_inner-wrapper {
@@ -212,4 +207,4 @@ card-medium {
 
 bug-card:not(:last-child) {
   margin-right: 1.2em;
-}
+} */

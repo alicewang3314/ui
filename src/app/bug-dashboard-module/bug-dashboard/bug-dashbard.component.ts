@@ -93,21 +93,21 @@ export class BugDashboardComponent {
   ) { }
 
   ngOnInit() {
-    this.service.getBugReport().subscribe((resp: any[]) => {
-      this.respBugApi = resp;
-      this.getBugReportsData(resp);
-      this.calculateCardData(resp);
-      this.getDonutChartData(resp);
-      this.calculateStackData(resp);
-    });
+    // this.service.getBugReport().subscribe((resp: any[]) => {
+    //   this.respBugApi = resp;
+    //   this.getBugReportsData(resp);
+    //   this.calculateCardData(resp);
+    //   this.getDonutChartData(resp);
+    //   this.calculateStackData(resp);
+    // });
 
     // TODO: remove local dev setup
-    // this.respBugApi = rawBugReport;
-    // console.log(rawBugReport);
-    // this.getBugReportsData(rawBugReport);
-    // this.calculateCardData(rawBugReport);
-    // this.getDonutChartData(rawBugReport);
-    // this.calculateStackData(rawBugReport);
+    this.respBugApi = rawBugReport;
+    console.log(rawBugReport);
+    this.getBugReportsData(rawBugReport);
+    this.calculateCardData(rawBugReport);
+    this.getDonutChartData(rawBugReport);
+    this.calculateStackData(rawBugReport);
   }
 
   getBugReportsData(temp) {

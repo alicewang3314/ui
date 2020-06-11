@@ -4,23 +4,26 @@
 <mat-tab-group mat-align-tabs="center" [selectedIndex]="selectedTabIndex.value"
   (selectedTabChange)="onTabChange($event.index)">
   <mat-tab label="Current Iteration">
-    <div *ngIf="iterationReport" class="dashboard-buttons">
-      <button mat-raised-button color="primary" (click)="refresh()">
-        <mat-icon>refresh</mat-icon>
-      </button>
-      <button mat-raised-button color="primary" (click)="GoToResourceStats()">
-        View By Resource
-      </button>
-    </div>
-    <div class="main">
-      <ng-container *ngIf="iterationReport">
-        <div class="reports-wrapper" *ngFor="let team of iterationReport.teams">
-          <tfs-report-card [name]="'current'" [team]="team"></tfs-report-card>
-        </div>
-      </ng-container>
-      <ng-container *ngIf="!iterationReport">
-        <div class="addMessage"> Please add teams using TFS Team settings</div>
-      </ng-container>
+    <div class="container">
+      <div *ngIf="iterationReport" class="dashboard-buttons">
+        <button mat-raised-button color="primary" (click)="refresh()">
+          <mat-icon>refresh</mat-icon>
+        </button>
+        <button mat-raised-button color="primary" (click)="GoToResourceStats()">
+          View By Resource
+        </button>
+      </div>
+      <div class="row row-cols-3">
+        <ng-container *ngIf="iterationReport">
+          <div class="col" *ngFor="let team of iterationReport.teams">
+            <tfs-report-card [name]="'current'" [team]="team"></tfs-report-card>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="!iterationReport">
+          <div class="addMessage"> Please add teams using TFS Team settings</div>
+        </ng-container>
+      </div>
     </div>
   </mat-tab>
   <mat-tab label="All Pending">
@@ -32,9 +35,9 @@
         View By Resource
       </button>
     </div>
-    <div class="main">
+    <div class="row row-cols-3">
       <ng-container *ngIf="allPendingReport">
-        <div class="reports-wrapper" *ngFor="let team of allPendingReport.teams">
+        <div class="col" *ngFor="let team of allPendingReport.teams">
           <tfs-report-card [name]="'all'" [team]="team"></tfs-report-card>
         </div>
       </ng-container>

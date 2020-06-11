@@ -1,12 +1,12 @@
-.container {
+.bug-dashboard-container {
   display: flex;
   justify-content: center;
 }
 
 .bug-dashboard {
-  flex: 0 1 70%;
-  min-width: 1220px;
-  /* max-width: 2000px; */
+  flex: 0 1 80%;
+  min-width: 1300px;
+  /* max-width: ; */
   padding: 2em 3em;
 }
 
@@ -54,13 +54,13 @@ mat-card:hover {
   flex: 1 1 0;
 }
 
+.card-title {
+  color: #ece8e8;
+}
+
 .card-breakdown {
   flex: 2 1 0;
   margin-right: 1.2em;
-}
-
-.card-title {
-  color: #ece8e8;
 }
 
 .chart-container {
@@ -120,4 +120,3 @@ mat-card:hover {
 bug-card:not(:last-child) {
   margin-right: 1.2em;
 }
-
