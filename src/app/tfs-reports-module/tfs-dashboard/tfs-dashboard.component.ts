@@ -12,7 +12,7 @@ import { Settings } from 'src/app/types';
 //import { userInfo } from "os";
 
 //TODO: cleanup dev support
-import { iterationReport as report } from 'src/app/mock';
+// import { iterationReport as report } from 'src/app/mock';
 
 @Component({
   selector: "app-tfs-dashboard",
@@ -20,9 +20,9 @@ import { iterationReport as report } from 'src/app/mock';
   styleUrls: ["./tfs-dashboard.component.css"]
 })
 export class TfsDashboardComponent implements OnInit, OnChanges {
-  // iterationReport: IterationReport;
   // TODO: remove dev config
-  iterationReport: any;
+  // iterationReport: any;
+  iterationReport: IterationReport;
   allPendingReport: IterationReport;
   showSpinner: boolean = false;
   selectedTabIndex = new FormControl(0);
@@ -46,9 +46,9 @@ export class TfsDashboardComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    // this.getProjectDashboard();
+    this.getProjectDashboard();
     //TODO: remove dev setup
-    this.iterationReport = report;
+    // this.iterationReport = report;
   }
 
   getProjectDashboardOld() {

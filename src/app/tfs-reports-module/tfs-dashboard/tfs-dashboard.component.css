@@ -1,14 +1,14 @@
-.main {
-  display: flex;
-  flex-flow: row wrap;
+.tfs-report-container {
+  width: 70%;
   margin: auto;
-  justify-content: center;
-  width: fit-content;
 }
 
-.reports-wrapper {
-  flex: 0 1 30%;
-  margin: 0 10px 10px 10px;
+.row.row-cols-3 {
+  padding-bottom: 7vh;
+}
+
+.col {
+  padding: 1em;
 }
 
 .spinner {
@@ -22,21 +22,6 @@ mat-tab-group {
   width: 100%;
 }
 
-.itemReportsCard {
-  height: 172px;
-}
-
-.mainReport {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
-
-.mainReport a {
-  text-decoration: none;
-  color: white;
-}
-
 .dashboard-buttons {
   display: flex;
   padding: 1.2em;
@@ -47,32 +32,8 @@ mat-tab-group {
   margin-left: 15px;
 }
 
-.mat-card-actions {
-  text-align: right;
-}
-
-.addMessage {
+.add-message {
   margin-top: 10px;
 }
 
-.report-label {
-  width: 60%;
-  float: left;
-}
 
-.report-entry {
-  margin-right: 6%;
-}
-
-hr {
-  border: transparent;
-}
-
-.col {
-  padding: 1em;
-}
-
-.tfs-report-container {
-  width: 70%;
-  margin:auto;
-}
