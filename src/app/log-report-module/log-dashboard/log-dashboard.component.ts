@@ -37,7 +37,6 @@ export class LogDashboardComponent implements OnInit {
   constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
-    this.fromDatePickerValue.setDate(this.fromDatePickerValue.getDate() - 1);
    // this.iframeSourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl("");
 
     this.search();
