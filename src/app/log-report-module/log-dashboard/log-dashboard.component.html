@@ -1,85 +1,82 @@
-<!-- <div class="pageTitle fieldContainer">
-    <span>Log Dashboard</span>    
-</div> -->
 <div class="fieldContainer" style="padding-left: 20px;">
-    <!-- <div class="field">
-        <mat-checkbox [(ngModel)]="isLiveChecked">Live</mat-checkbox>
-    </div> -->
-    <div class="field">
-        <mat-form-field>
-            <mat-label>Environment</mat-label>
-            <mat-select [(value)]="env">
-                <mat-option value="uat">
-                    UAT
-                </mat-option>
-                <mat-option value="prod">
-                    Prod
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
+  <div class="field">
+    <mat-form-field>
+      <mat-label>Environment</mat-label>
+      <mat-select [(value)]="env">
+        <mat-option value="uat">
+          UAT
+        </mat-option>
+        <mat-option value="prod">
+          Prod
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
 
-    <div class="field">
-        <mat-form-field>
-            <mat-label>Type</mat-label>
-            <mat-select [(value)]="dashBoardType">
-                <mat-option value="chart">
-                    Chart
-                </mat-option>
-                <mat-option value="table">
-                    Table
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
-
-    <!-- <div class="field">
-        <mat-form-field>
-            <mat-label>Error Type</mat-label>
-            <mat-select [(value)]="errorDashboardType">
-                <mat-option value="totErrors">
-                    Total Errors
-                </mat-option>
-                <mat-option value="freqErrors">
-                    Most Frequent
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div> -->
-
-    <div class="field">
-        <mat-form-field>
-            <mat-select placeholder="Application" [(ngModel)]="application" name="application">
-                <mat-option *ngFor="let item of applications" [value]="item.value">
-                    {{item.viewValue}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
-
-    <div class="field">
-        <mat-form-field>
-            <input matInput [matDatepicker]="fromDatePicker" placeholder="From Date" [(ngModel)]="fromDatePickerValue">
-            <mat-datepicker-toggle matSuffix [for]="fromDatePicker"></mat-datepicker-toggle>
-            <mat-datepicker #fromDatePicker></mat-datepicker>
-        </mat-form-field>
-    </div>
-
-    <div class="field">
-        <mat-form-field>
-            <input matInput [matDatepicker]="toDatePicker" placeholder="To Date" [(ngModel)]="toDatePickerValue">
-            <mat-datepicker-toggle matSuffix [for]="toDatePicker"></mat-datepicker-toggle>
-            <mat-datepicker #toDatePicker></mat-datepicker>
-        </mat-form-field>
-    </div>
-
-    <div class="fieldButton">
-        <button mat-raised-button (click)="search();">
-            Search
-        </button>
-    </div>
+  <div class="field">
+    <mat-form-field>
+      <mat-label>Type</mat-label>
+      <mat-select [(value)]="dashBoardType">
+        <mat-option value="chart">
+          Chart
+        </mat-option>
+        <mat-option value="table">
+          Table
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="field">
+    <mat-form-field>
+      <mat-select placeholder="Application" [(ngModel)]="application" name="application">
+        <mat-option *ngFor="let item of applications" [value]="item.value">
+          {{item.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="field">
+    <mat-form-field>
+      <input matInput [matDatepicker]="fromDatePicker" placeholder="From Date" [(ngModel)]="fromDatePickerValue">
+      <mat-datepicker-toggle matSuffix [for]="fromDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #fromDatePicker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="field">
+    <mat-form-field>
+      <input matInput [matDatepicker]="toDatePicker" placeholder="To Date" [(ngModel)]="toDatePickerValue">
+      <mat-datepicker-toggle matSuffix [for]="toDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #toDatePicker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="fieldButton">
+    <button mat-raised-button (click)="search();">
+      Search
+    </button>
+  </div>
 </div>
 <p></p>
 <div>
-    <iframe [src]="iframeSourceUrl" height="800px" width="100%" frameborder="0"></iframe>
+  <iframe [src]="iframeSourceUrl" height="800px" width="100%" frameborder="0"></iframe>
+</div>
+
+<!-- from home page -->
+start here
+<div class="main">
+  <div class="itemsLog">
+    <a [routerLink]="[ '/logDashboard' ]">
+      <mat-card class="wideCard">
+        <iframe [src]="iframeLogSourceUrl" frameborder="0" width="100%" height="300px"></iframe>
+        <div class="titleText">Error Logs</div>
+      </mat-card>
+    </a>
+  </div>
+  <div class="itemsLog">
+    <a [routerLink]="[ '/logDashboard' ]">
+      <mat-card class="wideCard">
+        <iframe [src]="iframeLogSourceUrl" frameborder="0" width="100%" height="300px"></iframe>
+        <div class="titleText">Errors - Past 1 day</div>
+      </mat-card>
+    </a>
+  </div>
 </div>
