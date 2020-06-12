@@ -1,47 +1,44 @@
-import { Component, OnInit, ViewChildren, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-log-dashboard',
   templateUrl: './log-dashboard.component.html',
-  styleUrls: ['./log-dashboard.component.css']
+  styleUrls: ['./log-dashboard.component.css'],
 })
 export class LogDashboardComponent implements OnInit {
-  application: string | undefined;
-  applications: { viewValue: string, value: string }[];
-  env: string | undefined;
+  application: string | undefined = "*";
+  applications: { viewValue: string, value: string }[] = [
+    { viewValue: "All", value: "*" },
+    { viewValue: "CAPTOR", value: "captor" },
+    { viewValue: "CDWS", value: "cdws" },
+    { viewValue: "DOC0", value: "doc" },
+    { viewValue: "GTS", value: "gts" },
+    { viewValue: "IMS", value: "ims" },
+    { viewValue: "LCM", value: "lcm" },
+    { viewValue: "Note", value: "note" },
+    { viewValue: "RAR", value: "rar" },
+    { viewValue: "REPORTSBATCH", value: "REPORTSBATCH" },
+    { viewValue: "VANS", value: "vans" },
+  ];
+  env: string | undefined = "prod";
+  toDatePickerValue: Date = new Date();
+  fromDatePickerValue: Date = new Date(Date.now() - 864e5);
+  dashBoardType: string | undefined = "chart";
+  errorDashboardType: string | undefined = "totErrors";
+
   isLive: boolean;
   isLiveChecked: boolean;
-  iframeSourceUrl: SafeResourceUrl;
+  iframeSourceUrl: SafeResourceUrl = '';
   iframeLogSourceUrl: SafeResourceUrl;
-  fromDatePickerValue: Date = new Date();
-  toDatePickerValue: Date = new Date();
-  dashBoardType: string | undefined;
-  errorDashboardType: string | undefined;
+
 
   constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
-    this.env = "prod";
-    this.application = "*";
-    this.applications = [
-      { viewValue: "All", value: "*" },
-      { viewValue: "CAPTOR", value: "captor" },
-      { viewValue: "CDWS", value: "cdws" },
-      { viewValue: "DOC0", value: "doc" },
-      { viewValue: "GTS", value: "gts" },
-      { viewValue: "IMS", value: "ims" },
-      { viewValue: "LCM", value: "lcm" },
-      { viewValue: "Note", value: "note" },
-      { viewValue: "RAR", value: "rar" },
-      { viewValue: "REPORTSBATCH", value: "REPORTSBATCH" },
-      { viewValue: "VANS", value: "vans" },
-    ];
-    this.dashBoardType = "chart";
-    this.errorDashboardType = "totErrors"
     this.fromDatePickerValue.setDate(this.fromDatePickerValue.getDate() - 1);
-    this.iframeSourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl("");
+   // this.iframeSourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl("");
 
     this.search();
   }
