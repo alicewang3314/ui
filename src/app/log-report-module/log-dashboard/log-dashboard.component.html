@@ -13,7 +13,6 @@
         </mat-select>
       </mat-form-field>
     </div>
-
     <div class="field">
       <mat-form-field>
         <mat-label>Type</mat-label>
@@ -36,27 +35,27 @@
         </mat-select>
       </mat-form-field>
     </div>
-    <!-- <div class="field">
+    <div class="field">
       <mat-form-field>
         <input matInput [matDatepicker]="fromDatePicker" placeholder="From Date" [(ngModel)]="fromDatePickerValue">
         <mat-datepicker-toggle matSuffix [for]="fromDatePicker"></mat-datepicker-toggle>
         <mat-datepicker #fromDatePicker></mat-datepicker>
       </mat-form-field>
-    </div> -->
-    <!-- <div class="field">
+    </div>
+    <div class="field">
       <mat-form-field>
         <input matInput [matDatepicker]="toDatePicker" placeholder="To Date" [(ngModel)]="toDatePickerValue">
         <mat-datepicker-toggle matSuffix [for]="toDatePicker"></mat-datepicker-toggle>
         <mat-datepicker #toDatePicker></mat-datepicker>
       </mat-form-field>
-    </div> -->
+    </div>
+
     <div class="fieldButton">
       <button mat-raised-button (click)="search();">
         Search
       </button>
     </div>
   </div>
-  <p></p>
   <div class="iframe-container">
     <iframe #iframeFull [src]="iframeSourceUrl" allowfullscreen frameborder="0"></iframe>
   </div>

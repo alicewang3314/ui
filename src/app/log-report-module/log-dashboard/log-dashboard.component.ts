@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChildren, QueryList, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, ViewChildren, ElementRef } from '@angular/core';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 
@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './log-dashboard.component.html',
   styleUrls: ['./log-dashboard.component.css']
 })
-export class LogDashboardComponent implements OnInit, AfterViewInit {
+export class LogDashboardComponent implements OnInit {
   application: string | undefined;
   applications: { viewValue: string, value: string }[];
   env: string | undefined;
@@ -20,13 +20,9 @@ export class LogDashboardComponent implements OnInit, AfterViewInit {
   dashBoardType: string | undefined;
   errorDashboardType: string | undefined;
 
-  @ViewChildren("iframeFull") private iframeFull: ElementRef;
-
-  constructor(private sanitizer: DomSanitizer, private render: Renderer2) { }
+  constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
-
-
     this.env = "prod";
     this.application = "*";
     this.applications = [
@@ -48,17 +44,6 @@ export class LogDashboardComponent implements OnInit, AfterViewInit {
     this.iframeSourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl("");
 
     this.search();
-    console.log('on init');
-    //console.log(this.iframeFull.nativeElement);
-
-    // const height = this.iframeFull.nativeElement.contentWindow.document.body.scrollHeight + 'px';
-
-    // this.render.setStyle(this.iframeFull.nativeElement, 'height', height);
-  }
-
-  ngAfterViewInit() {
-    // console.log('after view init');
-    console.log(this.iframeFull.nativeElement);
   }
 
   search() {

@@ -1,35 +1,36 @@
-.fieldContainer{
-    display: flex;
-    flex-flow: row wrap;
-    /* justify-content: space-evenly;  */
+.fieldContainer {
+  display: flex;
+  flex-flow: row wrap;
+  height: 100px;
 }
 
-.field{
-    flex-basis: auto;
-    margin-right: 15px;
-    align-self: center;
+.field {
+  /* flex-basis: auto; */
+  margin-right: 15px;
+  align-self: center;
 }
 
-.fieldButton{
-    height: 33px;
-    margin: 10px;
-    flex-basis: 55px;
+.fieldButton {
+  height: 33px;
+  margin: 10px;
+  flex-basis: 55px;
 }
+
 .error-logs-container {
   margin-top: 1em;
 }
 
 .iframe-container {
   overflow: hidden;
-  padding-top: 56.25%;
+  padding-top: 80%;
   position: relative;
 }
- 
+
 .iframe-container iframe {
-   border: 0;
-   height: 100%;
-   left: 0;
-   position: absolute;
-   top: 0;
-   width: 100%;
+  position: absolute;
+  border: 0;
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
 }
