@@ -25,7 +25,7 @@ export class LogDashboardComponent implements OnInit, AfterViewInit {
   constructor(private sanitizer: DomSanitizer, private render: Renderer2) { }
 
   ngOnInit() {
-    this.search();
+
 
     this.env = "prod";
     this.application = "*";
@@ -47,6 +47,7 @@ export class LogDashboardComponent implements OnInit, AfterViewInit {
     this.fromDatePickerValue.setDate(this.fromDatePickerValue.getDate() - 1);
     this.iframeSourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl("");
 
+    this.search();
     console.log('on init');
     //console.log(this.iframeFull.nativeElement);
 
@@ -58,7 +59,7 @@ export class LogDashboardComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     // console.log('after view init');
     //console.log(this.iframeFull.nativeElement);
-  } 
+  }
 
   search() {
     this.iframeSourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.getDashboardSrcUrl());
