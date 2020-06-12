@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './log-dashboard.component.html',
   styleUrls: ['./log-dashboard.component.css']
 })
-export class LogDashboardComponent implements OnInit, AfterViewInit {
+export class LogDashboardComponent implements OnInit {
   application: string | undefined;
   applications: { viewValue: string, value: string }[];
   env: string | undefined;
@@ -48,10 +48,6 @@ export class LogDashboardComponent implements OnInit, AfterViewInit {
     this.iframeSourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl("");
 
     console.log('on init');
-  }
-
-  ngAfterViewInit() {
-    console.log('after view init');
     const height = this.iframeFull.nativeElement.contentWindow.document.body.scrollHeight + 'px';
     console.log(height, this.iframeFull.nativeElement);
     this.render.setStyle(this.iframeFull.nativeElement, 'height', height);
