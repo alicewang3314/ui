@@ -37,7 +37,7 @@ import { LiveErrorLogsComponent } from './live-error-logs/live-error-logs.compon
     MatDatepickerModule,
     MatSnackBarModule,
     MatPaginatorModule
-  ]
+  ],
 })
 export class LogReportModule {
 

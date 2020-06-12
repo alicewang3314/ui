@@ -5,7 +5,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from "./app-routing.module";
 import { FilterPipe } from "src/app/pipes";
 import { AppComponent } from "./app.component";
-import { LogReportModule } from "././log-report/log-report.module";
 
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
@@ -35,13 +34,14 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { HomePageComponent, } from "./home-page/home-page.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { InterceptorService } from './interceptor.service';
-import { LogDashboardComponent } from './log-report/log-dashboard/log-dashboard.component';
+import { LogDashboardComponent } from './log-report-module/log-dashboard/log-dashboard.component';
 
 // import { LogDashboardComponent } from './log-dashboard/log-dashboard.component';
 // TODO: Refactoring cleanup
 import { BugDetailsDialog, LoaderComponent } from './components';
 import { TfsReportsModule } from './tfs-reports-module/tfs-reports.module';
 import { BugDashboardModule } from 'src/app/bug-dashboard-module/bug-dashboard.module'
+import { LogReportModule } from "./log-report-module/log-report.module";
 
 @NgModule({
   declarations: [
