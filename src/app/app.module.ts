@@ -34,7 +34,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { HomePageComponent, } from "./home-page/home-page.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { InterceptorService } from './interceptor.service';
-import { LogDashboardComponent } from './log-report-module/log-dashboard/log-dashboard.component';
+
 
 // import { LogDashboardComponent } from './log-dashboard/log-dashboard.component';
 // TODO: Refactoring cleanup
@@ -49,7 +49,6 @@ import { LogReportModule } from "./log-report-module/log-report.module";
     HomePageComponent,
     LoaderComponent,
     FilterPipe,
-    LogDashboardComponent,
     BugDetailsDialog,
   ],
   imports: [
