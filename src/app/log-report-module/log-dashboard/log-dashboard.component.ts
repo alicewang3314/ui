@@ -48,16 +48,16 @@ export class LogDashboardComponent implements OnInit, AfterViewInit {
     this.iframeSourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl("");
 
     console.log('on init');
-    console.log(this.iframeFull.nativeElement);
+    //console.log(this.iframeFull.nativeElement);
 
-    const height = this.iframeFull.nativeElement.contentWindow.document.body.scrollHeight + 'px';
+    // const height = this.iframeFull.nativeElement.contentWindow.document.body.scrollHeight + 'px';
 
-    this.render.setStyle(this.iframeFull.nativeElement, 'height', height);
+    // this.render.setStyle(this.iframeFull.nativeElement, 'height', height);
   }
 
   ngAfterViewInit() {
-    console.log('after view init');
-    console.log(this.iframeFull.nativeElement);
+    // console.log('after view init');
+    //console.log(this.iframeFull.nativeElement);
   } 
 
   search() {
