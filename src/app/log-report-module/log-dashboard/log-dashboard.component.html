@@ -58,7 +58,7 @@
   </div>
   <p></p>
   <div>
-    <iframe [src]="iframeSourceUrl" width="100%" scrolling="no" onload="resize(this)" frameborder="0"></iframe>
+    <iframe [src]="iframeSourceUrl" width="100%" frameborder="0" onload="this.style.height=(this.contentWindow.document.body.scrollHeight+20)+'px';"></iframe>
   </div>
   <!-- from home page -->
   <div class="main">
