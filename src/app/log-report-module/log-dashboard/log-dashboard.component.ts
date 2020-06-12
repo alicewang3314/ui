@@ -49,6 +49,7 @@ export class LogDashboardComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    console.log('after view init');
     const height = this.iframeFull.nativeElement.contentWindow.document.body.scrollHeight + 'px';
     console.log(height, this.iframeFull.nativeElement);
     this.render.setStyle(this.iframeFull.nativeElement, 'height', height);
