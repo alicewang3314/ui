@@ -42,6 +42,8 @@ export class LogDashboardComponent implements OnInit {
     this.errorDashboardType = "totErrors"
     this.fromDatePickerValue.setDate(this.fromDatePickerValue.getDate() - 1);
     this.iframeSourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl("");
+
+    this.search();
   }
 
   search() {
