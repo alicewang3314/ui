@@ -82,10 +82,10 @@ mat-menu {
   width: 140px !important;
 }
 
-.mat-tab-body-content {
+/* .mat-tab-body-content {
   width: unset;
   height: unset;
-}
+} */
 
 .buttonPlaceholder {
   display: flex;
@@ -173,6 +173,11 @@ mat-menu {
   min-width: 1250px;
   overflow: auto;
 }
+
+.mat-tab-body-content {
+  overflow: unset;
+}
+
 /* 
 .card-title {
   color: #ece8e8;

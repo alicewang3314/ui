@@ -4,7 +4,6 @@ import { FormControl } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
 import { Observable } from "rxjs";
 
-import { IterationService } from "src/app/services/iteration.service";
 import { IterationReport } from "src/app/dto/iterationReport";
 import { CacheService } from "src/app/services/cache.service";
 import { SettingService } from 'src/app/services/setting.service';
@@ -13,7 +12,7 @@ import { Settings } from 'src/app/types';
 //import { userInfo } from "os";
 
 //TODO: cleanup dev support
-// import { iterationReport as report } from 'src/app/mock';
+import { iterationReport as report } from 'src/app/mock';
 
 @Component({
   selector: "app-tfs-dashboard",
@@ -21,10 +20,9 @@ import { Settings } from 'src/app/types';
   styleUrls: ["./tfs-dashboard.component.css"]
 })
 export class TfsDashboardComponent implements OnInit, OnChanges {
-  //iterationService: IterationService;
-  iterationReport: IterationReport;
+  // iterationReport: IterationReport;
   // TODO: remove dev config
-  // iterationReport: any;
+  iterationReport: any;
   allPendingReport: IterationReport;
   showSpinner: boolean = false;
   selectedTabIndex = new FormControl(0);
@@ -48,9 +46,9 @@ export class TfsDashboardComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.getProjectDashboard();
+    // this.getProjectDashboard();
     //TODO: remove dev setup
-    // this.iterationReport = report;
+    this.iterationReport = report;
   }
 
   getProjectDashboardOld() {

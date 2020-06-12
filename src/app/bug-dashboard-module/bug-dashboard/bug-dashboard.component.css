@@ -4,9 +4,8 @@
 }
 
 .bug-dashboard {
-  flex: 0 1 80%;
+  flex: 0 1 70%;
   min-width: 1300px;
-  /* max-width: ; */
   padding: 2em 3em;
 }
 
@@ -120,3 +119,12 @@ mat-card:hover {
 bug-card:not(:last-child) {
   margin-right: 1.2em;
 }
+
+/* ::ng-deep.mat-tab-body-wrapper {
+  overflow: unset !important;
+} */
+
+
+/* ::ng-deep.mat-tab-body-content {
+  overflow: hidden !important;
+} */

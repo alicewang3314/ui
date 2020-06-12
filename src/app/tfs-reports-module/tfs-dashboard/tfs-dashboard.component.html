@@ -27,20 +27,22 @@
     </div>
   </mat-tab>
   <mat-tab label="All Pending">
-    <div *ngIf="allPendingReport" class="dashboard-buttons">
-      <button mat-raised-button color="primary" (click)="refresh()">
-        <mat-icon>refresh</mat-icon>
-      </button>
-      <button mat-raised-button color="primary" (click)="GoToPendingResourceStats()">
-        View By Resource
-      </button>
-    </div>
-    <div class="row row-cols-3">
-      <ng-container *ngIf="allPendingReport">
-        <div class="col" *ngFor="let team of allPendingReport.teams">
-          <tfs-report-card [name]="'all'" [team]="team"></tfs-report-card>
-        </div>
-      </ng-container>
+    <div class="tfs-report-container">
+      <div *ngIf="allPendingReport" class="dashboard-buttons">
+        <button mat-raised-button color="primary" (click)="refresh()">
+          <mat-icon>refresh</mat-icon>
+        </button>
+        <button mat-raised-button color="primary" (click)="GoToPendingResourceStats()">
+          View By Resource
+        </button>
+      </div>
+      <div class="row row-cols-3">
+        <ng-container *ngIf="allPendingReport">
+          <div class="col" *ngFor="let team of allPendingReport.teams">
+            <tfs-report-card [name]="'all'" [team]="team"></tfs-report-card>
+          </div>
+        </ng-container>
+      </div>
     </div>
   </mat-tab>
 </mat-tab-group>
