@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChildren, QueryList, ElementRef, Renderer2 } from '@angular/core';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 
@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './log-dashboard.component.html',
   styleUrls: ['./log-dashboard.component.css']
 })
-export class LogDashboardComponent implements OnInit {
+export class LogDashboardComponent implements OnInit, AfterViewInit {
   application: string | undefined;
   applications: { viewValue: string, value: string }[];
   env: string | undefined;
@@ -20,7 +20,9 @@ export class LogDashboardComponent implements OnInit {
   dashBoardType: string | undefined;
   errorDashboardType: string | undefined;
 
-  constructor(private sanitizer: DomSanitizer) { }
+  @ViewChildren("iframeFull") private iframeFull: ElementRef;
+
+  constructor(private sanitizer: DomSanitizer, private render: Renderer2) { }
 
   ngOnInit() {
     this.env = "prod";
@@ -44,6 +46,11 @@ export class LogDashboardComponent implements OnInit {
     this.iframeSourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl("");
 
     this.search();
+  }
+
+  ngAfterViewInit() {
+    const height = this.iframeFull.nativeElement.contentWindow.document.body.scrollHeight + 'px';
+    this.render.setStyle(this.iframeFull.nativeElement, 'height', height);
   }
 
   search() {

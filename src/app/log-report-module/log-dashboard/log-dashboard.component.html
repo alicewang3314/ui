@@ -58,7 +58,7 @@
   </div>
   <p></p>
   <div>
-    <iframe [src]="iframeSourceUrl" width="100%" frameborder="0" onload="this.style.height=(this.contentWindow.document.body.scrollHeight+20)+'px';"></iframe>
+    <iframe #iframeFull [src]="iframeSourceUrl" width="100%" frameborder="0" id="iframeDashboard"></iframe>
   </div>
   <!-- from home page -->
   <div class="main">
