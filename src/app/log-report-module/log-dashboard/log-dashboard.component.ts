@@ -58,7 +58,7 @@ export class LogDashboardComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     // console.log('after view init');
-    //console.log(this.iframeFull.nativeElement);
+    console.log(this.iframeFull.nativeElement);
   }
 
   search() {

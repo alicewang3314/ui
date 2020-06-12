@@ -57,7 +57,7 @@
     </div>
   </div>
   <p></p>
-  <div>
+  <div class="iframe-container">
     <iframe #iframeFull [src]="iframeSourceUrl" width="100%" height="900px"frameborder="0" id="iframeDashboard"></iframe>
   </div>
   <!-- from home page -->
@@ -65,7 +65,7 @@
     <div class="itemsLog">
       <a [routerLink]="[ '/logDashboard' ]">
         <mat-card class="wideCard">
-          <iframe [src]="iframeLogSourceUrl" frameborder="0" width="100%" height="300px"></iframe>
+          <iframe [src]="iframeLogSourceUrl" frameborder="0" allowfullscreen width="100%"></iframe>
           <div class="titleText">Error Logs</div>
         </mat-card>
       </a>
