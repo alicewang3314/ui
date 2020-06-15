@@ -71,7 +71,7 @@
 
   <mat-tab-group mat-align-tabs="center">
     <mat-tab label="First">
-      <mat-card>
+      <mat-card class="iframe-container">
         <iframe #iframeFull [src]="iframeSourceUrl" allowfullscreen frameborder="0"></iframe>
       </mat-card>
     </mat-tab>
@@ -83,7 +83,7 @@
     <iframe #iframeFull [src]="iframeSourceUrl" allowfullscreen frameborder="0"></iframe>
   </div> -->
   <!-- from home page -->
-  <div class="main">
+  <!-- <div class="main">
     <div class="itemsLog">
       <a [routerLink]="[ '/logDashboard' ]">
         <mat-card class="wideCard">
@@ -100,5 +100,5 @@
         </mat-card>
       </a>
     </div>
-  </div>
+  </div> -->
 </div>
