@@ -1,5 +1,5 @@
 <div class="error-logs-container">
-  <div class="fieldContainer" style="padding-left: 20px;">
+  <div class="fieldContainer">
     <div class="field">
       <mat-form-field>
         <mat-label>Environment</mat-label>
@@ -56,9 +56,32 @@
       </button>
     </div>
   </div>
-  <div class="iframe-container">
+
+  <!-- <mat-form-field>
+    <mat-label>Environment</mat-label>
+    <mat-select [(value)]="env">
+      <mat-option value="uat">
+        UAT
+      </mat-option>
+      <mat-option value="prod">
+        Prod
+      </mat-option>
+    </mat-select>
+  </mat-form-field> -->
+
+  <mat-tab-group mat-align-tabs="center">
+    <mat-tab label="First">
+      <mat-card>
+        <iframe #iframeFull [src]="iframeSourceUrl" allowfullscreen frameborder="0"></iframe>
+      </mat-card>
+    </mat-tab>
+    <mat-tab label="Second">Content 2</mat-tab>
+    <mat-tab label="Third">Content 3</mat-tab>
+  </mat-tab-group>
+
+  <!-- <div class="iframe-container">
     <iframe #iframeFull [src]="iframeSourceUrl" allowfullscreen frameborder="0"></iframe>
-  </div>
+  </div> -->
   <!-- from home page -->
   <div class="main">
     <div class="itemsLog">
