@@ -68,7 +68,6 @@ export class LogDashboardComponent implements OnInit {
     const date = new Date();
 
     if (this.dashBoardType === "chart") {
-<<<<<<< HEAD
       partUrl = `(
         embeddableConfig:(
           timeRange:(from:'${this.fromDatePickerValue.toISOString()}',to:'${this.toDatePickerValue.toISOString()}')
@@ -78,9 +77,6 @@ export class LogDashboardComponent implements OnInit {
         panelIndex:'4b770ccd-2cff-422a-a3f3-5350393a8c89',
         type:visualization,version:'7.6.1'
       )`
-=======
-      partUrl = '';
->>>>>>> e8c9627022222e2e3bc5a4abb196079ae1f88647
     }
     else {
       partUrl = "(embeddableConfig:(),gridData:(h:30,i:fab4648a-9bff-45f7-93ee-2bd7c9e6f770,w:48,x:0,y:100),id:a6c58a10-6534-11ea-b305-a30961cbafb1,panelIndex:fab4648a-9bff-45f7-93ee-2bd7c9e6f770,type:search,version:'7.6.1')";
