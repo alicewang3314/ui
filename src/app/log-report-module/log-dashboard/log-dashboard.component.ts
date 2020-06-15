@@ -69,13 +69,6 @@ export class LogDashboardComponent implements OnInit {
 
     if (this.dashBoardType === "chart") {
       partUrl = `(
-        embeddableConfig:(timeRange:(from:'${new Date().toISOString()}',to:now)),
-        gridData:(h:8,i:'76452f72-462c-4f95-95b7-8bb5c6724896',w:12,x:0,y:0),
-        id:dab27040-99e1-11ea-9ddb-05a3689f3e14,
-        panelIndex:'76452f72-462c-4f95-95b7-8bb5c6724896',
-        type:visualization,version:'7.6.1'
-      ),
-      (
         embeddableConfig:(
           timeRange:(from:'${this.fromDatePickerValue.toISOString()}',to:'${this.toDatePickerValue.toISOString()}')
         ),
@@ -83,7 +76,7 @@ export class LogDashboardComponent implements OnInit {
         id:'5a7df240-99e7-11ea-9ddb-05a3689f3e14',
         panelIndex:'4b770ccd-2cff-422a-a3f3-5350393a8c89',
         type:visualization,version:'7.6.1'
-      ),`
+      )`
     }
     else {
       partUrl = "(embeddableConfig:(),gridData:(h:30,i:fab4648a-9bff-45f7-93ee-2bd7c9e6f770,w:48,x:0,y:100),id:a6c58a10-6534-11ea-b305-a30961cbafb1,panelIndex:fab4648a-9bff-45f7-93ee-2bd7c9e6f770,type:search,version:'7.6.1')";

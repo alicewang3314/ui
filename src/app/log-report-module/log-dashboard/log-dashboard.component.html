@@ -1,5 +1,5 @@
-<div class="error-logs-container">
-  <div class="fieldContainer">
+<div class="error-logs-container shadow">
+  <div class="field-container">
     <div class="field">
       <mat-form-field>
         <mat-label>Environment</mat-label>
@@ -56,21 +56,10 @@
     </div>
   </div>
 
+  <iframe frameborder="0"
+    src="http://crtecdev0108783.pa.lcl:5601/app/kibana#/dashboard/6104de00-af43-11ea-b820-3944eb785351?embed=true&_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))"
+    height="1500px" width="100%"></iframe>
 
-  <mat-tab-group mat-align-tabs="center">
-    <mat-tab label="First">
-      <div class="iframe-container">
-        <iframe #iframeFull [src]="iframeSourceUrl" allowfullscreen frameborder="0"></iframe>
-      </div>
-    </mat-tab>
-    <mat-tab label="Second">
-      <div class="iframe-container">
-        <iframe #iframeFull [src]="iframeSourceUrl" allowfullscreen frameborder="0"></iframe>
-        {{iframeSourceUrl}}
-      </div>
-    </mat-tab>
-    <!-- <mat-tab label="Third">Content 3</mat-tab> -->
-  </mat-tab-group>
 
   <!-- <div class="iframe-container">
     <iframe #iframeFull [src]="iframeSourceUrl" allowfullscreen frameborder="0"></iframe>

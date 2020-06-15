@@ -1,6 +1,9 @@
-.fieldContainer {
+.field-container {
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
+  padding: 2em auto;
+  border-bottom: 1px;
 }
 
 .field {
@@ -16,7 +19,7 @@
 }
 
 .error-logs-container {
-  margin-top: 1em;
+  background-color:#1A1B20;
 }
 
 .iframe-container {
