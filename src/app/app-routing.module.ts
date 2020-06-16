@@ -1,12 +1,12 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-// import { HomePageComponent } from "./home-page/home-page.component";
-import { LogReportModule } from './log-report-module/log-report.module';
+
 import { MostFrequentExceptionsComponent } from './log-report-module/most-frequent-exceptions/most-frequent-exceptions.component';
 import { ExceptionSearchComponent } from './log-report-module/exception-search/exception-search.component';
 import { LogDashboardComponent } from './log-report-module/log-dashboard/log-dashboard.component';
 //import { MostFrequentErrorsDashbComponent } from './log-report-module/most-frequent-errors-dashb/most-frequent-errors-dashb.component';
 //import { LiveErrorLogsComponent } from './log-report-module/live-error-logs/live-error-logs.component';
+// import { HomePageComponent } from "./home-page/home-page.component";
 
 const routes: Routes = [
   { path: 'tfs-dashboard', loadChildren: () => import('src/app/tfs-reports-module/tfs-reports.module').then(m => m.TfsReportsModule) },
@@ -15,12 +15,12 @@ const routes: Routes = [
   { path: 'log', component: MostFrequentExceptionsComponent },
   { path: 'exceptionSearch', component: ExceptionSearchComponent },
   { path: 'logDashboard', component: LogDashboardComponent },
+  {
+    path: '**',
+    redirectTo: 'error-logs-dashboard',
+  },
   // { path: 'mostFrequentDashB', component: MostFrequentErrorsDashbComponent },
   // { path: 'liveErrors', component: LiveErrorLogsComponent },
-  {
-    path: '*',
-    redirectTo: 'tfs-dashboard'
-  }
 ];
 
 @NgModule({
