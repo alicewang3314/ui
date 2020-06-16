@@ -93,7 +93,7 @@ export class LogDashboardComponent implements OnInit {
     // }
     console.log(isLive)
 
-    const from = isLive ? (new Date()).toISOString() : this.fromDatePickerValue.toISOString();
+    const from = isLive ? 'now-15m' : this.fromDatePickerValue.toISOString();
     const to = isLive ? 'now' : this.toDatePickerValue.toISOString();
 
     console.log(from, to);
@@ -111,7 +111,7 @@ export class LogDashboardComponent implements OnInit {
   // }
 
   getLogDashboardSrcUrl(): string {
-    return `${environment.kibanaUrl}/app/kibana#/visualize/edit/fd0984e0-6885-11ea-b305-a30961cbafb1?embed=true&_g=(refreshInterval:(pause:!t,value:0),time:(from:'${(new Date(Date.now() - 86400000)).toISOString()}',to:now))&_a=(filters:!(),linked:!f,query:(language:kuery,query:''),uiState:(),vis:(aggs:!(),params:(expression:'.es(index%3D*filebeat*,%20timefield%3D!'@timestamp!',%20metric%3D!'cardinality:CORRELATIONID.keyword!')%0D%0A.label(!'Error%20count!')',interval:auto),title:'Timelion%20-%20Errors',type:timelion))`;
+    return `${environment.kibanaUrl}/app/kibana#/visualize/edit/fd0984e0-6885-11ea-b305-a30961cbafb1?embed=true&_g=(refreshInterval:(pause:!t,value:0),timeRange:(from:'${(new Date(Date.now() - 86400000)).toISOString()}',to:now))&_a=(filters:!(),linked:!f,query:(language:kuery,query:''),uiState:(),vis:(aggs:!(),params:(expression:'.es(index%3D*filebeat*,%20timefield%3D!'@timestamp!',%20metric%3D!'cardinality:CORRELATIONID.keyword!')%0D%0A.label(!'Error%20count!')',interval:auto),title:'Timelion%20-%20Errors',type:timelion))`;
   }
 
   resize(iframe) {
