@@ -54,7 +54,7 @@ export class LogDashboardComponent implements OnInit {
   }
 
   refreshContent(event: MatSelectChange) {
-    _.debounce(() => this.search(this.isLive), 1000);
+    this.search(this.isLive);
   }
 
   getDashboardSrcUrl(isLive: boolean): string {
