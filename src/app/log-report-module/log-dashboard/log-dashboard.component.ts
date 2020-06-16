@@ -77,9 +77,8 @@ export class LogDashboardComponent implements OnInit {
 
     const from = isLive ? 'now-15m' : this.fromDatePickerValue.toISOString();
     const to = isLive ? 'now' : (new Date(this.toDatePickerValue.getTime() + 864000)).toISOString();
-    const url = this.dashBoardType === 'chart' ?
-      `/app/kibana#/dashboard/6104de00-af43-11ea-b820-3944eb785351?embed=true&_g=(refreshInterval:(pause:!f,value:3000),time:(from:'${from}',to:'${to}'))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),query:(language:kuery,query:'AppName:%20${this.application || '*'}%20and%20fields.env%20:%20${this.env || '*'}'),timeRestore:!f,viewMode:view)` :
-      `(embeddableConfig:(),gridData:(h:30,i:fab4648a-9bff-45f7-93ee-2bd7c9e6f770,w:48,x:0,y:100),id:a6c58a10-6534-11ea-b305-a30961cbafb1,panelIndex:fab4648a-9bff-45f7-93ee-2bd7c9e6f770,type:search,version:'7.6.1')`;
+    const appId = this.dashBoardType === 'chart' ? '6104de00-af43-11ea-b820-3944eb785351' : '3f244530-b008-11ea-b820-3944eb785351';
+    const url = `/app/kibana#/dashboard/${appId}?embed=true&_g=(refreshInterval:(pause:!f,value:3000),time:(from:'${from}',to:'${to}'))&_a=(filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!t,useMargins:!t),query:(language:kuery,query:'AppName:%20${this.application || '*'}%20and%20fields.env%20:%20${this.env || '*'}'),timeRestore:!f,viewMode:view)`;
 
     return `${environment.kibanaUrl}` + url;
   }
