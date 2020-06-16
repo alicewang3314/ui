@@ -28,8 +28,9 @@ export class LogDashboardComponent implements OnInit {
   fromDatePickerValue: Date = new Date(Date.now() - 864e5);
   dashBoardType: string | undefined = "chart";
   errorDashboardType: string | undefined = "totErrors";
+  isLive = false;
 
-  isLive: boolean;
+  // isLive: boolean;
   isLiveChecked: boolean;
   iframeSourceUrl: SafeResourceUrl = '';
   iframeLogSourceUrl: SafeResourceUrl;

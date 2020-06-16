@@ -53,5 +53,4 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   ],
 })
 export class LogReportModule {
-  isLive = false;
 }
