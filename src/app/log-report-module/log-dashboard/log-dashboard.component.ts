@@ -47,21 +47,21 @@ export class LogDashboardComponent implements OnInit {
     this.iframeSourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.getDashboardSrcUrl());
   }
 
-  getLiveDashboardSrcUrl(): string {
-    let partUrl: string = "";
+  // getLiveDashboardSrcUrl(): string {
+  //   let partUrl: string = "";
 
-    if (this.dashBoardType === "chart") {
-      if (this.errorDashboardType === "totErrors") {
-        // TODO: handle error
-      }
-      partUrl = "(embeddableConfig:(),gridData:(h:15,i:feb5c6f7-aac6-477a-87c3-e7cb9e637e87,w:24,x:0,y:0),id:fbadfea0-63c6-11ea-9f43-d5197eb32b78,panelIndex:feb5c6f7-aac6-477a-87c3-e7cb9e637e87,type:visualization,version:'7.6.1'),(embeddableConfig:(),gridData:(h:15,i:'79bf8ecb-751c-433e-98c4-86b0423dbe5f',w:24,x:24,y:0),id:'1444e200-685c-11ea-b305-a30961cbafb1',panelIndex:'79bf8ecb-751c-433e-98c4-86b0423dbe5f',type:visualization,version:'7.6.1'),(embeddableConfig:(),gridData:(h:9,i:'3ddd5a40-5c81-4856-aebe-2d606d371446',w:48,x:0,y:15),id:fd0984e0-6885-11ea-b305-a30961cbafb1,panelIndex:'3ddd5a40-5c81-4856-aebe-2d606d371446',type:visualization,version:'7.6.1')";
-    }
-    else {
-      partUrl = "(embeddableConfig:(),gridData:(h:25,i:fab4648a-9bff-45f7-93ee-2bd7c9e6f770,w:48,x:0,y:24),id:a6c58a10-6534-11ea-b305-a30961cbafb1,panelIndex:fab4648a-9bff-45f7-93ee-2bd7c9e6f770,type:search,version:'7.6.1')";
-    }
+  //   if (this.dashBoardType === "chart") {
+  //     if (this.errorDashboardType === "totErrors") {
+  //       // TODO: handle error
+  //     }
+  //     partUrl = "(embeddableConfig:(),gridData:(h:15,i:feb5c6f7-aac6-477a-87c3-e7cb9e637e87,w:24,x:0,y:0),id:fbadfea0-63c6-11ea-9f43-d5197eb32b78,panelIndex:feb5c6f7-aac6-477a-87c3-e7cb9e637e87,type:visualization,version:'7.6.1'),(embeddableConfig:(),gridData:(h:15,i:'79bf8ecb-751c-433e-98c4-86b0423dbe5f',w:24,x:24,y:0),id:'1444e200-685c-11ea-b305-a30961cbafb1',panelIndex:'79bf8ecb-751c-433e-98c4-86b0423dbe5f',type:visualization,version:'7.6.1'),(embeddableConfig:(),gridData:(h:9,i:'3ddd5a40-5c81-4856-aebe-2d606d371446',w:48,x:0,y:15),id:fd0984e0-6885-11ea-b305-a30961cbafb1,panelIndex:'3ddd5a40-5c81-4856-aebe-2d606d371446',type:visualization,version:'7.6.1')";
+  //   }
+  //   else {
+  //     partUrl = "(embeddableConfig:(),gridData:(h:25,i:fab4648a-9bff-45f7-93ee-2bd7c9e6f770,w:48,x:0,y:24),id:a6c58a10-6534-11ea-b305-a30961cbafb1,panelIndex:fab4648a-9bff-45f7-93ee-2bd7c9e6f770,type:search,version:'7.6.1')";
+  //   }
 
-    return `${environment.kibanaUrl}/app/kibana#/dashboard/0404fd90-685b-11ea-b305-a30961cbafb1?embed=true&_g=(refreshInterval:(pause:!f,value:3000),time:(from:'${(new Date()).toISOString()}',to:now))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),panels:!(${partUrl}),query:(language:kuery,query:'AppName:%20${this.application}%20and%20fields.env%20:%20${this.env ? this.env : "*"}'),timeRestore:!f,title:'Captor%20Log%20Dashboard%20-%20Bar',viewMode:view)`;
-  }
+  //   return `${environment.kibanaUrl}/app/kibana#/dashboard/0404fd90-685b-11ea-b305-a30961cbafb1?embed=true&_g=(refreshInterval:(pause:!f,value:3000),time:(from:'${(new Date()).toISOString()}',to:now))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),panels:!(${partUrl}),query:(language:kuery,query:'AppName:%20${this.application}%20and%20fields.env%20:%20${this.env ? this.env : "*"}'),timeRestore:!f,title:'Captor%20Log%20Dashboard%20-%20Bar',viewMode:view)`;
+  // }
 
   getDashboardSrcUrl(): string {
     let partUrl: string = "";
@@ -82,7 +82,8 @@ export class LogDashboardComponent implements OnInit {
       partUrl = "(embeddableConfig:(),gridData:(h:30,i:fab4648a-9bff-45f7-93ee-2bd7c9e6f770,w:48,x:0,y:100),id:a6c58a10-6534-11ea-b305-a30961cbafb1,panelIndex:fab4648a-9bff-45f7-93ee-2bd7c9e6f770,type:search,version:'7.6.1')";
     }
 
-    return `${environment.kibanaUrl}/app/kibana#/dashboard/6535acb0-9919-11ea-9ddb-05a3689f3e14?embed=true&_g=(refreshInterval:(pause:!f,value:3000),time:(from:'${(new Date()).toISOString()}',to:now))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),panels:!(${partUrl}),query:(language:kuery,query:'AppName:%20${this.application}%20and%20fields.env%20:%20${this.env}'),timeRestore:!f,title:'Captor%20Log%20Dashboard%20-%20Bar%20Modified',viewMode:view)`
+    //return `${environment.kibanaUrl}/app/kibana#/dashboard/6535acb0-9919-11ea-9ddb-05a3689f3e14?embed=true&_g=(refreshInterval:(pause:!f,value:3000),time:(from:'${(new Date()).toISOString()}',to:now))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),panels:!(${partUrl}),query:(language:kuery,query:'AppName:%20${this.application}%20and%20fields.env%20:%20${this.env}'),timeRestore:!f,title:'Captor%20Log%20Dashboard%20-%20Bar%20Modified',viewMode:view)`
+    retrun`http://crtecdev0108783.pa.lcl:5601/app/kibana#/dashboard/6104de00-af43-11ea-b820-3944eb785351?embed=true&_g=(refreshInterval:(pause:!f,value:3000), filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))`;
   }
 
   // from home page
