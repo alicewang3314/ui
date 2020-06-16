@@ -2,9 +2,8 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  padding: 2em auto;
+  margin: 1em;
   border-bottom: 1px;
-  border: 2px solid red;
 }
 
 .field {
@@ -25,9 +24,8 @@
 
 .iframe-container {
   overflow: hidden;
-  padding-top: 70vh;
+  padding-top: 75vh;
   position: relative;
-  border: 2px solid yellow;
 }
 
 .iframe-container iframe {
