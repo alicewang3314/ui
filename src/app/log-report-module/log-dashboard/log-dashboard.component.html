@@ -41,7 +41,7 @@
     <div class="field">
       <mat-form-field>
         <input matInput [matDatepicker]="fromDatePicker" placeholder="From Date" [(ngModel)]="fromDatePickerValue"
-          [disabled]="isLive" (onChange)="refreshContent($event)">
+        (ngModelChange)="refreshContent($event)" [disabled]="isLive">
         <mat-datepicker-toggle matSuffix [for]="fromDatePicker"></mat-datepicker-toggle>
         <mat-datepicker #fromDatePicker></mat-datepicker>
       </mat-form-field>
@@ -49,7 +49,7 @@
     <div class="field">
       <mat-form-field>
         <input matInput [matDatepicker]="toDatePicker" placeholder="To Date" [(ngModel)]="toDatePickerValue"
-          [disabled]="isLive" (onChange)="refreshContent($event)">
+        (ngModelChange)="refreshContent($event)" [disabled]="isLive">
         <mat-datepicker-toggle matSuffix [for]="toDatePicker"></mat-datepicker-toggle>
         <mat-datepicker #toDatePicker></mat-datepicker>
       </mat-form-field>
