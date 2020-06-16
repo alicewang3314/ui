@@ -1,14 +1,12 @@
 <div class="error-logs-container shadow">
   <div class="field-container">
     <div class="field">
-      <mat-form-field>
-        <mat-checkbox [(ngModel)]="isLive">Live</mat-checkbox>
-      </mat-form-field>
+      <mat-checkbox [(ngModel)]="isLive">Live</mat-checkbox>
     </div>
     <div class="field">
       <mat-form-field>
         <mat-label>Environment</mat-label>
-        <mat-select [(value)]="env" [disabled]='isLive'>
+        <mat-select [(value)]="env" [disabled]="isLive">
           <mat-option value="uat">
             UAT
           </mat-option>
@@ -21,7 +19,7 @@
     <div class="field">
       <mat-form-field>
         <mat-label>Type</mat-label>
-        <mat-select [(value)]="dashBoardType" [disabled]='isLive'>
+        <mat-select [(value)]="dashBoardType" [disabled]="isLive">
           <mat-option value="chart">
             Chart
           </mat-option>
@@ -33,7 +31,7 @@
     </div>
     <div class="field">
       <mat-form-field>
-        <mat-select placeholder="Application" [(ngModel)]="application" name="application" [disabled]='isLive'>
+        <mat-select placeholder="Application" [(ngModel)]="application" name="application" [disabled]="isLive">
           <mat-option *ngFor="let item of applications" [value]="item.value">
             {{item.viewValue}}
           </mat-option>
@@ -42,35 +40,29 @@
     </div>
     <div class="field">
       <mat-form-field>
-        <input matInput [matDatepicker]="fromDatePicker" placeholder="From Date" [(ngModel)]="fromDatePickerValue"
-          [disabled]='isLive'>
+        <input matInput [matDatepicker]="fromDatePicker" placeholder="From Date" [(ngModel)]="fromDatePickerValue" [disabled]="isLive">
         <mat-datepicker-toggle matSuffix [for]="fromDatePicker"></mat-datepicker-toggle>
         <mat-datepicker #fromDatePicker></mat-datepicker>
       </mat-form-field>
     </div>
     <div class="field">
       <mat-form-field>
-        <input matInput [matDatepicker]="toDatePicker" placeholder="To Date" [(ngModel)]="toDatePickerValue"
-          [disabled]='isLive'>
+        <input matInput [matDatepicker]="toDatePicker" placeholder="To Date" [(ngModel)]="toDatePickerValue" [disabled]="isLive">
         <mat-datepicker-toggle matSuffix [for]="toDatePicker"></mat-datepicker-toggle>
         <mat-datepicker #toDatePicker></mat-datepicker>
       </mat-form-field>
     </div>
     <div class="fieldButton">
-      <button mat-raised-button (click)="search();" [disabled]='isLive'>
+      <button mat-raised-button (click)="search();" disabled='!isLive'>
         Search
       </button>
     </div>
   </div>
 
-  <!-- <iframe frameborder="0"
-    src="http://crtecdev0108783.pa.lcl:5601/app/kibana#/dashboard/6104de00-af43-11ea-b820-3944eb785351?embed=true&_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))"
-    height="1500px" width="100%"></iframe> -->
 
-
-  <div class="iframe-container">
+  <!-- <div class="iframe-container">
     <iframe #iframeFull [src]="iframeSourceUrl" allowfullscreen frameborder="0"></iframe>
-  </div>
+  </div> -->
 
 
   <!-- from home page -->

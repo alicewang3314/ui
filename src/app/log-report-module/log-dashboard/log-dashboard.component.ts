@@ -28,9 +28,7 @@ export class LogDashboardComponent implements OnInit {
   fromDatePickerValue: Date = new Date(Date.now() - 864e5);
   dashBoardType: string | undefined = "chart";
   errorDashboardType: string | undefined = "totErrors";
-  isLive = false;
-
-  // isLive: boolean;
+  isLive = true;
   isLiveChecked: boolean;
   iframeSourceUrl: SafeResourceUrl = '';
   iframeLogSourceUrl: SafeResourceUrl;
@@ -65,25 +63,27 @@ export class LogDashboardComponent implements OnInit {
   // }
 
   getDashboardSrcUrl(): string {
-    let partUrl: string = "";
-    const date = new Date();
+    // let partUrl: string;
 
-    if (this.dashBoardType === "chart") {
-      partUrl = `(
-        embeddableConfig:(
-          timeRange:(from:'${this.fromDatePickerValue.toISOString()}',to:'${this.toDatePickerValue.toISOString()}')
-        ),
-        gridData:(h:8,i:'4b770ccd-2cff-422a-a3f3-5350393a8c89',w:12,x:12,y:0),
-        id:'5a7df240-99e7-11ea-9ddb-05a3689f3e14',
-        panelIndex:'4b770ccd-2cff-422a-a3f3-5350393a8c89',
-        type:visualization,version:'7.6.1'
-      )`
-    }
-    else {
-      partUrl = "(embeddableConfig:(),gridData:(h:30,i:fab4648a-9bff-45f7-93ee-2bd7c9e6f770,w:48,x:0,y:100),id:a6c58a10-6534-11ea-b305-a30961cbafb1,panelIndex:fab4648a-9bff-45f7-93ee-2bd7c9e6f770,type:search,version:'7.6.1')";
-    }
+    // if (this.dashBoardType === "chart") {
+    //   partUrl = `(
+    //     embeddableConfig:(
+    //       timeRange:(from:'${this.fromDatePickerValue.toISOString()}',to:'${this.toDatePickerValue.toISOString()}')
+    //     ),
+    //     gridData:(h:8,i:'4b770ccd-2cff-422a-a3f3-5350393a8c89',w:12,x:12,y:0),
+    //     id:'5a7df240-99e7-11ea-9ddb-05a3689f3e14',
+    //     panelIndex:'4b770ccd-2cff-422a-a3f3-5350393a8c89',
+    //     type:visualization,version:'7.6.1'
+    //   )`
+    // }
+    // else {
+    //   partUrl = "(embeddableConfig:(),gridData:(h:30,i:fab4648a-9bff-45f7-93ee-2bd7c9e6f770,w:48,x:0,y:100),id:a6c58a10-6534-11ea-b305-a30961cbafb1,panelIndex:fab4648a-9bff-45f7-93ee-2bd7c9e6f770,type:search,version:'7.6.1')";
+    // }
 
-    return `${environment.kibanaUrl}/app/kibana#/dashboard/6104de00-af43-11ea-b820-3944eb785351?embed=true&_g=(refreshInterval:(pause:!f,value:3000),time:(from:'${(new Date(Date.now() - 86400000)).toISOString()}',to:now))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),query:(language:kuery,query:'AppName:%20${this.application}%20and%20fields.env%20:%20${this.env}'),timeRestore:!f,viewMode:view)`;
+    const from = this.isLive ? new Date().toISOString() : this.fromDatePickerValue.toISOString();
+    const to =  this.isLive ? 'now' : this.toDatePickerValue.toISOString();
+
+    return `${environment.kibanaUrl}/app/kibana#/dashboard/6104de00-af43-11ea-b820-3944eb785351?embed=true&_g=(refreshInterval:(pause:!f,value:3000),time:(from:'${from}',to:${to}))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),query:(language:kuery,query:'AppName:%20${this.application}%20and%20fields.env%20:%20${this.env}'),timeRestore:!f,viewMode:view)`;
     // return `${environment.kibanaUrl}/app/kibana#/dashboard/6104de00-af43-11ea-b820-3944eb785351?embed=true&_g=(refreshInterval:(pause:!f,value:3000),time:(from:'${(new Date()).toISOString()}',to:now))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),panels:!(${partUrl}),query:(language:kuery,query:'AppName:%20${this.application}%20and%20fields.env%20:%20${this.env}'),timeRestore:!f,viewMode:view)`;
     //return `http://crtecdev0108783.pa.lcl:5601/app/kibana#/dashboard/6104de00-af43-11ea-b820-3944eb785351?embed=true&_g=(refreshInterval:(pause:!f,value:3000),filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))`;
   }
