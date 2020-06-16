@@ -98,7 +98,7 @@ export class LogDashboardComponent implements OnInit {
 
     console.log(from, to);
 
-    const url = `${environment.kibanaUrl}/app/kibana#/dashboard/6104de00-af43-11ea-b820-3944eb785351?embed=true&_g=(refreshInterval:(pause:!f,value:3000),time:(from:'${from}',to:${to}))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),query:(language:kuery,query:'AppName:%20${this.application}%20and%20fields.env%20:%20${this.env}'),timeRestore:!f,viewMode:view)`;
+    const url = `${environment.kibanaUrl}/app/kibana#/dashboard/6104de00-af43-11ea-b820-3944eb785351?embed=true&_g=(refreshInterval:(pause:!f,value:3000),time:(from:'${from}',to:${to}))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),query:(language:kuery,query:'AppName:%20${this.application || '*'}%20and%20fields.env%20:%20${this.env || '*'}'),timeRestore:!f,viewMode:view)`;
     console.log(url);
     return url;
     // return `${environment.kibanaUrl}/app/kibana#/dashboard/6104de00-af43-11ea-b820-3944eb785351?embed=true&_g=(refreshInterval:(pause:!f,value:3000),time:(from:'${(new Date()).toISOString()}',to:now))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),panels:!(${partUrl}),query:(language:kuery,query:'AppName:%20${this.application}%20and%20fields.env%20:%20${this.env}'),timeRestore:!f,viewMode:view)`;
