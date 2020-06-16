@@ -6,7 +6,7 @@
     <div class="field">
       <mat-form-field>
         <mat-label>Environment</mat-label>
-        <mat-select [(value)]="env" [disabled]="isLive">
+        <mat-select [(value)]="env">
           <mat-option value="uat">
             UAT
           </mat-option>
@@ -19,7 +19,7 @@
     <div class="field">
       <mat-form-field>
         <mat-label>Type</mat-label>
-        <mat-select [(value)]="dashBoardType" [disabled]="isLive">
+        <mat-select [(value)]="dashBoardType">
           <mat-option value="chart">
             Chart
           </mat-option>
@@ -31,7 +31,7 @@
     </div>
     <div class="field">
       <mat-form-field>
-        <mat-select placeholder="Application" [(ngModel)]="application" name="application" [disabled]="isLive">
+        <mat-select placeholder="Application" [(ngModel)]="application" name="application">
           <mat-option *ngFor="let item of applications" [value]="item.value">
             {{item.viewValue}}
           </mat-option>
@@ -40,20 +40,22 @@
     </div>
     <div class="field">
       <mat-form-field>
-        <input matInput [matDatepicker]="fromDatePicker" placeholder="From Date" [(ngModel)]="fromDatePickerValue" [disabled]="isLive">
+        <input matInput [matDatepicker]="fromDatePicker" placeholder="From Date" [(ngModel)]="fromDatePickerValue"
+          [disabled]="isLive">
         <mat-datepicker-toggle matSuffix [for]="fromDatePicker"></mat-datepicker-toggle>
         <mat-datepicker #fromDatePicker></mat-datepicker>
       </mat-form-field>
     </div>
     <div class="field">
       <mat-form-field>
-        <input matInput [matDatepicker]="toDatePicker" placeholder="To Date" [(ngModel)]="toDatePickerValue" [disabled]="isLive">
+        <input matInput [matDatepicker]="toDatePicker" placeholder="To Date" [(ngModel)]="toDatePickerValue"
+          [disabled]="isLive">
         <mat-datepicker-toggle matSuffix [for]="toDatePicker"></mat-datepicker-toggle>
         <mat-datepicker #toDatePicker></mat-datepicker>
       </mat-form-field>
     </div>
     <div class="fieldButton">
-      <button mat-raised-button (click)="search();" disabled='isLive'>
+      <button mat-raised-button (click)="search()">
         Search
       </button>
     </div>
