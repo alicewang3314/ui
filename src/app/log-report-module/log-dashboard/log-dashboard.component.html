@@ -1,7 +1,7 @@
 <div class="error-logs-container shadow">
   <div class="field-container">
     <div class="field">
-      <mat-checkbox [value]="isLive" (change)="toggleBoard($event)">Live</mat-checkbox>
+      <mat-checkbox [checked]="isLive" (change)="toggleBoard($event)">Live</mat-checkbox>
     </div>
     <div class="field">
       <mat-form-field>
@@ -60,8 +60,6 @@
       </button>
     </div>
   </div>
-
-
   <div class="iframe-container">
     <iframe #iframeFull [src]="iframeSourceUrl" allowfullscreen frameborder="0"></iframe>
   </div>
