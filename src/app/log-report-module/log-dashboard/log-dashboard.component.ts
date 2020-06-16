@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
-// import {} from '../kibana-config'
+import { MatCheckboxChange } from '@angular/material/checkbox';
+import { MatSelectChange } from '@angular/material/select'
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-log-dashboard',
@@ -62,6 +64,16 @@ export class LogDashboardComponent implements OnInit {
   //   return `${environment.kibanaUrl}/app/kibana#/dashboard/0404fd90-685b-11ea-b305-a30961cbafb1?embed=true&_g=(refreshInterval:(pause:!f,value:3000),time:(from:'${(new Date()).toISOString()}',to:now))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),panels:!(${partUrl}),query:(language:kuery,query:'AppName:%20${this.application}%20and%20fields.env%20:%20${this.env ? this.env : "*"}'),timeRestore:!f,title:'Captor%20Log%20Dashboard%20-%20Bar',viewMode:view)`;
   // }
 
+  toggleBoard(event: MatCheckboxChange) {
+    const { checked } = event;
+    this.isLive = checked;
+    this.search();
+  }
+
+  updateSearchParams(event: MatSelectChange) {
+    this.search();
+  }
+
   getDashboardSrcUrl(): string {
     // let partUrl: string;
 
@@ -80,8 +92,10 @@ export class LogDashboardComponent implements OnInit {
     //   partUrl = "(embeddableConfig:(),gridData:(h:30,i:fab4648a-9bff-45f7-93ee-2bd7c9e6f770,w:48,x:0,y:100),id:a6c58a10-6534-11ea-b305-a30961cbafb1,panelIndex:fab4648a-9bff-45f7-93ee-2bd7c9e6f770,type:search,version:'7.6.1')";
     // }
 
-    const from = this.isLive ? new Date().toISOString() : this.fromDatePickerValue.toISOString();
-    const to =  this.isLive ? 'now' : this.toDatePickerValue.toISOString();
+    const from = this.isLive ? (new Date()).toISOString() : this.fromDatePickerValue.toISOString();
+    const to = this.isLive ? 'now' : this.toDatePickerValue.toISOString();
+
+    console.log(this.fromDatePickerValue.toISOString(), this.toDatePickerValue.toISOString());
 
     return `${environment.kibanaUrl}/app/kibana#/dashboard/6104de00-af43-11ea-b820-3944eb785351?embed=true&_g=(refreshInterval:(pause:!f,value:3000),time:(from:'${from}',to:${to}))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),query:(language:kuery,query:'AppName:%20${this.application}%20and%20fields.env%20:%20${this.env}'),timeRestore:!f,viewMode:view)`;
     // return `${environment.kibanaUrl}/app/kibana#/dashboard/6104de00-af43-11ea-b820-3944eb785351?embed=true&_g=(refreshInterval:(pause:!f,value:3000),time:(from:'${(new Date()).toISOString()}',to:now))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),panels:!(${partUrl}),query:(language:kuery,query:'AppName:%20${this.application}%20and%20fields.env%20:%20${this.env}'),timeRestore:!f,viewMode:view)`;

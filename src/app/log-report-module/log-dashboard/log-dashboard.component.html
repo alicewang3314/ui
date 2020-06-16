@@ -1,7 +1,7 @@
 <div class="error-logs-container shadow">
   <div class="field-container">
     <div class="field">
-      <mat-checkbox [(ngModel)]="isLive">Live</mat-checkbox>
+      <mat-checkbox [value]="isLive" (change)="toggleBoard($event)">Live</mat-checkbox>
     </div>
     <div class="field">
       <mat-form-field>
@@ -19,7 +19,7 @@
     <div class="field">
       <mat-form-field>
         <mat-label>Type</mat-label>
-        <mat-select [(value)]="dashBoardType">
+        <mat-select [(value)]="dashBoardType" (selectionChange)="updateSearchParams($event)">
           <mat-option value="chart">
             Chart
           </mat-option>
@@ -55,7 +55,7 @@
       </mat-form-field>
     </div>
     <div class="fieldButton">
-      <button mat-raised-button (click)="search()">
+      <button mat-raised-button (click)="search();">
         Search
       </button>
     </div>
