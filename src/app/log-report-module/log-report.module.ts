@@ -23,6 +23,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
+
 @NgModule({
   entryComponents: [MostFrequentDetailsDialogComponent],
   declarations: [
@@ -52,4 +53,5 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   ],
 })
 export class LogReportModule {
+  isLive = false;
 }

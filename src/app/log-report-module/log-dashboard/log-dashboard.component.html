@@ -2,8 +2,13 @@
   <div class="field-container">
     <div class="field">
       <mat-form-field>
+        <mat-checkbox [(ngModel)]="isLive">Live</mat-checkbox>
+      </mat-form-field>
+    </div>
+    <div class="field">
+      <mat-form-field>
         <mat-label>Environment</mat-label>
-        <mat-select [(value)]="env">
+        <mat-select [(value)]="env" [disabled]='isLive'>
           <mat-option value="uat">
             UAT
           </mat-option>
@@ -16,7 +21,7 @@
     <div class="field">
       <mat-form-field>
         <mat-label>Type</mat-label>
-        <mat-select [(value)]="dashBoardType">
+        <mat-select [(value)]="dashBoardType" [disabled]='isLive'>
           <mat-option value="chart">
             Chart
           </mat-option>
@@ -28,7 +33,7 @@
     </div>
     <div class="field">
       <mat-form-field>
-        <mat-select placeholder="Application" [(ngModel)]="application" name="application">
+        <mat-select placeholder="Application" [(ngModel)]="application" name="application" [disabled]='isLive'>
           <mat-option *ngFor="let item of applications" [value]="item.value">
             {{item.viewValue}}
           </mat-option>
@@ -37,20 +42,22 @@
     </div>
     <div class="field">
       <mat-form-field>
-        <input matInput [matDatepicker]="fromDatePicker" placeholder="From Date" [(ngModel)]="fromDatePickerValue">
+        <input matInput [matDatepicker]="fromDatePicker" placeholder="From Date" [(ngModel)]="fromDatePickerValue"
+          [disabled]='isLive'>
         <mat-datepicker-toggle matSuffix [for]="fromDatePicker"></mat-datepicker-toggle>
         <mat-datepicker #fromDatePicker></mat-datepicker>
       </mat-form-field>
     </div>
     <div class="field">
       <mat-form-field>
-        <input matInput [matDatepicker]="toDatePicker" placeholder="To Date" [(ngModel)]="toDatePickerValue">
+        <input matInput [matDatepicker]="toDatePicker" placeholder="To Date" [(ngModel)]="toDatePickerValue"
+          [disabled]='isLive'>
         <mat-datepicker-toggle matSuffix [for]="toDatePicker"></mat-datepicker-toggle>
         <mat-datepicker #toDatePicker></mat-datepicker>
       </mat-form-field>
     </div>
     <div class="fieldButton">
-      <button mat-raised-button (click)="search();">
+      <button mat-raised-button (click)="search();" [disabled]='isLive'>
         Search
       </button>
     </div>
@@ -65,7 +72,7 @@
     <iframe #iframeFull [src]="iframeSourceUrl" allowfullscreen frameborder="0"></iframe>
   </div>
 
-  
+
   <!-- from home page -->
   <!-- <div class="main">
     <div class="itemsLog">
