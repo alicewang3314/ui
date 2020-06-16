@@ -3,6 +3,7 @@ import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatSelectChange } from '@angular/material/select'
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-log-dashboard',
@@ -52,8 +53,8 @@ export class LogDashboardComponent implements OnInit {
     this.search(checked);
   }
 
-  updateSearchParams(event: MatSelectChange) {
-    this.search(this.isLive);
+  refreshContent(event: MatSelectChange) {
+    _.debounce(() => this.search(this.isLive), 1000);
   }
 
   getDashboardSrcUrl(isLive: boolean): string {
@@ -73,7 +74,6 @@ export class LogDashboardComponent implements OnInit {
     // else {
     //   partUrl = "(embeddableConfig:(),gridData:(h:30,i:fab4648a-9bff-45f7-93ee-2bd7c9e6f770,w:48,x:0,y:100),id:a6c58a10-6534-11ea-b305-a30961cbafb1,panelIndex:fab4648a-9bff-45f7-93ee-2bd7c9e6f770,type:search,version:'7.6.1')";
     // }
-
 
     const from = isLive ? 'now-15m' : this.fromDatePickerValue.toISOString();
     const to = isLive ? 'now' : (new Date(this.toDatePickerValue.getTime() + 864000)).toISOString();
