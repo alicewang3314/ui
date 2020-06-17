@@ -23,6 +23,7 @@ export class BugDashboardComponent {
   bugStackCnt: ({ name: string, series: ({ name: string, value: number }[]) }[]);
   bugSeverityCnt: ({ name: string, series: ({ name: string, value: number }[]) }[]);
   view: any[] = [700, 400];
+  selectedAreaPath: any;
 
   //chart options
 
@@ -116,7 +117,6 @@ export class BugDashboardComponent {
     this.calculateBugsSeverityCnt(temp);
   }
 
-  selectedAreaPath: any;
   reloadBugDetails(event) {
     let self = this;
     self.selectedAreaPath = event.name;
@@ -130,6 +130,8 @@ export class BugDashboardComponent {
     const donutData = [];
     const activeIssues = bugsReport.filter(report => report.state === 'Active');
     const issueGroupedByProject = _.groupBy(activeIssues, 'areaPath');
+
+    !this.selectedAreaPath && (this.selectedAreaPath = Object.keys(issueGroupedByProject)[0]);
 
     for (const [project, issues] of Object.entries(issueGroupedByProject)) {
       project && donutData.push({
@@ -199,7 +201,6 @@ export class BugDashboardComponent {
   };
 
   onBugDropdownChange(event) {
-    // todo: why resign to self?
     let self = this;
     self.selectedSeverity = event.value;
 
