@@ -42,6 +42,7 @@ import { BugDetailsDialog, LoaderComponent } from './components';
 import { TfsReportsModule } from './tfs-reports-module/tfs-reports.module';
 import { BugDashboardModule } from 'src/app/bug-dashboard-module/bug-dashboard.module'
 import { LogReportModule } from "./log-report-module/log-report.module";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -86,6 +87,7 @@ import { LogReportModule } from "./log-report-module/log-report.module";
     MatPaginatorModule,
     BugDashboardModule,
     TfsReportsModule,
+    FontAwesomeModule,
   ],
   // entryComponents: [
   //   BugDetailsDialog

@@ -2,6 +2,8 @@ import { Component } from "@angular/core";
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 // import { SESSION_STORAGE, WebStorageService } from "angular-webstorage-service";
+import { faCog } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -12,6 +14,7 @@ export class AppComponent {
   mode = new FormControl('over');
   pagesWithSetting = ['tfs-dashboard'];
   path: string;
+  cogIcon = faCog;
 
   constructor(private router: Router) { }
 

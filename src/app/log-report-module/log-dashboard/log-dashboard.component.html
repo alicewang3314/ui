@@ -31,7 +31,8 @@
     </div>
     <div class="field">
       <mat-form-field>
-        <mat-select placeholder="Application" [(ngModel)]="application" name="application" (selectionChange)="refreshContent($event)">
+        <mat-select placeholder="Application" [(ngModel)]="application" name="application"
+          (selectionChange)="refreshContent($event)">
           <mat-option *ngFor="let item of applications" [value]="item.value">
             {{item.viewValue}}
           </mat-option>
@@ -41,7 +42,7 @@
     <div class="field">
       <mat-form-field>
         <input matInput [matDatepicker]="fromDatePicker" placeholder="From Date" [(ngModel)]="fromDatePickerValue"
-        (ngModelChange)="refreshContent($event)" [disabled]="isLive">
+          (ngModelChange)="refreshContent($event)" [disabled]="isLive">
         <mat-datepicker-toggle matSuffix [for]="fromDatePicker"></mat-datepicker-toggle>
         <mat-datepicker #fromDatePicker></mat-datepicker>
       </mat-form-field>
@@ -49,39 +50,13 @@
     <div class="field">
       <mat-form-field>
         <input matInput [matDatepicker]="toDatePicker" placeholder="To Date" [(ngModel)]="toDatePickerValue"
-        (ngModelChange)="refreshContent($event)" [disabled]="isLive">
+          (ngModelChange)="refreshContent($event)" [disabled]="isLive">
         <mat-datepicker-toggle matSuffix [for]="toDatePicker"></mat-datepicker-toggle>
         <mat-datepicker #toDatePicker></mat-datepicker>
       </mat-form-field>
     </div>
-    <!-- <div class="fieldButton">
-      <button mat-raised-button (click)="search(isLive)">
-        Search
-      </button>
-    </div> -->
   </div>
   <div class="iframe-container">
     <iframe [src]="iframeSourceUrl" allowfullscreen frameborder="0"></iframe>
   </div>
-
-
-  <!-- from home page -->
-  <!-- <div class="main">
-    <div class="itemsLog">
-      <a [routerLink]="[ '/logDashboard' ]">
-        <mat-card class="wideCard">
-          <iframe [src]="iframeLogSourceUrl" frameborder="0" allowfullscreen width="100%"></iframe>
-          <div class="titleText">Error Logs</div>
-        </mat-card>
-      </a>
-    </div>
-    <div class="itemsLog">
-      <a [routerLink]="[ '/logDashboard' ]">
-        <mat-card class="wideCard">
-          <iframe [src]="iframeLogSourceUrl" frameborder="0" width="100%" height="300px"></iframe>
-          <div class="titleText">Errors - Past 1 day</div>
-        </mat-card>
-      </a>
-    </div>
-  </div> -->
 </div>

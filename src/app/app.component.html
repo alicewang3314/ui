@@ -21,7 +21,8 @@
       </a>
       <span class="settings">
         <a [matMenuTriggerFor]="menu3" *ngIf="hasSetting">
-          <mat-icon>settings</mat-icon>
+          <!-- <mat-icon>settings</mat-icon> -->
+          <fa-icon [icon]="cogIcon"></fa-icon>
           <mat-menu #menu3="matMenu">
             <button mat-menu-item (click)="getSetting()">TFS Teams Settings</button>
           </mat-menu>
