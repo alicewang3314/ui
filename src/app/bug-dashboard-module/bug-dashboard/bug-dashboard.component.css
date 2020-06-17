@@ -23,14 +23,10 @@ mat-card:hover {
   width: 100%;
 }
 
-.mat-table>thead {
-  background-color: #272727e8;
+th.mat-header-cell {
+  background-color: #272727e7 !important;
 }
 
-.mat-table {
-  background: #27272700;
-  width: 100%;
-}
 
 .table-col {
   padding: 5px 10px !important;
