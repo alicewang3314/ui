@@ -80,10 +80,11 @@ a {
 
 .nav-wrapper {
   flex-grow: 1;
+  height: 100%;
   display: flex;
   flex-wrap: nowrap;
-  display: -ms-flexbox;
   justify-content: flex-end;
+  align-items: center;
   font-size: x-small;
   margin: 0;
 }
@@ -98,6 +99,7 @@ a {
 
 .nav-wrapper a:hover,
 .nav-wrapper a.active {
-  color: rgba(0, 0, 0, 0.66);
-  transition: all .4;
+  transition: all .7;
+  font-weight: bolder;
+  color: black;
 }

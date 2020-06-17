@@ -1,8 +1,9 @@
 import { Component } from "@angular/core";
 import { FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 // import { SESSION_STORAGE, WebStorageService } from "angular-webstorage-service";
 import { faCog } from '@fortawesome/free-solid-svg-icons';
+import { Action } from 'rxjs/internal/scheduler/Action';
 
 @Component({
   selector: "app-root",
@@ -15,8 +16,16 @@ export class AppComponent {
   pagesWithSetting = ['tfs-dashboard'];
   path: string;
   cogIcon = faCog;
+  currentRoute: string;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    router.events.subscribe(ev => {
+      if (ev instanceof NavigationEnd) {
+        this.currentRoute = ev.url
+        console.log(this.currentRoute)
+      };
+    })
+  }
 
   get hasSetting(): boolean {
     let path = this.router.url;
@@ -24,6 +33,10 @@ export class AppComponent {
     this.path = path.split('/')[0];
 
     return this.pagesWithSetting.indexOf(this.path) !== -1;
+  }
+
+  isActive(url: string): string {
+    return url === this.currentRoute ? 'active' : '';
   }
 
   public getSetting(): void {

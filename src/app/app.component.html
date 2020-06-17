@@ -7,16 +7,16 @@
     </div>
 
     <div class="nav-wrapper">
-      <a [routerLink]="[ '/bug-dashboard' ]">
+      <a [routerLink]="[ '/bug-dashboard' ]" [ngClass]="isActive('/bug-dashboard')">
         Application Bugs
       </a>
-      <a [routerLink]="[ '/error-logs-dashboard' ]">
+      <a [routerLink]="[ '/error-logs-dashboard' ]" [ngClass]="isActive('/error-logs-dashboard')">
         Error Logs
       </a>
-      <a [routerLink]="[ '/tfs-dashboard' ]">
+      <a [routerLink]="[ '/tfs-dashboard' ]" [ngClass]="isActive('/tfs-dashboard')">
         TFS Tasks
       </a>
-      <a [routerLink]="[ '/tfs-dashboard/export' ]">
+      <a [routerLink]="[ '/tfs-dashboard/export' ]" [ngClass]="isActive('/tfs-dashboard/export')">
         Export Reports
       </a>
       <span class="settings">
