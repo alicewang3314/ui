@@ -1,9 +1,15 @@
 <!-- <div class="title">
     View By Resource - <small>{{iterationType}}</small>
 </div> -->
-<mat-form-field>
+
+<div class="control-wrapper_project-detials">
+  <mat-form-field>
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-</mat-form-field>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="back()">
+    Back
+  </button>
+</div>
 
 <table mat-table [dataSource]="resourceStats" matSort class="mat-elevation-z8">
 

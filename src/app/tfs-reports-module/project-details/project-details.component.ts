@@ -48,14 +48,7 @@ export class ProjectDetailsComponent implements OnInit {
       current = q["current"];
 
       if (current === "1") {
-        this.route.paramMap.subscribe(params =>
-        // this.cacheService
-        //  .getIterationReport(this.cacheService.singleDetails)
-        //   .subscribe(resp => {
-        //     this.iterationType = "Current Iteration";
-        //     this.getDataFromIterationReport(resp, params);
-        //   })
-        {
+        this.route.paramMap.subscribe(params => {
           this.settingService.getProjectsTeamsFromDb().subscribe(
             s => {
 

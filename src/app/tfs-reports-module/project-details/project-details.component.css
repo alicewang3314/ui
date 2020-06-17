@@ -1,22 +1,37 @@
-table{
-    width: 100%;
+.tab-container_project-details {
+  width: 70%;
+  margin: auto;
+}
+
+.control-wrapper_project-detials {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.control-wrapper_project-detials button {
+  height: 36px;
+}
+
+table {
+  width: 100%;
 }
 
 th.mat-sort-header-sorted {
-    color: black;
-  }
-
-.title{
-    width: 100%;
-    text-align: center;
-    color: rgb(255, 255, 255, .7);
+  color: black;
 }
 
-.projTitle{
-    color: white;
-    font-size: larger;
+.title {
+  width: 100%;
+  text-align: center;
+  color: rgb(255, 255, 255, .7);
 }
 
-.colTitle{
-    max-width: 300px;
+.projTitle {
+  color: white;
+  font-size: larger;
+}
+
+.colTitle {
+  max-width: 300px;
 }

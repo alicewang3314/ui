@@ -211,52 +211,6 @@ export class BugDashboardComponent {
       self.respBugApi;
   };
 
-  // openDialogBugsApp(e): void {
-  //   var apps = this.respBugApi.filter(resp => {
-  //     let appNames = resp.areaPath.split('\\');
-  //     return (appNames[appNames.length - 1] == (e.name))
-  //   });
-
-  //   this.dialog.open(BugDetailsDialog, {
-  //     width: '700px',
-  //     height: 'auto',
-  //     data: {
-  //       apps: apps, title: e.name
-  //     }
-  //   });
-  // }
-
-  // openDialogBugsActRes(e) {
-  //   var apps = this.respBugApi.filter(resp =>
-  //     resp.state === e.name
-  //   );
-
-  //   this.dialog.open(BugDetailsDialog, {
-  //     width: '700px',
-  //     height: 'auto',
-  //     data: {
-  //       apps: apps, title: e.name
-  //     }
-  //   });
-  // }
-
-  // openDialogBugsSev(e) {
-  //   var apps = this.respBugApi.filter(resp =>
-  //     resp.state === e.name && resp.severity === e.series
-  //   );
-
-  //   this.dialog.open(BugDetailsDialog, {
-  //     width: '700px',
-  //     height: 'auto',
-  //     data: {
-  //       apps: apps, title: e.name + ' | ' + e.series
-  //     }
-  //   });
-  // }
-
-  /**
-   *
-   */
   calculateBugsAppCnt(bugsReport: any[]) {
     const groupedIssueByProject = _.groupBy(bugsReport, 'areaPath');
     const countByProject = [];
@@ -312,4 +266,51 @@ export class BugDashboardComponent {
   // clearBugsDashboard() {
   //   this.cacheService.clearBugsCache();
   // }
+
+  // openDialogBugsApp(e): void {
+  //   var apps = this.respBugApi.filter(resp => {
+  //     let appNames = resp.areaPath.split('\\');
+  //     return (appNames[appNames.length - 1] == (e.name))
+  //   });
+
+  //   this.dialog.open(BugDetailsDialog, {
+  //     width: '700px',
+  //     height: 'auto',
+  //     data: {
+  //       apps: apps, title: e.name
+  //     }
+  //   });
+  // }
+
+  // openDialogBugsActRes(e) {
+  //   var apps = this.respBugApi.filter(resp =>
+  //     resp.state === e.name
+  //   );
+
+  //   this.dialog.open(BugDetailsDialog, {
+  //     width: '700px',
+  //     height: 'auto',
+  //     data: {
+  //       apps: apps, title: e.name
+  //     }
+  //   });
+  // }
+
+  // openDialogBugsSev(e) {
+  //   var apps = this.respBugApi.filter(resp =>
+  //     resp.state === e.name && resp.severity === e.series
+  //   );
+
+  //   this.dialog.open(BugDetailsDialog, {
+  //     width: '700px',
+  //     height: 'auto',
+  //     data: {
+  //       apps: apps, title: e.name + ' | ' + e.series
+  //     }
+  //   });
+  // }
+
+  /**
+   *
+   */
 }

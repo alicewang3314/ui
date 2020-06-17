@@ -7,7 +7,9 @@
     <div class="tfs-report-container">
       <div *ngIf="iterationReport" class="dashboard-buttons">
         <button mat-raised-button color="primary" (click)="refresh()">
-          <mat-icon>refresh</mat-icon>
+          <span aria-hidden="true">
+            <fa-icon [icon]="refreshIcon"></fa-icon>
+          </span>
         </button>
         <button mat-raised-button color="primary" (click)="GoToResourceStats()">
           View By Resource
@@ -30,7 +32,8 @@
     <div class="tfs-report-container">
       <div *ngIf="allPendingReport" class="dashboard-buttons">
         <button mat-raised-button color="primary" (click)="refresh()">
-          <mat-icon>refresh</mat-icon>
+          <!-- <mat-icon>refresh</mat-icon> -->
+          <fa-icon [icon]="refreshIcon"></fa-icon>
         </button>
         <button mat-raised-button color="primary" (click)="GoToPendingResourceStats()">
           View By Resource

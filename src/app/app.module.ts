@@ -29,6 +29,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { HomePageComponent, } from "./home-page/home-page.component";
@@ -42,7 +43,7 @@ import { BugDetailsDialog, LoaderComponent } from './components';
 import { TfsReportsModule } from './tfs-reports-module/tfs-reports.module';
 import { BugDashboardModule } from 'src/app/bug-dashboard-module/bug-dashboard.module'
 import { LogReportModule } from "./log-report-module/log-report.module";
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 @NgModule({
   declarations: [

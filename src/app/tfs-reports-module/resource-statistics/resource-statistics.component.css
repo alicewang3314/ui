@@ -1,12 +1,18 @@
-table{
-    width: 100%;
+table {
+  width: 100%;
 }
 
-.title{
-    width: 100%;
-    text-align: center;
+.title {
+  width: 100%;
+  text-align: center;
 }
 
 th.mat-sort-header-sorted {
-    color: black;
-  }
+  color: black;
+}
+
+.control-wrapper_project-detials {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}

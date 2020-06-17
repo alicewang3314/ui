@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { FormControl } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
 import { Observable } from "rxjs";
+import { faSyncAlt } from '@fortawesome/free-solid-svg-icons'
 
 import { IterationReport } from "src/app/dto/iterationReport";
 import { CacheService } from "src/app/services/cache.service";
@@ -12,7 +13,7 @@ import { Settings } from 'src/app/types';
 //import { userInfo } from "os";
 
 //TODO: cleanup dev support
-// import { iterationReport as report } from 'src/app/mock';
+import { iterationReport as report } from 'src/app/mock';
 
 @Component({
   selector: "app-tfs-dashboard",
@@ -20,21 +21,23 @@ import { Settings } from 'src/app/types';
   styleUrls: ["./tfs-dashboard.component.css"]
 })
 export class TfsDashboardComponent implements OnInit {
+  @Input() events: Observable<void>;
+  @Input("Tasks") Tasks$;
+
   // TODO: remove dev config
-  // iterationReport: any;
-  iterationReport: IterationReport;
+  iterationReport: any;
+  // iterationReport: IterationReport;
   allPendingReport: IterationReport;
   showSpinner: boolean = false;
   selectedTabIndex = new FormControl(0);
   indexVal;
-  @Input() events: Observable<void>;
-  @Input("Tasks") Tasks$;
   projectDetail: any;
   newdata = [];
   missingValues = [];
   checkedValues = [];
   apiValues = [];
   userSettings: Settings = {};
+  refreshIcon = faSyncAlt;
 
   constructor(
     private cacheService: CacheService,
@@ -48,7 +51,7 @@ export class TfsDashboardComponent implements OnInit {
   ngOnInit() {
     this.getProjectDashboard();
     //TODO: remove dev setup
-    // this.iterationReport = report;
+    this.iterationReport = report;
   }
 
   getProjectDashboardOld() {
