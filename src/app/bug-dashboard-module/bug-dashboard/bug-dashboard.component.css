@@ -121,8 +121,12 @@ mat-card:hover {
 }
 
 .mat-table-div {
-  overflow-y: auto !important;
+  overflow: auto;
   height: 320px !important;
+}
+
+table {
+  width: 100%;
 }
 
 bug-card:not(:last-child) {
