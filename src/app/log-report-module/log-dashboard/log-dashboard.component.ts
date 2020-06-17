@@ -78,7 +78,7 @@ export class LogDashboardComponent implements OnInit {
     const from = isLive ? 'now-15m' : this.fromDatePickerValue.toISOString();
     const to = isLive ? 'now' : (new Date(this.toDatePickerValue.getTime() + 864000)).toISOString();
     const appId = this.dashBoardType === 'chart' ? '6104de00-af43-11ea-b820-3944eb785351' : '3f244530-b008-11ea-b820-3944eb785351';
-    const url = `/app/kibana#/dashboard/${appId}?embed=true&_g=(refreshInterval:(pause:!f,value:3000),time:(from:'${from}',to:'${to}'))&_a=(filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!t,useMargins:!t),query:(language:kuery,query:'AppName:%20${this.application || '*'}%20and%20fields.env%20:%20${this.env || '*'}'),timeRestore:!f,viewMode:view)`;
+    const url = `/app/kibana#/dashboard/${appId}?embed=true&_g=(refreshInterval:(pause:!f,value:3000),time:(from:'${from}',to:'${to}'))&_a=(filters:!(),fullScreenMode:!f,options:(useMargins:!t),query:(language:kuery,query:'AppName:%20${this.application || '*'}%20and%20fields.env%20:%20${this.env || '*'}'),timeRestore:!f,viewMode:view)`;
 
     return `${environment.kibanaUrl}` + url;
   }
