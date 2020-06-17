@@ -120,6 +120,7 @@ export class BugDashboardComponent {
   reloadBugDetails(event) {
     let self = this;
     self.selectedAreaPath = event.name;
+
     if (this.selectedSeverity !== 'all')
       this.filteredBugDetails = _.filter(self.respBugApi, function (o) { return o.areaPath == event.name && o.severity == self.selectedSeverity });
     else
@@ -130,8 +131,6 @@ export class BugDashboardComponent {
     const donutData = [];
     const activeIssues = bugsReport.filter(report => report.state === 'Active');
     const issueGroupedByProject = _.groupBy(activeIssues, 'areaPath');
-
-    !this.selectedAreaPath && (this.selectedAreaPath = Object.keys(issueGroupedByProject)[0]);
 
     for (const [project, issues] of Object.entries(issueGroupedByProject)) {
       project && donutData.push({
