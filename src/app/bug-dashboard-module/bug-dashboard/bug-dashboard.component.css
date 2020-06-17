@@ -23,6 +23,15 @@ mat-card:hover {
   width: 100%;
 }
 
+.mat-table>thead {
+  background-color: #272727e8;
+}
+
+.mat-table {
+  background: #27272700;
+  width: 100%;
+}
+
 .table-col {
   padding: 5px 10px !important;
   border-right: 1px solid #5b5858;
@@ -112,7 +121,7 @@ mat-card:hover {
 }
 
 .mat-table-div {
-  overflow-y: scroll !important;
+  overflow-y: auto !important;
   height: 320px !important;
 }
 
