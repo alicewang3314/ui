@@ -1,5 +1,5 @@
 <div class="bug-dashboard-container">
-  <div class="bug-dashboard"> 
+  <div class="bug-dashboard">
     <div class="top-wrapper">
       <bug-card class='card-total' [data]="totalBugs"></bug-card>
       <bug-card class='card-critical' [data]="criticalBugs"></bug-card>
@@ -62,7 +62,9 @@
             <table mat-table [dataSource]="filteredBugDetails" class="mat-elevation-z8">
               <ng-container matColumnDef="id">
                 <th mat-header-cell class="table-col" *matHeaderCellDef> Id </th>
-                <td mat-cell class="table-col" *matCellDef="let element"> {{element.id}} </td>
+                <td mat-cell class="table-col" *matCellDef="let element">
+                  <a target="_blank" href="http://google.com">{{element.id}}</a>
+                </td>
               </ng-container>
               <ng-container matColumnDef="title">
                 <th mat-header-cell class="table-col" *matHeaderCellDef> Title </th>
