@@ -17,11 +17,11 @@ import { BugDashboardService } from '../bug-dashboard.service';
 })
 export class BugDashboardComponent {
   respBugApi: any[];
-  // bugsActResCnt: any;
+  bugsActResCnt: any;
   bugStackCnt: ({ name: string, series: ({ name: string, value: number }[]) }[]);
   selectedAreaPath: any;
-  // bugSeverityCnt: ({ name: string, series: ({ name: string, value: number }[]) }[]);
-  // bugGrpCnt: ({ name: string, value: number }[]);
+  bugSeverityCnt: ({ name: string, series: ({ name: string, value: number }[]) }[]);
+  bugGrpCnt: ({ name: string, value: number }[]);
 
   // chart options
   showXAxis = true;
@@ -230,7 +230,7 @@ export class BugDashboardComponent {
       });
     }
 
-    // this.bugsActResCnt = countByStatus;
+    this.bugsActResCnt = countByStatus;
   }
 
   calculateBugsSeverityCnt(bugsReport: any[]) {
@@ -254,7 +254,7 @@ export class BugDashboardComponent {
         series: formattedGroupedIssueByState
       });
     }
-    // this.bugSeverityCnt = formattedGroupedIssueByServerity;
+    this.bugSeverityCnt = formattedGroupedIssueByServerity;
   }
 
   getTfsUrl(id) {
