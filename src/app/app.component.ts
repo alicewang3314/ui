@@ -3,7 +3,6 @@ import { FormControl } from '@angular/forms';
 import { Router, NavigationEnd } from '@angular/router';
 // import { SESSION_STORAGE, WebStorageService } from "angular-webstorage-service";
 import { faCog } from '@fortawesome/free-solid-svg-icons';
-import { Action } from 'rxjs/internal/scheduler/Action';
 
 @Component({
   selector: "app-root",
@@ -16,13 +15,12 @@ export class AppComponent {
   pagesWithSetting = ['tfs-dashboard'];
   path: string;
   cogIcon = faCog;
-  currentRoute: string;
+  currentRoute = '/error-logs-dashboard';
 
   constructor(private router: Router) {
     router.events.subscribe(ev => {
       if (ev instanceof NavigationEnd) {
-        this.currentRoute = ev.url
-        console.log(this.currentRoute)
+        this.currentRoute = ev.url === '/' ? '/error-logs-dashboard' : ev.url;
       };
     })
   }
