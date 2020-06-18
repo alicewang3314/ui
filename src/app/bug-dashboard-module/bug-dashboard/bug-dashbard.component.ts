@@ -17,11 +17,11 @@ import { BugDashboardService } from '../bug-dashboard.service';
 })
 export class BugDashboardComponent {
   respBugApi: any[];
-  bugsActResCnt: any;
   bugStackCnt: ({ name: string, series: ({ name: string, value: number }[]) }[]);
   selectedAreaPath: any;
-  bugSeverityCnt: ({ name: string, series: ({ name: string, value: number }[]) }[]);
-  bugGrpCnt: ({ name: string, value: number }[]);
+  // bugSeverityCnt: ({ name: string, series: ({ name: string, value: number }[]) }[]);
+  // bugGrpCnt: ({ name: string, value: number }[]);
+  // bugsActResCnt: any;
 
   // chart options
   showXAxis = true;
@@ -102,8 +102,8 @@ export class BugDashboardComponent {
 
   getBugReportsData(temp) {
     this.calculateBugsAppCnt(temp);
-    this.calculateBugsActResCnt(temp);
-    this.calculateBugsSeverityCnt(temp);
+    // this.calculateBugsActResCnt(temp);
+    // this.calculateBugsSeverityCnt(temp);
   }
 
   reloadBugDetails(event) {
@@ -219,43 +219,43 @@ export class BugDashboardComponent {
     // this.bugGrpCnt = countByProject.sort((a, b) => a.value - b.value);
   }
 
-  calculateBugsActResCnt(bugsReport: any[]) {
-    const issueGroupedByStatus = _.groupBy(bugsReport, 'status');
-    const countByStatus = [];
+  // calculateBugsActResCnt(bugsReport: any[]) {
+  //   const issueGroupedByStatus = _.groupBy(bugsReport, 'status');
+  //   const countByStatus = [];
 
-    for (const [name, issues] of Object.entries(issueGroupedByStatus)) {
-      countByStatus.push({
-        name,
-        value: issues.length
-      });
-    }
+  //   for (const [name, issues] of Object.entries(issueGroupedByStatus)) {
+  //     countByStatus.push({
+  //       name,
+  //       value: issues.length
+  //     });
+  //   }
 
-    this.bugsActResCnt = countByStatus;
-  }
+  //   this.bugsActResCnt = countByStatus;
+  // }
 
-  calculateBugsSeverityCnt(bugsReport: any[]) {
-    const groupedIssueBySeverity = _.groupBy(bugsReport, 'severity');
-    let formattedGroupedIssueByState;
-    const formattedGroupedIssueByServerity = [];
+  // calculateBugsSeverityCnt(bugsReport: any[]) {
+  //   const groupedIssueBySeverity = _.groupBy(bugsReport, 'severity');
+  //   let formattedGroupedIssueByState;
+  //   const formattedGroupedIssueByServerity = [];
 
-    for (const [serverity, issues] of Object.entries(groupedIssueBySeverity)) {
-      const groupedByStatus = _.groupBy(issues, 'state');
-      formattedGroupedIssueByState = [];
+  //   for (const [serverity, issues] of Object.entries(groupedIssueBySeverity)) {
+  //     const groupedByStatus = _.groupBy(issues, 'state');
+  //     formattedGroupedIssueByState = [];
 
-      for (const [state, issues] of Object.entries(groupedByStatus)) {
-        formattedGroupedIssueByState.push({
-          name: state,
-          value: issues.length
-        });
-      }
+  //     for (const [state, issues] of Object.entries(groupedByStatus)) {
+  //       formattedGroupedIssueByState.push({
+  //         name: state,
+  //         value: issues.length
+  //       });
+  //     }
 
-      formattedGroupedIssueByServerity.push({
-        name: serverity,
-        series: formattedGroupedIssueByState
-      });
-    }
-    this.bugSeverityCnt = formattedGroupedIssueByServerity;
-  }
+  //     formattedGroupedIssueByServerity.push({
+  //       name: serverity,
+  //       series: formattedGroupedIssueByState
+  //     });
+  //   }
+  //   this.bugSeverityCnt = formattedGroupedIssueByServerity;
+  // }
 
   getTfsUrl(id) {
     return `https://tfs.py.pa.gov/tfs/DefaultCollection_DOC/CAPTOR/_workitems?id=${id}&fullScreen=true&_a=edit`;
