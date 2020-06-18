@@ -143,6 +143,8 @@ export class BugDashboardComponent {
   }
 
   calculateCardData(total: any[]) {
+    console.log(total);
+    
     const filter = (root: any, prop: string, rule: string): any[] => root.filter(i => i[prop] === rule);
 
     const resolved = filter(total, 'state', 'Resolved');
@@ -167,6 +169,9 @@ export class BugDashboardComponent {
       resolved: filter(resolved, 'severity', '3 - Medium').length,
       active: filter(active, 'severity', '3 - Medium').length,
     });
+
+    console.log(this.mediumBugs);
+
     Object.assign(this.lowBugs, {
       total: filter(total, 'severity', '4 - Low').length,
       resolved: filter(resolved, 'severity', '4 - Low').length,
