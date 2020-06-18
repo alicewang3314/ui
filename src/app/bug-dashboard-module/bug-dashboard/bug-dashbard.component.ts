@@ -144,39 +144,38 @@ export class BugDashboardComponent {
 
   calculateCardData(total: any[]) {
     console.log(total);
-    
+
     const filter = (root: any, prop: string, rule: string): any[] => root.filter(i => i[prop] === rule);
 
     const resolved = filter(total, 'state', 'Resolved');
+    const proposed = filter(total, 'state', 'Proposed');
     const active = filter(total, 'state', 'Active');
-    console.log(active)
+
     Object.assign(this.totalBugs, {
       total: total.length,
       resolved: resolved.length,
-      active: active.length,
+      active: active.length + proposed.length,
     });
     Object.assign(this.criticalBugs, {
       total: filter(total, 'severity', '1 - Critical').length,
       resolved: filter(resolved, 'severity', '1 - Critical').length,
-      active: filter(active, 'severity', '1 - Critical').length,
+      active: filter(active, 'severity', '1 - Critical').length + filter(proposed, 'severity', '1 - Critical').length,
     });
     Object.assign(this.highBugs, {
       total: filter(total, 'severity', '2 - High').length,
       resolved: filter(resolved, 'severity', '2 - High').length,
-      active: filter(active, 'severity', '2 - High').length,
+      active: filter(active, 'severity', '2 - High').length + filter(proposed, 'severity', '2 - High').length,
     });
     Object.assign(this.mediumBugs, {
       total: filter(total, 'severity', '3 - Medium').length,
       resolved: filter(resolved, 'severity', '3 - Medium').length,
-      active: filter(active, 'severity', '3 - Medium').length,
+      active: filter(active, 'severity', '3 - Medium').length + filter(proposed, 'severity', '3 - Medium').length,
     });
-
-    console.log(this.mediumBugs);
 
     Object.assign(this.lowBugs, {
       total: filter(total, 'severity', '4 - Low').length,
       resolved: filter(resolved, 'severity', '4 - Low').length,
-      active: filter(active, 'severity', '4 - Low').length,
+      active: filter(active, 'severity', '4 - Low').length + filter(proposed, 'severity', '4 - Low').length,
     });
   }
 
