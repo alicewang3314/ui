@@ -8,6 +8,7 @@ import { faSyncAlt } from '@fortawesome/free-solid-svg-icons'
 import { IterationReport } from "src/app/dto/iterationReport";
 import { CacheService } from "src/app/services/cache.service";
 import { SettingService } from 'src/app/services/setting.service';
+import { StatusService } from 'src/app/services/status.servie';
 
 import { Settings } from 'src/app/types';
 //import { userInfo } from "os";
@@ -29,7 +30,7 @@ export class TfsDashboardComponent implements OnInit {
   iterationReport: IterationReport;
   allPendingReport: IterationReport;
   showSpinner: boolean = false;
-  selectedTabIndex = new FormControl(0);
+  activeTabIndex: number;
   indexVal;
   projectDetail: any;
   newdata = [];
@@ -42,10 +43,11 @@ export class TfsDashboardComponent implements OnInit {
   constructor(
     private cacheService: CacheService,
     private settingService: SettingService,
-    // private iterationService: IterationService,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private status: StatusService,
   ) {
+    this.status.getActiveTabIndex().subscribe(index => this.activeTabIndex = index);
   }
 
   ngOnInit() {
@@ -54,59 +56,9 @@ export class TfsDashboardComponent implements OnInit {
     // this.iterationReport = report;
   }
 
-  getProjectDashboardOld() {
-    this.selectedTabIndex.setValue(this.cacheService.selectedTabIndex);
-
-    if (this.cacheService.selectedTabIndex == 0) {
-      this.Tasks$.subscribe(user => {
-        Object.keys(user).length === 0 ? (user = this.cacheService.data) : user;
-        //  console.log(user);
-        this.cacheService.getIterationReport(user).subscribe(resp => {
-          this.iterationReport = resp;
-
-          if (this.iterationReport.teams.length > 0) {
-
-            if (user.length != this.iterationReport.teams.length) {
-              user.map((item) => {
-                this.checkedValues.push(item.value);
-              });
-              this.iterationReport.teams.map((item) => {
-                this.apiValues.push(item.title)
-              });
-              this.missingValues = this.checkedValues.filter(item => this.apiValues.indexOf(item) < 0);
-              this.cacheService.missingValue = this.missingValues;
-              this.checkedValues = [];
-            }
-            else {
-              this.checkedValues = [];
-              this.apiValues = [];
-              this.missingValues = [];
-            }
-          }
-          else {
-            user.map((item) => {
-              this.missingValues.push(item.value);
-            });
-          }
-          this.cacheService.data = user;
-        });
-      });
-    }
-    else {
-      this.Tasks$.subscribe(user => {
-        Object.keys(user).length === 0 ? (user = this.cacheService.data) : user;
-        this.cacheService.getAllPendingReport(user).subscribe(resp => {
-          this.allPendingReport = resp;
-          this.cacheService.data = user;
-        });
-      });
-    }
-  }
-
   getProjectDashboard() {
-    this.selectedTabIndex.setValue(this.cacheService.selectedTabIndex);
 
-    if (this.cacheService.selectedTabIndex == 0) {
+    if (this.activeTabIndex == 0) {
       this.settingService.getProjectsTeamsFromDb().subscribe(
         s => {
           this.userSettings = s
@@ -188,7 +140,8 @@ export class TfsDashboardComponent implements OnInit {
   }
 
   onTabChange(index: number) {
-    this.cacheService.selectedTabIndex = index;
+    // this.cacheService.selectedTabIndex = index;
+    this.status.activeTabIndex = index;
     this.getProjectDashboard();
   }
 }

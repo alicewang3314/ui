@@ -19,10 +19,10 @@ export class CacheService {
   selectedTabIndex: number = 0;
   checkedList: any;
   missingValue: any;
+
   constructor(private iterationService: IterationService) { }
 
   getIterationReportOld(data: any): Observable<IterationReport> {
-
     this.observableIteration = this.iterationService.getCurrent(data).pipe(
       map(val => {
         this.observableIteration = null;

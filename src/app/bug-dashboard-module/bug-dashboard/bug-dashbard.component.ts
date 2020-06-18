@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import * as _ from 'lodash';
-import { MatDialog } from '@angular/material/dialog';
 
 import { BugReportCard } from 'src/app/types';
 import { CacheService } from 'src/app/services/cache.service';
@@ -19,32 +17,6 @@ export class BugDashboardComponent {
   respBugApi: any[];
   bugStackCnt: ({ name: string, series: ({ name: string, value: number }[]) }[]);
   selectedAreaPath: any;
-  // bugSeverityCnt: ({ name: string, series: ({ name: string, value: number }[]) }[]);
-  // bugGrpCnt: ({ name: string, value: number }[]);
-  // bugsActResCnt: any;
-
-  // chart options
-  showXAxis = true;
-  showYAxis = true;
-  gradient = false;
-  showLegend = false;
-  showXAxisLabel = false;
-  xAxisLabel = 'Count';
-  showYAxisLabel = true;
-  yAxisLabel = '';
-  selectedTabIndex = 0;
-  filteredBugDetails: any;
-  selectedSeverity: any = 'all';
-  donutData: any = [];
-  donutColorScheme = {
-    domain: ['#66a3ff', '#40E0D0', '#98FB98', '#4dff4d', '#C71585', '#DB7093', '#FFC0CB', '#ffd11a', '#ffe680', '#944dff', '#cc66ff', '#4B0082', '#FFA500']
-  };
-  stackColorScheme = {
-    domain: ['#ff1a1a', '#ffaa00', '#eff623', '#4da6ff']
-  };
-  displayedColumns: string[] = ['id', 'title', 'severity', 'createdBy', 'createdDate'];
-
-  // ================ refactoring
   totalBugs: BugReportCard = {
     title: 'Total Bugs',
     total: 0,
@@ -76,16 +48,35 @@ export class BugDashboardComponent {
     active: 0
   };
 
+  // chart options
+  showXAxis = true;
+  showYAxis = true;
+  gradient = false;
+  showLegend = false;
+  showXAxisLabel = false;
+  xAxisLabel = 'Count';
+  showYAxisLabel = true;
+  yAxisLabel = '';
+  selectedTabIndex = 0;
+  filteredBugDetails: any;
+  selectedSeverity: any = 'all';
+  donutData: any = [];
+  donutColorScheme = {
+    domain: ['#66a3ff', '#40E0D0', '#98FB98', '#4dff4d', '#C71585', '#DB7093', '#FFC0CB', '#ffd11a', '#ffe680', '#944dff', '#cc66ff', '#4B0082', '#FFA500']
+  };
+  stackColorScheme = {
+    domain: ['#ff1a1a', '#ffaa00', '#eff623', '#4da6ff']
+  };
+  displayedColumns: string[] = ['id', 'title', 'severity', 'createdBy', 'createdDate'];
+
   constructor(
     private service: BugDashboardService,
-    public dialog: MatDialog,
     private cache: CacheService,
   ) { }
 
   ngOnInit() {
     this.service.getBugReport().subscribe((resp: any[]) => {
       this.respBugApi = resp;
-      // this.getBugReportsData(resp);
       this.calculateCardData(resp);
       this.getDonutChartData(resp);
       this.calculateStackData(resp);
@@ -94,17 +85,10 @@ export class BugDashboardComponent {
     // TODO: remove local dev setup
     // this.respBugApi = rawBugReport;
     // console.log(rawBugReport);
-    // this.getBugReportsData(rawBugReport);
     // this.calculateCardData(rawBugReport);
     // this.getDonutChartData(rawBugReport);
     // this.calculateStackData(rawBugReport);
   }
-
-  // getBugReportsData(temp) {
-  //   this.calculateBugsAppCnt(temp);
-  //   // this.calculateBugsActResCnt(temp);
-  //   // this.calculateBugsSeverityCnt(temp);
-  // }
 
   reloadBugDetails(event) {
     let self = this;
@@ -208,58 +192,4 @@ export class BugDashboardComponent {
   getTfsUrl(id) {
     return `https://tfs.py.pa.gov/tfs/DefaultCollection_DOC/CAPTOR/_workitems?id=${id}&fullScreen=true&_a=edit`;
   }
-
-  // calculateBugsAppCnt(bugsReport: any[]) {
-  //   const groupedIssueByProject = _.groupBy(bugsReport, 'areaPath');
-  //   const countByProject = [];
-
-  //   for (const [name, issues] of Object.entries(groupedIssueByProject)) {
-  //     countByProject.push({
-  //       name,
-  //       value: issues.length
-  //     });
-  //   }
-
-  //   this.bugGrpCnt = countByProject.sort((a, b) => a.value - b.value);
-  // }
-
-  // calculateBugsActResCnt(bugsReport: any[]) {
-  //   const issueGroupedByStatus = _.groupBy(bugsReport, 'status');
-  //   const countByStatus = [];
-
-  //   for (const [name, issues] of Object.entries(issueGroupedByStatus)) {
-  //     countByStatus.push({
-  //       name,
-  //       value: issues.length
-  //     });
-  //   }
-
-  //   this.bugsActResCnt = countByStatus;
-  // }
-
-  // calculateBugsSeverityCnt(bugsReport: any[]) {
-  //   const groupedIssueBySeverity = _.groupBy(bugsReport, 'severity');
-  //   let formattedGroupedIssueByState;
-  //   const formattedGroupedIssueByServerity = [];
-
-  //   for (const [serverity, issues] of Object.entries(groupedIssueBySeverity)) {
-  //     const groupedByStatus = _.groupBy(issues, 'state');
-  //     formattedGroupedIssueByState = [];
-
-  //     for (const [state, issues] of Object.entries(groupedByStatus)) {
-  //       formattedGroupedIssueByState.push({
-  //         name: state,
-  //         value: issues.length
-  //       });
-  //     }
-
-  //     formattedGroupedIssueByServerity.push({
-  //       name: serverity,
-  //       series: formattedGroupedIssueByState
-  //     });
-  //   }
-  //   this.bugSeverityCnt = formattedGroupedIssueByServerity;
-  // }
-
-
 }

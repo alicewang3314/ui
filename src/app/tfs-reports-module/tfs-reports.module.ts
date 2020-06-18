@@ -45,6 +45,7 @@ import { IterationService } from "src/app/services/iteration.service";
 import { IterationReport } from "src/app/dto/iterationReport";
 import { CacheService } from "src/app/services/cache.service";
 import { SettingService } from 'src/app/services/setting.service';
+import { StatusService } from 'src/app/services/status.servie';
 
 @NgModule({
   declarations: [
@@ -106,6 +107,7 @@ export class TfsReportsModule {
         { provide: IterationReport },
         { provide: CacheService },
         { provide: SettingService },
+        { provide: StatusService },
       ]
     }
   }
