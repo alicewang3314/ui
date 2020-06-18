@@ -149,6 +149,7 @@ export class BugDashboardComponent {
 
     const resolved = filter(total, 'state', 'Resolved');
     const active = filter(total, 'state', 'Active');
+    console.log(active)
     Object.assign(this.totalBugs, {
       total: total.length,
       resolved: resolved.length,
