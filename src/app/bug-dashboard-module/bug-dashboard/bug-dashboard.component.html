@@ -63,7 +63,7 @@
               <ng-container matColumnDef="id">
                 <th mat-header-cell class="table-col" *matHeaderCellDef> Id </th>
                 <td mat-cell class="table-col" *matCellDef="let element">
-                  <a target="_blank" href="http://google.com">{{element.id}}</a>
+                  <a target="_blank" href="{{getTfsUrl(element.id)}}">{{element.id}}</a>
                 </td>
               </ng-container>
               <ng-container matColumnDef="title">

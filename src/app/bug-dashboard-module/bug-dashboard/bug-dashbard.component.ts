@@ -268,6 +268,10 @@ export class BugDashboardComponent {
     this.bugSeverityCnt = formattedGroupedIssueByServerity;
   }
 
+  getTfsUrl(id) {
+    return `https://tfs.py.pa.gov/tfs/DefaultCollection_DOC/CAPTOR/_workitems?id=${id}&fullScreen=true&_a=edit`;
+  }
+
   // clearBugsDashboard() {
   //   this.cacheService.clearBugsCache();
   // }

@@ -137,3 +137,12 @@ bug-card:not(:last-child) {
 /* ::ng-deep.mat-tab-body-content {
   overflow: hidden !important;
 } */
+
+a {
+  color: white;
+}
+
+a:hover {
+  color: rgba(238, 178, 224, 0.6);
+  text-decoration: none;
+}
