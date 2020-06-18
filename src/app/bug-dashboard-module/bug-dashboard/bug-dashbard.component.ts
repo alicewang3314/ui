@@ -85,7 +85,7 @@ export class BugDashboardComponent {
   ngOnInit() {
     this.service.getBugReport().subscribe((resp: any[]) => {
       this.respBugApi = resp;
-      this.getBugReportsData(resp);
+      // this.getBugReportsData(resp);
       this.calculateCardData(resp);
       this.getDonutChartData(resp);
       this.calculateStackData(resp);
@@ -100,11 +100,11 @@ export class BugDashboardComponent {
     // this.calculateStackData(rawBugReport);
   }
 
-  getBugReportsData(temp) {
-    this.calculateBugsAppCnt(temp);
-    // this.calculateBugsActResCnt(temp);
-    // this.calculateBugsSeverityCnt(temp);
-  }
+  // getBugReportsData(temp) {
+  //   this.calculateBugsAppCnt(temp);
+  //   // this.calculateBugsActResCnt(temp);
+  //   // this.calculateBugsSeverityCnt(temp);
+  // }
 
   reloadBugDetails(event) {
     let self = this;
@@ -205,19 +205,23 @@ export class BugDashboardComponent {
       self.respBugApi;
   };
 
-  calculateBugsAppCnt(bugsReport: any[]) {
-    const groupedIssueByProject = _.groupBy(bugsReport, 'areaPath');
-    const countByProject = [];
-
-    for (const [name, issues] of Object.entries(groupedIssueByProject)) {
-      countByProject.push({
-        name,
-        value: issues.length
-      });
-    }
-
-    // this.bugGrpCnt = countByProject.sort((a, b) => a.value - b.value);
+  getTfsUrl(id) {
+    return `https://tfs.py.pa.gov/tfs/DefaultCollection_DOC/CAPTOR/_workitems?id=${id}&fullScreen=true&_a=edit`;
   }
+
+  // calculateBugsAppCnt(bugsReport: any[]) {
+  //   const groupedIssueByProject = _.groupBy(bugsReport, 'areaPath');
+  //   const countByProject = [];
+
+  //   for (const [name, issues] of Object.entries(groupedIssueByProject)) {
+  //     countByProject.push({
+  //       name,
+  //       value: issues.length
+  //     });
+  //   }
+
+  //   this.bugGrpCnt = countByProject.sort((a, b) => a.value - b.value);
+  // }
 
   // calculateBugsActResCnt(bugsReport: any[]) {
   //   const issueGroupedByStatus = _.groupBy(bugsReport, 'status');
@@ -257,7 +261,5 @@ export class BugDashboardComponent {
   //   this.bugSeverityCnt = formattedGroupedIssueByServerity;
   // }
 
-  getTfsUrl(id) {
-    return `https://tfs.py.pa.gov/tfs/DefaultCollection_DOC/CAPTOR/_workitems?id=${id}&fullScreen=true&_a=edit`;
-  }
+
 }
