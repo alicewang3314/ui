@@ -32,7 +32,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { HomePageComponent, } from "./home-page/home-page.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { InterceptorService } from './interceptor.service';
 
@@ -48,7 +47,6 @@ import { LogReportModule } from "./log-report-module/log-report.module";
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent,
     LoaderComponent,
     FilterPipe,
     BugDetailsDialog,

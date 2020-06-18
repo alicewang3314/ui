@@ -6,7 +6,6 @@ import { ExceptionSearchComponent } from './log-report-module/exception-search/e
 import { LogDashboardComponent } from './log-report-module/log-dashboard/log-dashboard.component';
 //import { MostFrequentErrorsDashbComponent } from './log-report-module/most-frequent-errors-dashb/most-frequent-errors-dashb.component';
 //import { LiveErrorLogsComponent } from './log-report-module/live-error-logs/live-error-logs.component';
-// import { HomePageComponent } from "./home-page/home-page.component";
 
 const routes: Routes = [
   { path: 'tfs-dashboard', loadChildren: () => import('src/app/tfs-reports-module/tfs-reports.module').then(m => m.TfsReportsModule) },

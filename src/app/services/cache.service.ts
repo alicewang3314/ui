@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { IterationService } from "./iteration.service";
 import { IterationReport } from "../dto/iterationReport";
-import { Observable, of } from "rxjs";
-import { map, share, publishReplay, refCount } from "rxjs/operators";
+import { Observable, } from "rxjs";
+import { map, publishReplay, refCount } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root"
@@ -17,19 +17,11 @@ export class CacheService {
   observableBugsDashboardData: Observable<any>;
   noResult: any;
   selectedTabIndex: number = 0;
-  selectHomeTabIndex: number = 0;
   checkedList: any;
   missingValue: any;
   constructor(private iterationService: IterationService) { }
 
   getIterationReportOld(data: any): Observable<IterationReport> {
-
-    // if (this.iterationReport) {
-    //   return of(this.iterationReport);
-    // }
-    // if (this.observableIteration) {
-    //   return this.observableIteration;
-    // }
 
     this.observableIteration = this.iterationService.getCurrent(data).pipe(
       map(val => {
@@ -42,19 +34,12 @@ export class CacheService {
           return this.iterationReport;
         }
       })
-      //share()
     );
+
     return this.observableIteration;
   }
 
   getAllPendingReportOld(data: any): Observable<IterationReport> {
-    // if (this.allPendingReport) {
-    //   return of(this.allPendingReport);
-    // }
-    // if (this.observableAllPending) {
-    //   return this.observableAllPending;
-    // }
-
     this.observableAllPending = this.iterationService.getAllPending(data).pipe(
       map(val => {
         this.observableAllPending = null;
@@ -62,6 +47,7 @@ export class CacheService {
         return this.allPendingReport;
       })
     );
+    
     return this.observableAllPending;
   }
 

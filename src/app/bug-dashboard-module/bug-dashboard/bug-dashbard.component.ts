@@ -4,7 +4,7 @@ import * as _ from 'lodash';
 import { MatDialog } from '@angular/material/dialog';
 
 import { BugReportCard } from 'src/app/types';
-// import { CacheService } from 'src/app/services/cache.service';
+import { CacheService } from 'src/app/services/cache.service';
 import { BugDashboardService } from '../bug-dashboard.service';
 
 // TODO: remove dev setup
@@ -17,16 +17,13 @@ import { BugDashboardService } from '../bug-dashboard.service';
 })
 export class BugDashboardComponent {
   respBugApi: any[];
-  bugsActResCnt: any;
-  bugGrpCnt: ({ name: string, value: number }[]);
-  seriesData: ({ name: string, value: number }[]);
+  // bugsActResCnt: any;
   bugStackCnt: ({ name: string, series: ({ name: string, value: number }[]) }[]);
-  bugSeverityCnt: ({ name: string, series: ({ name: string, value: number }[]) }[]);
-  view: any[] = [700, 400];
   selectedAreaPath: any;
+  // bugSeverityCnt: ({ name: string, series: ({ name: string, value: number }[]) }[]);
+  // bugGrpCnt: ({ name: string, value: number }[]);
 
-  //chart options
-
+  // chart options
   showXAxis = true;
   showYAxis = true;
   gradient = false;
@@ -34,27 +31,18 @@ export class BugDashboardComponent {
   showXAxisLabel = false;
   xAxisLabel = 'Count';
   showYAxisLabel = true;
-  showGridLines = true;
   yAxisLabel = '';
-  selectedTabIndex = new FormControl(0);
-  ///////////// ---------old code-------------//////////////////////
-
+  selectedTabIndex = 0;
   filteredBugDetails: any;
   selectedSeverity: any = 'all';
-
   donutData: any = [];
-
   donutColorScheme = {
     domain: ['#66a3ff', '#40E0D0', '#98FB98', '#4dff4d', '#C71585', '#DB7093', '#FFC0CB', '#ffd11a', '#ffe680', '#944dff', '#cc66ff', '#4B0082', '#FFA500']
   };
-
   stackColorScheme = {
     domain: ['#ff1a1a', '#ffaa00', '#eff623', '#4da6ff']
   };
-
   displayedColumns: string[] = ['id', 'title', 'severity', 'createdBy', 'createdDate'];
-  donutChartLevel: number = 0;
-
 
   // ================ refactoring
   totalBugs: BugReportCard = {
@@ -90,7 +78,8 @@ export class BugDashboardComponent {
 
   constructor(
     private service: BugDashboardService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private cache: CacheService,
   ) { }
 
   ngOnInit() {
@@ -227,7 +216,7 @@ export class BugDashboardComponent {
       });
     }
 
-    this.bugGrpCnt = countByProject.sort((a, b) => a.value - b.value);
+    // this.bugGrpCnt = countByProject.sort((a, b) => a.value - b.value);
   }
 
   calculateBugsActResCnt(bugsReport: any[]) {
@@ -241,7 +230,7 @@ export class BugDashboardComponent {
       });
     }
 
-    this.bugsActResCnt = countByStatus;
+    // this.bugsActResCnt = countByStatus;
   }
 
   calculateBugsSeverityCnt(bugsReport: any[]) {
@@ -265,61 +254,10 @@ export class BugDashboardComponent {
         series: formattedGroupedIssueByState
       });
     }
-    this.bugSeverityCnt = formattedGroupedIssueByServerity;
+    // this.bugSeverityCnt = formattedGroupedIssueByServerity;
   }
 
   getTfsUrl(id) {
     return `https://tfs.py.pa.gov/tfs/DefaultCollection_DOC/CAPTOR/_workitems?id=${id}&fullScreen=true&_a=edit`;
   }
-
-  // clearBugsDashboard() {
-  //   this.cacheService.clearBugsCache();
-  // }
-
-  // openDialogBugsApp(e): void {
-  //   var apps = this.respBugApi.filter(resp => {
-  //     let appNames = resp.areaPath.split('\\');
-  //     return (appNames[appNames.length - 1] == (e.name))
-  //   });
-
-  //   this.dialog.open(BugDetailsDialog, {
-  //     width: '700px',
-  //     height: 'auto',
-  //     data: {
-  //       apps: apps, title: e.name
-  //     }
-  //   });
-  // }
-
-  // openDialogBugsActRes(e) {
-  //   var apps = this.respBugApi.filter(resp =>
-  //     resp.state === e.name
-  //   );
-
-  //   this.dialog.open(BugDetailsDialog, {
-  //     width: '700px',
-  //     height: 'auto',
-  //     data: {
-  //       apps: apps, title: e.name
-  //     }
-  //   });
-  // }
-
-  // openDialogBugsSev(e) {
-  //   var apps = this.respBugApi.filter(resp =>
-  //     resp.state === e.name && resp.severity === e.series
-  //   );
-
-  //   this.dialog.open(BugDetailsDialog, {
-  //     width: '700px',
-  //     height: 'auto',
-  //     data: {
-  //       apps: apps, title: e.name + ' | ' + e.series
-  //     }
-  //   });
-  // }
-
-  /**
-   *
-   */
 }

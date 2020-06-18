@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SettingService } from 'src/app/services/setting.service';
 import { Settings } from 'src/app/types';
-import { environment } from 'src/environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CacheService } from 'src/app/services/cache.service';
-import { Router } from '@angular/router';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-tfs-dashboard-settings',
@@ -14,9 +12,9 @@ import {Location} from '@angular/common';
 })
 export class TfsDashboardSettingsComponent implements OnInit {
 
-  constructor(private settingService: SettingService, 
+  constructor(
+    private settingService: SettingService,
     private cacheService: CacheService,
-    private router: Router,
     private matSnackBar: MatSnackBar,
     private location: Location) { }
 
@@ -51,7 +49,6 @@ export class TfsDashboardSettingsComponent implements OnInit {
                       return {
                         id: t.id,
                         name: t.name,
-                        //value: element.id + '|' + t.id,
                         selected: this.GetIsSelected(element.name, t.name)
                       }
                     }
@@ -91,32 +88,28 @@ export class TfsDashboardSettingsComponent implements OnInit {
             this.savedValues = settings.tfsProjTeams;
             this.settingService.clearCache();
             this.cacheService.clearCache();
-            this.cacheService.selectHomeTabIndex = 2;
-            // this.router.navigate.;
             this.location.back();
           }
           else {
             this.matSnackBar.open("Error in updating settings", null, { duration: 3000, horizontalPosition: 'left' });
           }
-  
+
         }
       );
     }
-    else{
+    else {
       this.settingService.addSettings(settings).subscribe(
         resp => {
           if (resp == 1) {
             this.matSnackBar.open("Settings Added", null, { duration: 3000, horizontalPosition: 'left' });
             this.settingService.clearCache();
             this.cacheService.clearCache();
-            this.cacheService.selectHomeTabIndex = 2;
-            // this.router.navigate(["/"]);
             this.location.back();
           }
           else {
             this.matSnackBar.open("Error in adding settings", null, { duration: 3000, horizontalPosition: 'left' });
           }
-  
+
         }
       );
     }
