@@ -72,7 +72,7 @@ th.mat-header-cell {
   overflow-x: auto;
   overflow-y: hidden;
   fill: white;
-  background-color: transparent;
+  background-color: #171717;
   display: flex;
   justify-content: center;
 }
