@@ -83,7 +83,7 @@ export class ProjectDetailsComponent implements OnInit {
     this.title = params.get("title");
     let team = resp.teams.find(p => p.title === this.title);
     this.teamTasks = new MatTableDataSource(team.currentTasks);
-    this.teamTasks.sort = this.sort;
+    // this.teamTasks.sort = this.sort;
 
     this.teamResources = team.resourcesStats;
     this.teamTasks.sort = this.sortResources;

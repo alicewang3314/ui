@@ -25,7 +25,6 @@ import { BugDashboardRoutingModule } from './bug-dashboard.routing.module';
 import { BugDashboardComponent } from './bug-dashboard/bug-dashbard.component';
 import { BugDetailsDialog } from './bug-detail-dialog/bug-detail-dialog.component';
 import { BugReportCardComponent } from './bug-report-card/bug-report-card.component';
-import { CacheService } from 'src/app/services/cache.service';
 
 @NgModule({
   declarations: [BugDetailsDialog, BugReportCardComponent, BugDashboardComponent],
@@ -56,13 +55,4 @@ import { CacheService } from 'src/app/services/cache.service';
     BugDashboardComponent
   ]
 })
-export class BugDashboardModule {
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: BugDashboardModule,
-      providers: [
-        { provide: CacheService }
-      ]
-    };
-  }
-}
+export class BugDashboardModule { }

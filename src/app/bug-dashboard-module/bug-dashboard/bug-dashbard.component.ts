@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import * as _ from 'lodash';
 
 import { BugReportCard } from 'src/app/types';
-import { CacheService } from 'src/app/services/cache.service';
 import { BugDashboardService } from '../bug-dashboard.service';
 
 // TODO: remove dev setup
@@ -71,7 +70,6 @@ export class BugDashboardComponent {
 
   constructor(
     private service: BugDashboardService,
-    private cache: CacheService,
   ) { }
 
   ngOnInit() {

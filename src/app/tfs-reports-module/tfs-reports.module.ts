@@ -41,7 +41,7 @@ import { TfsDashboardSettingsComponent } from './tfs-dashboard-settings/tfs-dash
 
 import { TFSReportRoutingModule } from './tfs-report.routing.module';
 
-import { IterationService } from "src/app/services/iteration.service";
+// import { IterationService } from "src/app/services/iteration.service";
 import { IterationReport } from "src/app/dto/iterationReport";
 import { CacheService } from "src/app/services/cache.service";
 import { SettingService } from 'src/app/services/setting.service';
@@ -103,7 +103,7 @@ export class TfsReportsModule {
     return {
       ngModule: TfsReportsModule,
       providers: [
-        { provide: IterationService },
+        // { provide: IterationService },
         { provide: IterationReport },
         { provide: CacheService },
         { provide: SettingService },

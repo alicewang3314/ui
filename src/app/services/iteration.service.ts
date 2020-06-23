@@ -2,12 +2,11 @@ import { Injectable } from "@angular/core";
 import {
   HttpClient,
   HttpHeaders,
-  HttpErrorResponse,
   HttpResponse,
   HttpResponseBase
 } from "@angular/common/http";
 import { IterationReport } from "../dto/iterationReport";
-import { mergeMap, catchError, publishReplay, refCount } from 'rxjs/operators';
+import { mergeMap, catchError } from 'rxjs/operators';
 import { Observable, of, throwError } from 'rxjs';
 import { environment } from "src/environments/environment";
 import { ApiException } from '../tfs-reports-module/tfs-report-service.';
@@ -48,7 +47,7 @@ export class IterationService {
 
     let options_: any = {
       body: content,
-      observe:'response',
+      observe: 'response',
       responseType: 'blob',
       headers: new HttpHeaders({
         "Content-Type": 'application/json',

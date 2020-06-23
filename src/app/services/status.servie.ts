@@ -6,6 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class StatusService {
   private _activeTabIndex: BehaviorSubject<number>;
+
   appState = {
     ['/tfs-dashboard']: { activeTabIndex: 0 },
     ['/error-logs-dashboard']: {},
@@ -15,7 +16,7 @@ export class StatusService {
   constructor() {
     this.recoverState();
     
-    this._activeTabIndex = new BehaviorSubject(this.appState["/tfs-dashboard"].activeTabIndex);
+    this._activeTabIndex = new BehaviorSubject(this.appState['/tfs-dashboard'].activeTabIndex);
   }
 
   getActiveTabIndex(): Observable<number> {
@@ -39,6 +40,7 @@ export class StatusService {
 
   recoverState() {
     const savedState = localStorage.getItem('app-state');
+
     if (savedState) this.appState = JSON.parse(savedState);
   }
 }
