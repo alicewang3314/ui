@@ -43,7 +43,6 @@ export class TfsDashboardComponent implements OnInit {
   // TODO: clean up
   period = 'current';
 
-
   constructor(
     private cacheService: CacheService,
     private settingService: SettingService,
