@@ -100,7 +100,7 @@ export class BugDashboardComponent {
 
   getDonutChartData(bugsReport: any[]) {
     const donutData = [];
-    const activeIssues = bugsReport.filter(report => report.state === 'Active');
+    const activeIssues = bugsReport.filter(report => report.state === 'Active' || report.state === 'Proposed');
     const issueGroupedByProject = _.groupBy(activeIssues, 'areaPath');
 
     for (const [project, issues] of Object.entries(issueGroupedByProject)) {
@@ -152,7 +152,7 @@ export class BugDashboardComponent {
 
   calculateStackData(bugReport: any[]) {
     const bugsBreakdown = [];
-    const activeIssues = bugReport.filter(({ state }) => state === 'Active');
+    const activeIssues = bugReport.filter(({ state }) => state === 'Active' || state === 'Proposed');
     const issueGroupedByProject = _.groupBy(activeIssues, 'areaPath');
     const severities = ['1 - Critical', '2 - High', '3 - Medium', '4 - Low'];
 

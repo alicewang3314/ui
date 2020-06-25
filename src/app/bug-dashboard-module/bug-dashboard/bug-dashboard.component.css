@@ -146,3 +146,8 @@ a:hover {
   color: rgba(238, 178, 224, 0.6);
   text-decoration: none;
 }
+
+
+::ng-deep.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: white;
+}
