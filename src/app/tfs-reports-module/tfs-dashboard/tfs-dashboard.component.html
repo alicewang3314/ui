@@ -10,11 +10,10 @@
   <mat-drawer-content>
     <button mat-raised-button (click)="drawer.toggle()">Project setting</button>
     <div>
-      <mat-radio-group [(ngModel)]="period">
+      <mat-radio-group [(ngModel)]="period" (change)="updateDashboard()">
         <mat-radio-button value="current">Current Iteration</mat-radio-button>
         <mat-radio-button value="all">All Pending</mat-radio-button>
       </mat-radio-group>
-      {{period}}
       <div class="tfs-report-container" *ngIf="period === 'current' && iterationReport">
         <div class="dashboard-buttons">
           <button mat-raised-button color="primary" (click)="refresh()">

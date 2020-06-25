@@ -61,7 +61,7 @@ export class TfsDashboardComponent implements OnInit {
   }
 
   getProjectDashboard() {
-    if (this.activeTabIndex == 0) {
+    if (this.period === 'current') {
       this.settingService.getProjectsTeamsFromDb().subscribe(
         s => {
           this.userSettings = s;
@@ -128,6 +128,11 @@ export class TfsDashboardComponent implements OnInit {
   onTabChange(index: number) {
     // this.cacheService.selectedTabIndex = index;
     this.status.activeTabIndex = index;
+    this.getProjectDashboard();
+  }
+
+  updateDashboard() {
+    console.log('update dashboard');
     this.getProjectDashboard();
   }
 }
