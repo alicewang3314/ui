@@ -59,3 +59,18 @@ button:focus {
   outline: none !important;
 }
 
+/* override scrollbar */
+/* width */
+::-webkit-scrollbar {
+  width: 3px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
