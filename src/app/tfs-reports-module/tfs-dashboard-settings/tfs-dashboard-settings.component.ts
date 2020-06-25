@@ -88,7 +88,7 @@ export class TfsDashboardSettingsComponent implements OnInit {
             this.savedValues = settings.tfsProjTeams;
             this.settingService.clearCache();
             this.cacheService.clearCache();
-            this.location.back();
+            // this.location.back();
           }
           else {
             this.matSnackBar.open("Error in updating settings", null, { duration: 3000, horizontalPosition: 'left' });
@@ -104,12 +104,11 @@ export class TfsDashboardSettingsComponent implements OnInit {
             this.matSnackBar.open("Settings Added", null, { duration: 3000, horizontalPosition: 'left' });
             this.settingService.clearCache();
             this.cacheService.clearCache();
-            this.location.back();
+            // this.location.back();
           }
           else {
             this.matSnackBar.open("Error in adding settings", null, { duration: 3000, horizontalPosition: 'left' });
           }
-
         }
       );
     }
