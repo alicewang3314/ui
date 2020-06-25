@@ -10,7 +10,6 @@ import { mergeMap, catchError } from 'rxjs/operators';
 import { Observable, of, throwError } from 'rxjs';
 import { environment } from "src/environments/environment";
 import { ApiException } from '../tfs-reports-module/tfs-report-service.';
-import { APIS } from 'src/app/constants';
 
 @Injectable({
   providedIn: "root"
@@ -25,18 +24,6 @@ export class IterationService {
 
   constructor(http: HttpClient) {
     this._http = http;
-  }
-
-  getCurrent(data): Observable<IterationReport> {
-    const url_ = this.baseUrl + APIS.CURRENT_ITERATION;
-
-    const httpOptions = {
-      headers: new HttpHeaders({
-        "Content-Type": "application/json"
-      })
-    };
-
-    return this._http.post<IterationReport>(url_, data, httpOptions);
   }
 
   getCurrent2(userSettings): Observable<IterationReport> {
@@ -76,24 +63,9 @@ export class IterationService {
       }));
   }
 
-  getAllPending(data): Observable<IterationReport> {
-    let url_ = this.baseUrl + "/api/Iteration/AllPending";
-    url_ = url_.replace(/[?&]$/, "");
-
-    const httpOptions = {
-      headers: new HttpHeaders({
-        "Content-Type": "application/json"
-      })
-    };
-
-    return this._http.post<IterationReport>(url_, data, httpOptions);
-  }
-
   getAllPending2(userSettings) {
 
     let url_ = this.baseUrl + "/api/Iteration/AllPending2";
-
-    //const content_ = JSON.stringify(userSettings);
     const content = userSettings;
 
     let options_: any = {
@@ -125,20 +97,6 @@ export class IterationService {
           return <Observable<number>><any>throwError(response_);
       }));
   }
-
-  getBugsForDashboard(): Observable<any> {
-    const url = this.baseUrl + APIS.BUG_REPORT;
-
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      }),
-    };
-
-    return this._http.get<any>(url, httpOptions);
-  }
-
-
 
   protected processRequest(response: HttpResponseBase): Observable<any> {
     const status = response.status;

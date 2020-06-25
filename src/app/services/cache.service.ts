@@ -48,24 +48,8 @@ export class CacheService {
     return this.observableAllPending;
   }
 
-  getBugsDashboardData() {
-
-    if (!this.observableBugsDashboardData) {
-      this.observableBugsDashboardData = this.iterationService.getBugsForDashboard().pipe(
-        publishReplay(1),
-        refCount()
-      );
-    }
-
-    return this.observableBugsDashboardData;
-  }
-
   clearCache() {
     this.observableAllPending = null;
     this.observableIteration = null;
-  }
-
-  clearBugsCache() {
-    this.observableBugsDashboardData = null;
   }
 }

@@ -25,6 +25,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatTreeModule } from '@angular/material/tree';
 
 import { ChangesetReportComponent } from './changeset-report/changeset-report.component';
 import { BugReportComponent } from './bug-report/bug-report.component';
@@ -90,6 +92,8 @@ import { StatusService } from 'src/app/services/status.servie';
     MatSidenavModule,
     MatSlideToggleModule,
     MatPaginatorModule,
+    MatRadioModule,
+    MatTreeModule,
     FontAwesomeModule,
   ],
   exports: [
