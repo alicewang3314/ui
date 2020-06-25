@@ -6,7 +6,6 @@
   <mat-drawer #drawer mode="over">
     nav items
     <app-tfs-dashboard-settings> </app-tfs-dashboard-settings>
-
   </mat-drawer>
   <mat-drawer-content>
     <button mat-raised-button (click)="drawer.toggle()">Project setting</button>
@@ -15,8 +14,8 @@
         <mat-radio-button value="current">Current Iteration</mat-radio-button>
         <mat-radio-button value="all">All Pending</mat-radio-button>
       </mat-radio-group>
-
-      <div class="tfs-report-container" *ngIf="iterationReport && period === 'current'">
+      {{period}}
+      <div class="tfs-report-container" *ngIf="period === 'current' && iterationReport">
         <div class="dashboard-buttons">
           <button mat-raised-button color="primary" (click)="refresh()">
             <span aria-hidden="true">
@@ -33,14 +32,12 @@
               <tfs-report-card [name]="'current'" [team]="team"></tfs-report-card>
             </div>
           </ng-container>
-
           <ng-container *ngIf="!iterationReport">
             <div class="add-message"> Please add teams using TFS Team settings</div>
           </ng-container>
         </div>
       </div>
-
-      <div class="tfs-report-container" *ngIf="allPendingReport && period === 'all'">
+      <div class="tfs-report-container" *ngIf="period === 'all' && allPendingReport">
         <div class="dashboard-buttons">
           <button mat-raised-button color="primary" (click)="refresh()">
             <fa-icon [icon]="refreshIcon"></fa-icon>

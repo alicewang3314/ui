@@ -14,7 +14,7 @@ import { Settings } from 'src/app/types';
 //import { userInfo } from "os";
 
 //TODO: cleanup dev support
-import { iterationReport as report } from 'src/app/mock';
+// import { iterationReport as report } from 'src/app/mock';
 
 @Component({
   selector: "app-tfs-dashboard",
@@ -26,8 +26,8 @@ export class TfsDashboardComponent implements OnInit {
   @Input("Tasks") Tasks$;
 
   // TODO: remove dev config
-  iterationReport: any;
-  // iterationReport: IterationReport;
+  // iterationReport: any;
+  iterationReport: IterationReport;
   allPendingReport: IterationReport;
   showSpinner: boolean = false;
   activeTabIndex: number;
@@ -57,15 +57,14 @@ export class TfsDashboardComponent implements OnInit {
   ngOnInit() {
     this.getProjectDashboard();
     //TODO: remove dev setup
-    this.iterationReport = report;
+    // this.iterationReport = report;
   }
 
   getProjectDashboard() {
-
     if (this.activeTabIndex == 0) {
       this.settingService.getProjectsTeamsFromDb().subscribe(
         s => {
-          this.userSettings = s
+          this.userSettings = s;
 
           if (this.userSettings && this.userSettings.tfsProjTeams) {
             this.cacheService.getIterationReport(this.userSettings.tfsProjTeams).subscribe(
@@ -77,7 +76,7 @@ export class TfsDashboardComponent implements OnInit {
     } else {
       this.settingService.getProjectsTeamsFromDb().subscribe(
         s => {
-          this.userSettings = s
+          this.userSettings = s;
 
           if (this.userSettings && this.userSettings.tfsProjTeams) {
             this.cacheService.getAllPendingReport(this.userSettings.tfsProjTeams).subscribe(
@@ -98,23 +97,6 @@ export class TfsDashboardComponent implements OnInit {
   getReport(title: string) {
     this.router.navigate(["/dashboard/project", title], {
       queryParams: { current: 1 }
-    });
-  }
-
-  getPendingReportOld(title: string) {
-    this.newdata = [];
-    this.projectDetail = this.cacheService.data;
-    for (var i = 0; i < this.projectDetail.length; i++) {
-      if (this.projectDetail[i].value == title) {
-        this.newdata.push({
-          name: this.projectDetail[i].name,
-          value: this.projectDetail[i].value
-        });
-      }
-    }
-    this.cacheService.singleDetails = this.newdata;
-    this.router.navigate(["/tfs-dashboard/project", title], {
-      queryParams: { current: 0 }
     });
   }
 
