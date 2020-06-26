@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Router } from "@angular/router";
-import { FormControl } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
 import { Observable } from "rxjs";
 import { faSyncAlt } from '@fortawesome/free-solid-svg-icons'
@@ -14,7 +13,7 @@ import { Settings } from 'src/app/types';
 //import { userInfo } from "os";
 
 //TODO: cleanup dev support
-// import { iterationReport as report } from 'src/app/mock';
+//import { iterationReport as report } from 'src/app/mock';
 
 @Component({
   selector: "app-tfs-dashboard",
@@ -39,8 +38,6 @@ export class TfsDashboardComponent implements OnInit {
   apiValues = [];
   userSettings: Settings = {};
   refreshIcon = faSyncAlt;
-
-  // TODO: clean up
   period = 'current';
 
   constructor(
@@ -56,7 +53,7 @@ export class TfsDashboardComponent implements OnInit {
   ngOnInit() {
     this.getProjectDashboard();
     //TODO: remove dev setup
-    // this.iterationReport = report;
+    //   this.iterationReport = report;
   }
 
   getProjectDashboard() {
@@ -133,5 +130,10 @@ export class TfsDashboardComponent implements OnInit {
   updateDashboard() {
     console.log('update dashboard');
     this.getProjectDashboard();
+  }
+
+  reload() {
+    console.log('reload');
+    // location.reload();
   }
 }

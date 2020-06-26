@@ -32,8 +32,11 @@ mat-tab-group {
   margin-left: 15px;
 }
 
-.add-message {
-  margin-top: 10px;
+.status-message {
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .tfs-tasks-container {
