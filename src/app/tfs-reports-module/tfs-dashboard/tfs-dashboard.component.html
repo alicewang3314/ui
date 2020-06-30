@@ -7,7 +7,7 @@
   </mat-drawer>
   <mat-drawer-content>
     <!-- settings -->
-    <button [class]="{'setting': true, 'hide': !showSettingBtn}" (click)="drawer.toggle()">
+    <button (click)="drawer.toggle()">
       <fa-icon [icon]="cogIcon"></fa-icon>
     </button>
     <mat-radio-group [(ngModel)]="period" (change)="getProjectDashboard()">

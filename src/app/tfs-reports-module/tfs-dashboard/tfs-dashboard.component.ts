@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
@@ -30,7 +30,6 @@ export class TfsDashboardComponent implements OnInit {
   period = 'current';
   settingClosed: Subject<void> = new Subject<void>();
   cogIcon = faCog;
-  showSettingBtn = true;
 
   constructor(
     private cacheService: CacheService,
@@ -82,10 +81,7 @@ export class TfsDashboardComponent implements OnInit {
   }
 
   openedChangeHandler($open: boolean) {
-    if ($open) {
-      this.showSettingBtn = false;
-    } else {
-      this.showSettingBtn = true;
+    if (!$open) {
       this.settingClosed.next();
       location.reload();
     }
@@ -95,10 +91,4 @@ export class TfsDashboardComponent implements OnInit {
     this.cacheService.clearCache();
     this.getProjectDashboard();
   }
-
-  // reload() {
-  //   // Emit event to setting component and reload
-  //   this.settingClosed.next();
-  //   location.reload();
-  // }
 }
