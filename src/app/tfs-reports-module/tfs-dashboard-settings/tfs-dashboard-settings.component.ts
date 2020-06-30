@@ -4,6 +4,7 @@ import { Settings } from 'src/app/types';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CacheService } from 'src/app/services/cache.service';
 import { Observable } from 'rxjs';
+import { pairwise } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tfs-dashboard-settings',
@@ -16,7 +17,6 @@ export class TfsDashboardSettingsComponent implements OnInit {
   tfsprojectK: any;
   savedValues: {} | undefined;
   projects: Project[] = [];
-
 
   constructor(
     private settingService: SettingService,
@@ -85,16 +85,15 @@ export class TfsDashboardSettingsComponent implements OnInit {
       this.settingService.updateSettings(settings).subscribe(
         resp => {
           if (resp == 1) {
-            this.matSnackBar.open("Settings Saved", null, { duration: 3000, horizontalPosition: 'left' });
+            this.matSnackBar.open('Settings Saved', null, { duration: 3000, horizontalPosition: 'left' });
             this.savedValues = settings.tfsProjTeams;
             this.settingService.clearCache();
             this.cacheService.clearCache();
             window.location.reload();
           }
           else {
-            this.matSnackBar.open("Error in updating settings", null, { duration: 3000, horizontalPosition: 'left' });
+            this.matSnackBar.open('Error in updating settings', null, { duration: 3000, horizontalPosition: 'left' });
           }
-
         }
       );
     }
@@ -102,13 +101,13 @@ export class TfsDashboardSettingsComponent implements OnInit {
       this.settingService.addSettings(settings).subscribe(
         resp => {
           if (resp == 1) {
-            this.matSnackBar.open("Settings Added", null, { duration: 3000, horizontalPosition: 'left' });
+            this.matSnackBar.open('Settings Added', null, { duration: 3000, horizontalPosition: 'left' });
             this.settingService.clearCache();
             this.cacheService.clearCache();
             window.location.reload();
           }
           else {
-            this.matSnackBar.open("Error in adding settings", null, { duration: 3000, horizontalPosition: 'left' });
+            this.matSnackBar.open('Error in adding settings', null, { duration: 3000, horizontalPosition: 'left' });
           }
         }
       );

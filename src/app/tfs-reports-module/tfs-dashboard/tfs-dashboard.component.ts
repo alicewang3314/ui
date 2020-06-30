@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 import { faSyncAlt } from '@fortawesome/free-solid-svg-icons'
 
 import { IterationReport } from 'src/app/dto/iterationReport';
@@ -13,12 +13,11 @@ import { Settings } from 'src/app/types';
 //import { iterationReport as report } from 'src/app/mock';
 
 @Component({
-  selector: "app-tfs-dashboard",
-  templateUrl: "./tfs-dashboard.component.html",
-  styleUrls: ["./tfs-dashboard.component.css"]
+  selector: 'app-tfs-dashboard',
+  templateUrl: './tfs-dashboard.component.html',
+  styleUrls: ['./tfs-dashboard.component.css']
 })
 export class TfsDashboardComponent implements OnInit {
-  @Input() events: Observable<void>;
   // TODO: remove dev config
   // iterationReport: any;
   iterationReport: IterationReport;
@@ -28,6 +27,7 @@ export class TfsDashboardComponent implements OnInit {
   userSettings: Settings = {};
   refreshIcon = faSyncAlt;
   period = 'current';
+  settingClosed: Subject<void> = new Subject<void>();
 
   constructor(
     private cacheService: CacheService,
@@ -78,6 +78,7 @@ export class TfsDashboardComponent implements OnInit {
   }
 
   reload() {
+    this.settingClosed.next();
     location.reload();
   }
 }

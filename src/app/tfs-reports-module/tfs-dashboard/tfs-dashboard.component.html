@@ -3,7 +3,7 @@
 </div>
 <mat-drawer-container class="tfs-tasks-container" [hasBackdrop]="true">
   <mat-drawer #drawer mode="over" (closedStart)="reload()">
-    <app-tfs-dashboard-settings> </app-tfs-dashboard-settings>
+    <app-tfs-dashboard-settings [settingClosed]="settingClosed.asObservable()"> </app-tfs-dashboard-settings>
   </mat-drawer>
   <mat-drawer-content>
     <!-- settings -->
