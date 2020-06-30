@@ -10,7 +10,7 @@ import { SettingService } from 'src/app/services/setting.service';
 import { StatusService } from 'src/app/services/status.servie';
 import { Settings } from 'src/app/types';
 //TODO: cleanup dev support
-import { iterationReport as report } from 'src/app/mock';
+// import { iterationReport as report } from 'src/app/mock';
 
 @Component({
   selector: 'app-tfs-dashboard',
@@ -19,8 +19,8 @@ import { iterationReport as report } from 'src/app/mock';
 })
 export class TfsDashboardComponent implements OnInit {
   // TODO: remove dev config
-  iterationReport: any;
-  // iterationReport: IterationReport;
+  // iterationReport: any;
+  iterationReport: IterationReport;
   allPendingReport: IterationReport;
   showSpinner = false;
   activeTabIndex: number;
@@ -42,7 +42,7 @@ export class TfsDashboardComponent implements OnInit {
   ngOnInit() {
     this.getProjectDashboard();
     //TODO: remove dev setup
-    this.iterationReport = report;
+    // this.iterationReport = report;
   }
 
   getProjectDashboard() {
