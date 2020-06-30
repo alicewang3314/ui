@@ -2,12 +2,14 @@
   <mat-spinner></mat-spinner>
 </div>
 <mat-drawer-container class="tfs-tasks-container" [hasBackdrop]="true">
-  <mat-drawer #drawer mode="over" (closedStart)="reload()">
+  <mat-drawer #drawer mode="over" (openedChange)="openedChangeHandler($event)">
     <app-tfs-dashboard-settings [settingClosed]="settingClosed.asObservable()"> </app-tfs-dashboard-settings>
   </mat-drawer>
   <mat-drawer-content>
     <!-- settings -->
-    <button mat-raised-button (click)="drawer.toggle()">Project setting</button>
+    <button [class]="{'setting': true, 'hide': !showSettingBtn}" (click)="drawer.toggle()">
+      <fa-icon [icon]="cogIcon"></fa-icon>
+    </button>
     <mat-radio-group [(ngModel)]="period" (change)="getProjectDashboard()">
       <mat-radio-button value="current">Current Iteration</mat-radio-button>
       <mat-radio-button value="all">All Pending</mat-radio-button>

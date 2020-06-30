@@ -9,6 +9,7 @@ import { CacheService } from 'src/app/services/cache.service';
 import { SettingService } from 'src/app/services/setting.service';
 import { StatusService } from 'src/app/services/status.servie';
 import { Settings } from 'src/app/types';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
 //TODO: cleanup dev support
 // import { iterationReport as report } from 'src/app/mock';
 
@@ -28,6 +29,8 @@ export class TfsDashboardComponent implements OnInit {
   refreshIcon = faSyncAlt;
   period = 'current';
   settingClosed: Subject<void> = new Subject<void>();
+  cogIcon = faCog;
+  showSettingBtn = true;
 
   constructor(
     private cacheService: CacheService,
@@ -50,13 +53,14 @@ export class TfsDashboardComponent implements OnInit {
       this.userSettings = s;
 
       if (this.userSettings && this.userSettings.tfsProjTeams) {
+
         if (this.period === 'current') {
           this.cacheService.getIterationReport(this.userSettings.tfsProjTeams).subscribe(
             resp => this.iterationReport = resp
           );
         } else {
           this.cacheService.getAllPendingReport(this.userSettings.tfsProjTeams).subscribe(
-            resp => this.iterationReport = resp
+            resp => this.allPendingReport = resp
           );
         }
       }
@@ -77,13 +81,24 @@ export class TfsDashboardComponent implements OnInit {
     });
   }
 
+  openedChangeHandler($open: boolean) {
+    if ($open) {
+      this.showSettingBtn = false;
+    } else {
+      this.showSettingBtn = true;
+      this.settingClosed.next();
+      location.reload();
+    }
+  }
+
   refresh() {
     this.cacheService.clearCache();
     this.getProjectDashboard();
   }
 
-  reload() {
-    this.settingClosed.next();
-    location.reload();
-  }
+  // reload() {
+  //   // Emit event to setting component and reload
+  //   this.settingClosed.next();
+  //   location.reload();
+  // }
 }

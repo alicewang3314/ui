@@ -24,9 +24,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTreeModule } from '@angular/material/tree';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { ChangesetReportComponent } from './changeset-report/changeset-report.component';
 import { BugReportComponent } from './bug-report/bug-report.component';
@@ -41,13 +41,15 @@ import { ProjectResourceComponent } from './project-resource/project-resource.co
 import { ResourceStatisticsComponent } from './resource-statistics/resource-statistics.component';
 import { TfsDashboardSettingsComponent } from './tfs-dashboard-settings/tfs-dashboard-settings.component';
 
-import { TFSReportRoutingModule } from './tfs-report.routing.module';
-
 import { IterationService } from "src/app/services/iteration.service";
 import { IterationReport } from "src/app/dto/iterationReport";
 import { CacheService } from "src/app/services/cache.service";
 import { SettingService } from 'src/app/services/setting.service';
 import { StatusService } from 'src/app/services/status.servie';
+
+import { TFSReportRoutingModule } from './tfs-report.routing.module';
+
+
 
 @NgModule({
   declarations: [

@@ -49,3 +49,19 @@ mat-drawer {
   display: flex;
   background-color: #000000b7;
 }
+
+.setting {
+  display: block;
+  position: fixed;
+  background-color: #7b1fa2;
+  color: white;
+  border: 0;
+  top: 25vh;
+  width: 30px;
+  height: 60px;
+  border-radius: 0 10px 10px 0;
+}
+
+.setting.hide {
+  display: none;
+}
