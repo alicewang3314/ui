@@ -51,17 +51,21 @@ export class TfsDashboardComponent implements OnInit {
     this.settingService.getProjectsTeamsFromDb().subscribe(s => {
       this.userSettings = s;
 
-      if (this.userSettings && this.userSettings.tfsProjTeams) {
+      if (!this.userSettings || !this.userSettings.tfsProjTeams) return;
 
-        if (this.period === 'current') {
-          this.cacheService.getIterationReport(this.userSettings.tfsProjTeams).subscribe(
-            resp => this.iterationReport = resp
-          );
-        } else {
-          this.cacheService.getAllPendingReport(this.userSettings.tfsProjTeams).subscribe(
-            resp => this.allPendingReport = resp
-          );
-        }
+      const config = this.userSettings.tfsProjTeams;
+
+      if (this.period === 'current') {
+        this.cacheService.getIterationReport(config).subscribe(
+          resp => {
+            this.iterationReport = resp;
+            console.log('curr', resp);
+          }
+        );
+      } else {
+        this.cacheService.getAllPendingReport(config).subscribe(
+          resp => this.allPendingReport = resp
+        );
       }
     });
   }

@@ -38,7 +38,6 @@ export class CacheService {
   getAllPendingReport(data: any): Observable<IterationReport> {
 
     if (!this.observableAllPending) {
-
       this.observableAllPending = this.iterationService.getAllPending2(data).pipe(
         publishReplay(1),
         refCount()
