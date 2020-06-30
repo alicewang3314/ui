@@ -1,17 +1,14 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { Router } from "@angular/router";
-import { MatDialog } from "@angular/material/dialog";
-import { Observable } from "rxjs";
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 import { faSyncAlt } from '@fortawesome/free-solid-svg-icons'
 
-import { IterationReport } from "src/app/dto/iterationReport";
-import { CacheService } from "src/app/services/cache.service";
+import { IterationReport } from 'src/app/dto/iterationReport';
+import { CacheService } from 'src/app/services/cache.service';
 import { SettingService } from 'src/app/services/setting.service';
 import { StatusService } from 'src/app/services/status.servie';
-
 import { Settings } from 'src/app/types';
-//import { userInfo } from "os";
-
 //TODO: cleanup dev support
 //import { iterationReport as report } from 'src/app/mock';
 
@@ -22,20 +19,12 @@ import { Settings } from 'src/app/types';
 })
 export class TfsDashboardComponent implements OnInit {
   @Input() events: Observable<void>;
-  @Input("Tasks") Tasks$;
-
   // TODO: remove dev config
   // iterationReport: any;
   iterationReport: IterationReport;
   allPendingReport: IterationReport;
-  showSpinner: boolean = false;
+  showSpinner = false;
   activeTabIndex: number;
-  indexVal;
-  projectDetail: any;
-  newdata = [];
-  missingValues = [];
-  checkedValues = [];
-  apiValues = [];
   userSettings: Settings = {};
   refreshIcon = faSyncAlt;
   period = 'current';
@@ -57,61 +46,28 @@ export class TfsDashboardComponent implements OnInit {
   }
 
   getProjectDashboard() {
-    if (this.period === 'current') {
-      this.settingService.getProjectsTeamsFromDb().subscribe(
-        s => {
-          this.userSettings = s;
+    this.settingService.getProjectsTeamsFromDb().subscribe(s => {
+      this.userSettings = s;
 
-          if (this.userSettings && this.userSettings.tfsProjTeams) {
-            this.cacheService.getIterationReport(this.userSettings.tfsProjTeams).subscribe(
-              resp => this.iterationReport = resp
-            );
-          }
-        }
-      );
-    } else {
-      this.settingService.getProjectsTeamsFromDb().subscribe(
-        s => {
-          this.userSettings = s;
-
-          if (this.userSettings && this.userSettings.tfsProjTeams) {
-            this.cacheService.getAllPendingReport(this.userSettings.tfsProjTeams).subscribe(
-              resp => {
-                this.allPendingReport = resp;
-              }
-            );
-          }
-        }
-      );
-    }
+      if (this.userSettings && this.userSettings.tfsProjTeams) {
+        const src = this.period === 'current' ? this.cacheService.getIterationReport : this.cacheService.getAllPendingReport;
+        src(this.userSettings.tfsProjTeams).subscribe(
+          resp => this.iterationReport = resp
+        );
+      }
+    });
   }
 
-  BacktoList() {
-    this.router.navigate(["/tfsDashHome"]);
-  }
-
-  getReport(title: string) {
-    this.router.navigate(["/dashboard/project", title], {
+  goToResourceStats() {
+    this.cacheService.singleDetails = this.cacheService.data;
+    this.router.navigate(['/tfs-dashboard/resource-stats'], {
       queryParams: { current: 1 }
     });
   }
 
-  getPendingReport(title: string) {
-    this.router.navigate(["/tfs-dashboard/project", title], {
-      queryParams: { current: 0 }
-    });
-  }
-
-  GoToResourceStats() {
+  goToPendingResourceStats() {
     this.cacheService.singleDetails = this.cacheService.data;
-    this.router.navigate(["/tfs-dashboard/resource-stats"], {
-      queryParams: { current: 1 }
-    });
-  }
-
-  GoToPendingResourceStats() {
-    this.cacheService.singleDetails = this.cacheService.data;
-    this.router.navigate(["/tfs-dashboard/resource-stats"], {
+    this.router.navigate(['/tfs-dashboard/resource-stats'], {
       queryParams: { current: 0 }
     });
   }
@@ -121,19 +77,7 @@ export class TfsDashboardComponent implements OnInit {
     this.getProjectDashboard();
   }
 
-  onTabChange(index: number) {
-    // this.cacheService.selectedTabIndex = index;
-    this.status.activeTabIndex = index;
-    this.getProjectDashboard();
-  }
-
-  updateDashboard() {
-    console.log('update dashboard');
-    this.getProjectDashboard();
-  }
-
   reload() {
-    console.log('reload');
-    // location.reload();
+    location.reload();
   }
 }

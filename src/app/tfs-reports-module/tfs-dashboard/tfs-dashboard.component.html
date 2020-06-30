@@ -1,7 +1,6 @@
 <div class="spinner" *ngIf="showSpinner">
   <mat-spinner></mat-spinner>
 </div>
-
 <mat-drawer-container class="tfs-tasks-container" [hasBackdrop]="true">
   <mat-drawer #drawer mode="over" (closedStart)="reload()">
     <app-tfs-dashboard-settings> </app-tfs-dashboard-settings>
@@ -9,93 +8,49 @@
   <mat-drawer-content>
     <!-- settings -->
     <button mat-raised-button (click)="drawer.toggle()">Project setting</button>
-    <mat-radio-group [(ngModel)]="period" (change)="updateDashboard()">
+    <mat-radio-group [(ngModel)]="period" (change)="getProjectDashboard()">
       <mat-radio-button value="current">Current Iteration</mat-radio-button>
       <mat-radio-button value="all">All Pending</mat-radio-button>
     </mat-radio-group>
     <!-- current iteration -->
-    <div class="tfs-report-container" *ngIf="period === 'current'">
-      <div class="dashboard-buttons" *ngIf="iterationReport">
-        <button mat-raised-button color="primary" (click)="refresh()">
-          <span aria-hidden="true">
-            <fa-icon [icon]="refreshIcon"></fa-icon>
-          </span>
-        </button>
-        <button mat-raised-button color="primary" (click)="GoToResourceStats()">
-          View By Resource
-        </button>
-      </div>
-      <div *ngIf="iterationReport" class="row row-cols-3">
-        <div class="col" *ngFor="let team of iterationReport.teams">
-          <tfs-report-card [name]="'current'" [team]="team"></tfs-report-card>
+    <div *ngIf="period === 'current'" class="tfs-report-container">
+      <ng-container *ngIf="iterationReport">
+        <div class="dashboard-buttons">
+          <button mat-raised-button color="primary" (click)="refresh()">
+            <span aria-hidden="true">
+              <fa-icon [icon]="refreshIcon"></fa-icon>
+            </span>
+          </button>
+          <button mat-raised-button color="primary" (click)="goToResourceStats()">
+            View By Resource
+          </button>
         </div>
-      </div>
+        <div class="row row-cols-3">
+          <div class="col" *ngFor="let team of iterationReport.teams">
+            <tfs-report-card [name]="period" [team]="team"></tfs-report-card>
+          </div>
+        </div>
+      </ng-container>
       <div *ngIf="!iterationReport" class="status-message"> Please add teams using TFS Team settings</div>
     </div>
     <!-- all iteration -->
     <div class="tfs-report-container" *ngIf="period === 'all'">
-      <div class="dashboard-buttons" *ngIf="allPendingReport">
-        <button mat-raised-button color="primary" (click)="refresh()">
-          <fa-icon [icon]="refreshIcon"></fa-icon>
-        </button>
-        <button mat-raised-button color="primary" (click)="GoToPendingResourceStats()">
-          View By Resource
-        </button>
-      </div>
-      <div *ngIf="allPendingReport" class="row row-cols-3">
-        <div class="col" *ngFor="let team of allPendingReport.teams">
-          <tfs-report-card [name]="'all'" [team]="team"></tfs-report-card>
+      <ng-container *ngIf="allPendingReport">
+        <div class="dashboard-buttons">
+          <button mat-raised-button color="primary" (click)="refresh()">
+            <fa-icon [icon]="refreshIcon"></fa-icon>
+          </button>
+          <button mat-raised-button color="primary" (click)="goToPendingResourceStats()">
+            View By Resource
+          </button>
         </div>
-      </div>
+        <div class="row row-cols-3">
+          <div class="col" *ngFor="let team of allPendingReport.teams">
+            <tfs-report-card [name]="period" [team]="team"></tfs-report-card>
+          </div>
+        </div>
+      </ng-container>
       <div *ngIf="!allPendingReport" class="status-message"> No data for selected projects.</div>
     </div>
   </mat-drawer-content>
 </mat-drawer-container>
-
-<!-- 
-<mat-tab-group mat-align-tabs="center" [selectedIndex]="activeTabIndex" (selectedTabChange)="onTabChange($event.index)">
-  <mat-tab label="Current Iteration">
-    <div class="tfs-report-container">
-      <div *ngIf="iterationReport" class="dashboard-buttons">
-        <button mat-raised-button color="primary" (click)="refresh()">
-          <span aria-hidden="true">
-            <fa-icon [icon]="refreshIcon"></fa-icon>
-          </span>
-        </button>
-        <button mat-raised-button color="primary" (click)="GoToResourceStats()">
-          View By Resource
-        </button>
-      </div>
-      <div class="row row-cols-3">
-        <ng-container *ngIf="iterationReport">
-          <div class="col" *ngFor="let team of iterationReport.teams">
-            <tfs-report-card [name]="'current'" [team]="team"></tfs-report-card>
-          </div>
-        </ng-container>
-
-        <ng-container *ngIf="!iterationReport">
-          <div class="add-message"> Please add teams using TFS Team settings</div>
-        </ng-container>
-      </div>
-    </div>
-  </mat-tab>
-  <mat-tab label="All Pending">
-    <div class="tfs-report-container">
-      <div *ngIf="allPendingReport" class="dashboard-buttons">
-        <button mat-raised-button color="primary" (click)="refresh()">
-          <fa-icon [icon]="refreshIcon"></fa-icon>
-        </button>
-        <button mat-raised-button color="primary" (click)="GoToPendingResourceStats()">
-          View By Resource
-        </button>
-      </div>
-      <div class="row row-cols-3">
-        <ng-container *ngIf="allPendingReport">
-          <div class="col" *ngFor="let team of allPendingReport.teams">
-            <tfs-report-card [name]="'all'" [team]="team"></tfs-report-card>
-          </div>
-        </ng-container>
-      </div>
-    </div>
-  </mat-tab>
-</mat-tab-group> -->

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { SettingService } from 'src/app/services/setting.service';
 import { Settings } from 'src/app/types';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CacheService } from 'src/app/services/cache.service';
-import { Location } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-tfs-dashboard-settings',
@@ -11,15 +11,17 @@ import { Location } from '@angular/common';
   styleUrls: ['./tfs-dashboard-settings.component.css'],
 })
 export class TfsDashboardSettingsComponent implements OnInit {
+  @Input() settingClosed: Observable<void>;
+
   tfsprojectK: any;
   savedValues: {} | undefined;
   projects: Project[] = [];
 
+
   constructor(
     private settingService: SettingService,
     private cacheService: CacheService,
-    private matSnackBar: MatSnackBar,
-    private location: Location) { }
+    private matSnackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.settingService.getProjectsFromTFS().subscribe(
@@ -58,9 +60,11 @@ export class TfsDashboardSettingsComponent implements OnInit {
         );
       }
     );
+
+    this.settingClosed.subscribe(() => this.save());
   }
 
-  Save() {
+  save() {
     let selectedProjsTeams = {};
     this.projects.forEach(project => {
       project.teams.forEach(team => {
