@@ -10,7 +10,7 @@ import { SettingService } from 'src/app/services/setting.service';
 import { StatusService } from 'src/app/services/status.servie';
 import { Settings } from 'src/app/types';
 //TODO: cleanup dev support
-//import { iterationReport as report } from 'src/app/mock';
+import { iterationReport as report } from 'src/app/mock';
 
 @Component({
   selector: 'app-tfs-dashboard',
@@ -19,8 +19,8 @@ import { Settings } from 'src/app/types';
 })
 export class TfsDashboardComponent implements OnInit {
   // TODO: remove dev config
-  // iterationReport: any;
-  iterationReport: IterationReport;
+  iterationReport: any;
+  // iterationReport: IterationReport;
   allPendingReport: IterationReport;
   showSpinner = false;
   activeTabIndex: number;
@@ -42,7 +42,7 @@ export class TfsDashboardComponent implements OnInit {
   ngOnInit() {
     this.getProjectDashboard();
     //TODO: remove dev setup
-    //   this.iterationReport = report;
+    this.iterationReport = report;
   }
 
   getProjectDashboard() {
@@ -50,10 +50,15 @@ export class TfsDashboardComponent implements OnInit {
       this.userSettings = s;
 
       if (this.userSettings && this.userSettings.tfsProjTeams) {
-        const src = this.period === 'current' ? this.cacheService.getIterationReport : this.cacheService.getAllPendingReport;
-        src(this.userSettings.tfsProjTeams).subscribe(
-          resp => this.iterationReport = resp
-        );
+        if (this.period === 'current') {
+          this.cacheService.getIterationReport(this.userSettings.tfsProjTeams).subscribe(
+            resp => this.iterationReport = resp
+          );
+        } else {
+          this.cacheService.getAllPendingReport(this.userSettings.tfsProjTeams).subscribe(
+            resp => this.iterationReport = resp
+          );
+        }
       }
     });
   }
