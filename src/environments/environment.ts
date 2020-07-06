@@ -4,15 +4,9 @@
 
 export const environment = {
   production: false,
-  // baseUrl:"http://crtecdev0108783/tfsapi",
-  // baseUrl:"http://crtecdev0308265.pa.lcl/TfsApi",
-  // baseUrl: "http://localhost:25670",
-  // baseUrl: "http://crtecdv0111429d.pa.lcl"
-  //baseLogApiUrl:"http://localhost:26839",
-  baseUrl:'http://capmon.cor.state.pa.us/TFSAPI',
-  baseLogApiUrl: '',
+  baseUrl:'http://capmon.cor.state.pa.us/TFSAPI/api',
+  baseLogApiUrl:'',
   kibanaUrl: 'http://crtecdev0108783.pa.lcl:5601',
-  TFSDashBSetting: "TfsDashBProjsTeams",
 };
 
 /*

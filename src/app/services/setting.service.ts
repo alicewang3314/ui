@@ -23,7 +23,7 @@ export class SettingService {
 
 
   getProjectsFromTFS(): Observable<TfsProject[]> {
-    let url_ = environment.baseUrl + APIS.TFS_PROJECT_SETTING;
+    let url_ = environment.baseUrl + APIS.TFS_PROJECT;
 
     let options_: any = {
       observe: "response",

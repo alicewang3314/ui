@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {
   HttpClient,
   HttpHeaders,
-  HttpErrorResponse,
   HttpResponse,
   HttpResponseBase
 } from "@angular/common/http";
@@ -16,21 +15,6 @@ import { environment } from "src/environments/environment";
 export class TfsReportService {
 
   constructor(private http: HttpClient) { }
-
-  getChangesetReport(fromDate: Date, toDate: Date, project: string, path: string): Observable<any> {
-    let url_ = environment.baseUrl + "/api/Changesets/Report?";
-    url_ += `from=${fromDate.toISOString()}&to=${toDate.toISOString()}&project=${project}&path=${path}`;
-
-    const httpOptions = {
-      headers: new HttpHeaders({
-        "Content-Type": "application/json"
-      }),
-      observe: 'response' as 'response',
-      responseType: 'blob' as 'json'
-    };
-
-    return this.http.get(url_, httpOptions);
-  }
 
   apiChangesetsReport(from: Date | undefined, to: Date | undefined, project: string | null | undefined, path: string | null | undefined): Observable<FileResponse> {
     let url_ = environment.baseUrl + "/api/Changesets/Report?";
@@ -117,7 +101,7 @@ export class TfsReportService {
           return <Observable<FileResponse>><any>_observableThrow(response_);
       }));
   }
-  
+
   apiBugsChangesetsReportGet(idsCommaSeparated: string | null): Observable<FileResponse> {
     let url_ = environment.baseUrl + "/api/Bugs/Changesets/Report/{idsCommaSeparated}";
     if (idsCommaSeparated === undefined || idsCommaSeparated === null)

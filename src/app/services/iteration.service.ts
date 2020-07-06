@@ -27,7 +27,7 @@ export class IterationService {
   }
 
   getCurrent2(userSettings): Observable<IterationReport> {
-    let url_ = this.baseUrl + "/api/Iteration/Current2";
+    let url_ = this.baseUrl + "/Iteration/Current2";
 
     //const content_ = JSON.stringify(userSettings);
     const content = userSettings;
@@ -65,7 +65,7 @@ export class IterationService {
 
   getAllPending2(userSettings) {
 
-    let url_ = this.baseUrl + "/api/Iteration/AllPending2";
+    let url_ = this.baseUrl + "/Iteration/AllPending2";
     const content = userSettings;
 
     let options_: any = {
