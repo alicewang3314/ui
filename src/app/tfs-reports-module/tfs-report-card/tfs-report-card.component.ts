@@ -26,16 +26,16 @@ export class TFSReportCardComponent {
   get team(): any {
     return this._team;
   }
-  
+
   get isValidReport(): boolean {
-    return this._name === 'all' ?
-      !!this.team.currentTasks :
-      this.team.currentTasks && this.team.iteration
+    return this._name === 'all'
+      ? !!this.team.currentTasks
+      : this.team.currentTasks && this.team.iteration;
   }
 
   getReport(title: string) {
-    this.router.navigate(["/tfs-dashboard/project", title], {
-      queryParams: { current: 1 }
+    this.router.navigate(['/tfs-dashboard/project', title], {
+      queryParams: { current: this._name === 'current' ? 1 : 2 }
     });
   }
 }

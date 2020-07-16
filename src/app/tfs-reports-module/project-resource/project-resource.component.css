@@ -1,18 +1,23 @@
-table{
-    width: 100%;
+.project-resource-container {
+  width: 70%;
+  margin: 2em auto;
 }
 
-.title{
-    width: 100%;
-    text-align: center;
-    color: rgb(255, 255, 255, .7);
+table {
+  width: 100%;
 }
 
-.projTitle{
-    color: white;
-    font-size: larger;
+.title {
+  width: 100%;
+  text-align: center;
+  color: rgb(255, 255, 255, .7);
+}
+
+.projTitle {
+  color: white;
+  font-size: larger;
 }
 
 th.mat-sort-header-sorted {
-    color: black;
-  }
+  color: black;
+}

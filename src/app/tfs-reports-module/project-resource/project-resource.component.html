@@ -1,7 +1,8 @@
-<div class="title">
-    <span class="projTitle">View By Resource</span>
-     <br>{{iterationType}}
+<div class="project-resource-container">
+    <div class="title">
+        <span class="projTitle">View By Resource</span>
+        <br>{{iterationType}}
+    </div>
+    <app-resource-statistics [resourceStatsData]="resourceStatsData">
+    </app-resource-statistics>
 </div>
-
-<app-resource-statistics [resourceStatsData]="resourceStatsData">
-</app-resource-statistics>

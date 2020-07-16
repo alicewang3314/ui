@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
 import { faSyncAlt } from '@fortawesome/free-solid-svg-icons'
 
 import { IterationReport } from 'src/app/dto/iterationReport';
-import { CacheService } from 'src/app/services/cache.service';
-import { SettingService } from 'src/app/services/setting.service';
 import { StatusService } from 'src/app/services/status.servie';
 import { Settings } from 'src/app/types';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 //TODO: cleanup dev support
 // import { iterationReport as report } from 'src/app/mock';
+
+import { TfsService } from '../tfs.service';
 
 @Component({
   selector: 'app-tfs-dashboard',
@@ -32,11 +31,10 @@ export class TfsDashboardComponent implements OnInit {
   cogIcon = faCog;
 
   constructor(
-    private cacheService: CacheService,
-    private settingService: SettingService,
+    //private cacheService: CacheService,
     private router: Router,
-    public dialog: MatDialog,
     private status: StatusService,
+    private tfs: TfsService,
   ) {
     this.status.getActiveTabIndex().subscribe(index => this.activeTabIndex = index);
   }
@@ -48,37 +46,32 @@ export class TfsDashboardComponent implements OnInit {
   }
 
   getProjectDashboard() {
-    this.settingService.getProjectsTeamsFromDb().subscribe(s => {
-      this.userSettings = s;
+    this.tfs.getSetting().subscribe(setting => {
+      this.userSettings = setting;
 
       if (!this.userSettings || !this.userSettings.tfsProjTeams) return;
 
       const config = this.userSettings.tfsProjTeams;
 
       if (this.period === 'current') {
-        this.cacheService.getIterationReport(config).subscribe(
-          resp => {
-            this.iterationReport = resp;
-            console.log('curr', resp);
-          }
-        );
-      } else {
-        this.cacheService.getAllPendingReport(config).subscribe(
-          resp => this.allPendingReport = resp
-        );
+        this.tfs.getCurrent(config).subscribe(
+          report => this.iterationReport = report
+        )
+      } else if (this.period === 'all') {
+        this.tfs.getAll(config).subscribe(
+          report => this.allPendingReport = report
+        )
       }
-    });
+    })
   }
 
   goToResourceStats() {
-    this.cacheService.singleDetails = this.cacheService.data;
     this.router.navigate(['/tfs-dashboard/resource-stats'], {
       queryParams: { current: 1 }
     });
   }
 
   goToPendingResourceStats() {
-    this.cacheService.singleDetails = this.cacheService.data;
     this.router.navigate(['/tfs-dashboard/resource-stats'], {
       queryParams: { current: 0 }
     });
@@ -87,12 +80,11 @@ export class TfsDashboardComponent implements OnInit {
   openedChangeHandler($open: boolean) {
     if (!$open) {
       this.settingClosed.next();
-      location.reload();
+      this.refresh();
     }
   }
 
   refresh() {
-    this.cacheService.clearCache();
     this.getProjectDashboard();
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { CacheService } from 'src/app/services/cache.service';
 import { ActivatedRoute } from "@angular/router";
 import { ResourceStats } from "src/app/dto/iterationReport";
+import { TfsService } from '../tfs.service';
 
 @Component({
   selector: "app-project-resource",
@@ -13,31 +13,29 @@ export class ProjectResourceComponent implements OnInit {
   iterationType: string;
 
   constructor(
-    private cacheService: CacheService,
-    private route: ActivatedRoute
-  ) {}
+    private route: ActivatedRoute,
+    private tfs: TfsService,
+  ) { }
 
   ngOnInit() {
-    //console.log(this.cacheService.data);
-    let current;
     this.route.queryParams.subscribe(q => {
-      current = q["current"];
-      if (current === "1") {
-        this.cacheService
-          .getIterationReport(this.cacheService.singleDetails)
-          .subscribe(resp => {
-            this.iterationType = "Current Iteration";
-            this.resourceStatsData = resp.resourcesStats;
-            //console.log(this.resourceStatsData);
+      const current = q['current'];
+
+      this.tfs.getSetting().subscribe(setting => {
+
+        if (current === '1') {
+          this.tfs.getCurrent(setting['tfsProjTeams'] || {}).subscribe(report => {
+            this.iterationType = 'Current Iteration';
+            this.resourceStatsData = report.resourcesStats;
           });
-      } else {
-        this.cacheService
-          .getAllPendingReport(this.cacheService.singleDetails)
-          .subscribe(resp => {
+        } else {
+          this.tfs.getAll(setting['tfsProjTeams'] || {}).subscribe(report => {
             this.iterationType = "All Pending";
-            this.resourceStatsData = resp.resourcesStats;
+            this.resourceStatsData = report.resourcesStats;
           });
-      }
+        }
+
+      });
     });
   }
 }

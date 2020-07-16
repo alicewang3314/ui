@@ -3,6 +3,10 @@
   margin: auto;
 }
 
+.project-details-container {
+  margin: 2em auto;
+}
+
 .control-wrapper_project-detials {
   display: flex;
   justify-content: space-between;

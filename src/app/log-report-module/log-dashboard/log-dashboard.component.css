@@ -1,22 +1,14 @@
-.field-container {
+.setting-container {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
   height: 15vh;
-  border-bottom: 1px;
 }
 
 .field {
-  /* flex-basis: auto; */
   margin-right: 15px;
   align-self: center;
-}
-
-.fieldButton {
-  height: 33px;
-  margin: 10px;
-  flex-basis: 55px;
 }
 
 .error-logs-container {

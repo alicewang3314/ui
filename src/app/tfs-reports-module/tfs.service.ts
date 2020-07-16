@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { APIS } from 'src/app/constants';
-import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+
+import { APIS } from 'src/app/constants';
+import { environment } from 'src/environments/environment';
 import handleError from 'src/app/http-error-handler';
-import { TfsReportsModule } from './tfs-reports.module';
 
 @Injectable({
-  providedIn: TfsReportsModule
+  providedIn: 'root'
 })
 export class TfsService {
 
   constructor(private http: HttpClient) { }
 
   getCurrent(setting: any): Observable<any> {
-    const url = environment + APIS.CURRENT_ITERATION;
+    const url = environment.baseUrl + APIS.CURRENT_ITERATION;
     const options = {
       headers: {
         'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ export class TfsService {
   }
 
   getAll(setting: any): Observable<any> {
-    const url = environment + APIS.ALL_ITERATIONS;
+    const url = environment.baseUrl + APIS.ALL_ITERATIONS;
     const options = {
       headers: {
         'Content-Type': 'application/json',

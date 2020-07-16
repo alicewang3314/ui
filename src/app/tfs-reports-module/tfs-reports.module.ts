@@ -30,9 +30,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { ChangesetReportComponent } from './changeset-report/changeset-report.component';
 import { BugReportComponent } from './bug-report/bug-report.component';
-import { BugChangetReportComponent } from './bug-changet-report/bug-changet-report.component';
 import { BugTagReportComponent } from './bug-tag-report/bug-tag-report.component';
-import { ReportTitleComponent } from './common/report-title/report-title.component';
 import { ExportReportsComponent } from './export-reports/export-reports.component';
 import { TfsDashboardComponent } from './tfs-dashboard/tfs-dashboard.component';
 import { TFSReportCardComponent } from './tfs-report-card/tfs-report-card.component';
@@ -49,18 +47,14 @@ import { StatusService } from 'src/app/services/status.servie';
 
 import { TFSReportRoutingModule } from './tfs-report.routing.module';
 
-
-
 @NgModule({
   declarations: [
     BugReportComponent,
-    BugChangetReportComponent,
     BugTagReportComponent,
     ChangesetReportComponent,
     ExportReportsComponent,
     ProjectResourceComponent,
     ProjectDetailsComponent,
-    ReportTitleComponent,
     ResourceStatisticsComponent,
     TfsDashboardComponent,
     TFSReportCardComponent,
@@ -100,8 +94,7 @@ import { TFSReportRoutingModule } from './tfs-report.routing.module';
   ],
   exports: [
     BugReportComponent,
-    ReportTitleComponent,
-    TfsDashboardComponent
+    TfsDashboardComponent,
   ]
 })
 export class TfsReportsModule {

@@ -1,14 +1,12 @@
-<div>
-  <mat-accordion #acc>
-    <mat-expansion-panel *ngFor="let proj of projects">
-      <mat-expansion-panel-header>
-        {{proj.name}}
-      </mat-expansion-panel-header>
-      <mat-list>
-        <mat-list-item *ngFor="let team of proj.teams">
-          <mat-checkbox [(ngModel)]="team.selected" [value]="team.value">{{team.name}}</mat-checkbox>
-        </mat-list-item>
-      </mat-list>
-    </mat-expansion-panel>
-  </mat-accordion>
-</div>
+<mat-accordion #acc>
+  <mat-expansion-panel *ngFor="let proj of projects">
+    <mat-expansion-panel-header>
+      {{proj.name}}
+    </mat-expansion-panel-header>
+    <mat-list>
+      <mat-list-item *ngFor="let team of proj.teams">
+        <mat-checkbox [(ngModel)]="team.selected">{{team.name}}</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+</mat-accordion>
