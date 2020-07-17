@@ -1,7 +1,6 @@
 <div class="bug-dialog-wrapper">
   <h1 mat-dialog-title>Bug Details: {{data.title}}</h1>
   <div mat-dialog-content>
-
     <table mat-table #table [dataSource]="data.apps" style="height: auto;">
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef style="width:60px"> Id </th>
@@ -14,7 +13,6 @@
       <tr mat-header-row *matHeaderRowDef="['id', 'title']"></tr>
       <tr mat-row *matRowDef="let row; columns: ['id', 'title'];"></tr>
     </table>
-
   </div>
   <div mat-dialog-actions>
     <button mat-raised-button (click)="onCloseClick()">Close</button>

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { IterationService } from "./iteration.service";
-import { IterationReport } from "../dto/iterationReport";
+// import { IterationService } from "./iteration.service";
+// import { IterationReport } from "../dto/iterationReport";
 import { Observable, } from "rxjs";
 import { publishReplay, refCount } from "rxjs/operators";
 
@@ -8,12 +8,12 @@ import { publishReplay, refCount } from "rxjs/operators";
   providedIn: "root"
 })
 export class CacheService {
-  iterationReport: IterationReport;
-  observableIteration: Observable<IterationReport>;
+  iterationReport: any;
+  observableIteration: Observable<any>;
   data: any;
   singleDetails: any;
-  allPendingReport: IterationReport;
-  observableAllPending: Observable<IterationReport>;
+  allPendingReport: any;
+  observableAllPending: Observable<any>;
   observableBugsDashboardData: Observable<any>;
   noResult: any;
   selectedTabIndex: number = 0;

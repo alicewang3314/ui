@@ -5,8 +5,6 @@ import { ExceptionSearchComponent } from './exception-search/exception-search.co
 import { LogDashboardComponent } from './log-dashboard/log-dashboard.component';
 import { MostFrequentErrorsDashbComponent } from './most-frequent-errors-dashb/most-frequent-errors-dashb.component';
 import { MostFrequentExceptionsComponent } from './most-frequent-exceptions/most-frequent-exceptions.component';
-//import { MostFrequentDetailsDialogComponent } from './most-frequent-details-dialog/most-frequent-details-dialog.component';
-//import { LiveErrorLogsComponent } from './live-error-logs/live-error-logs.component';
 
 const routes: Routes = [
   {

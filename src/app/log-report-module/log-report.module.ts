@@ -8,9 +8,6 @@ import { MostFrequentErrorsDashbComponent } from './most-frequent-errors-dashb/m
 import { MostFrequentExceptionsComponent } from './most-frequent-exceptions/most-frequent-exceptions.component';
 import { LogDashboardComponent } from './log-dashboard/log-dashboard.component';
 
-//TODO: clean up components never used 
-//import { LiveErrorLogsComponent } from './live-error-logs/live-error-logs.component';
-
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';

@@ -2,24 +2,19 @@ import { Injectable } from '@angular/core';
 import {
   HttpClient,
   HttpHeaders,
-  HttpErrorResponse,
   HttpResponse
 } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
-import { MostFrequentLogs } from '../dto/MostFrequentLogs';
-import { LogData } from '../dto/LogData';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LogDataServiceService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) { }
 
-  }
-
-  getMostFrequentLogs(env: string, application: string): Observable<MostFrequentLogs[]> {
+  getMostFrequentLogs(env: string, application: string): Observable<any[]> {
     let url_ = environment.baseLogApiUrl + "/api/logdatas/MostFrequent?env=" + env + "&appNames=" + application;
     url_ = url_.replace(/[?&]$/, "");
 
@@ -29,15 +24,15 @@ export class LogDataServiceService {
       })
     };
 
-    return this.http.get<MostFrequentLogs[]>(url_, httpOptions);
+    return this.http.get<any[]>(url_, httpOptions);
   }
 
-  searchExceptions(env: string, application: string, fromDate: string, toDate: string, pageSize: number, pageNumber: number): Observable<HttpResponse<LogData[]>> {
-    let url_ = environment.baseLogApiUrl + "/api/logdatas/Search?env=" + env 
-    + "&appNames=" + application
-    + "&fromDate=" + fromDate
-    + "&toDate=" + toDate;
-    
+  searchExceptions(env: string, application: string, fromDate: string, toDate: string, pageSize: number, pageNumber: number): Observable<HttpResponse<any[]>> {
+    let url_ = environment.baseLogApiUrl + "/api/logdatas/Search?env=" + env
+      + "&appNames=" + application
+      + "&fromDate=" + fromDate
+      + "&toDate=" + toDate;
+
     url_ = url_.replace(/[?&]$/, "");
 
     var headers = new HttpHeaders({
@@ -46,7 +41,7 @@ export class LogDataServiceService {
       "pageNumber": pageNumber.toString()
     });
 
-    return this.http.get<LogData[]>(url_, { headers: headers, observe: 'response' });
+    return this.http.get<any[]>(url_, { headers: headers, observe: 'response' });
   }
 }
 

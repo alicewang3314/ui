@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { ResourceStats } from "src/app/dto/iterationReport";
 import { TfsService } from '../tfs.service';
 
 @Component({
@@ -9,7 +8,7 @@ import { TfsService } from '../tfs.service';
   styleUrls: ["./project-resource.component.css"]
 })
 export class ProjectResourceComponent implements OnInit {
-  resourceStatsData: ResourceStats[];
+  resourceStatsData: any[];
   iterationType: string;
 
   constructor(

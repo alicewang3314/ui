@@ -3,6 +3,13 @@
   margin: auto;
 }
 
+.setting-btn {
+  position: fixed;
+  top: 30vh;
+  min-width: 34px !important;
+  padding: 0 !important;
+}
+
 .setting-container {
   display: flex;
   flex-flow: row wrap;

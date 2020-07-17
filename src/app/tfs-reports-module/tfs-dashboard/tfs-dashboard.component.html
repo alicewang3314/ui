@@ -1,13 +1,13 @@
-<div class="spinner" *ngIf="showSpinner">
+<!-- <div class="spinner" *ngIf="showSpinner">
   <mat-spinner></mat-spinner>
-</div>
+</div> -->
 <mat-drawer-container class="tfs-tasks-container" [hasBackdrop]="true">
   <mat-drawer #drawer mode="over" (openedChange)="openedChangeHandler($event)">
     <app-tfs-dashboard-settings [settingClosed]="settingClosed.asObservable()"> </app-tfs-dashboard-settings>
   </mat-drawer>
   <mat-drawer-content>
     <!-- settings -->
-    <button (click)="drawer.toggle()">
+    <button mat-raised-button color="primary" class="setting-btn" (click)="drawer.toggle()">
       <fa-icon [icon]="cogIcon"></fa-icon>
     </button>
     <div class="setting-container">
@@ -19,10 +19,8 @@
         <button mat-raised-button color="primary" (click)="goToResourceStats()">
           View By Resource
         </button>
-        <button mat-raised-button color="primary" (click)="refresh()">
-          <span aria-hidden="true">
-            <fa-icon [icon]="refreshIcon"></fa-icon>
-          </span>
+        <button mat-raised-button color="primary" (click)="getProjectDashboard()">
+          <fa-icon [icon]="refreshIcon"></fa-icon>
         </button>
       </div>
     </div>

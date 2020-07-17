@@ -39,10 +39,6 @@ import { ProjectResourceComponent } from './project-resource/project-resource.co
 import { ResourceStatisticsComponent } from './resource-statistics/resource-statistics.component';
 import { TfsDashboardSettingsComponent } from './tfs-dashboard-settings/tfs-dashboard-settings.component';
 
-import { IterationService } from "src/app/services/iteration.service";
-import { IterationReport } from "src/app/dto/iterationReport";
-import { CacheService } from "src/app/services/cache.service";
-import { SettingService } from 'src/app/services/setting.service';
 import { StatusService } from 'src/app/services/status.servie';
 
 import { TFSReportRoutingModule } from './tfs-report.routing.module';
@@ -102,10 +98,6 @@ export class TfsReportsModule {
     return {
       ngModule: TfsReportsModule,
       providers: [
-        { provide: IterationService },
-        { provide: IterationReport },
-        { provide: CacheService },
-        { provide: SettingService },
         { provide: StatusService },
       ]
     }

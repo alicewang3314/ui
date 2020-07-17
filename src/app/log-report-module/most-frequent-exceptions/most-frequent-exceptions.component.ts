@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MostFrequentLogs } from '../dto/MostFrequentLogs';
 import { LogDataServiceService } from '../services/log-data-service.service';
 import { environment } from 'src/environments/environment';
 import { MostFrequentDetailsDialogComponent } from '../most-frequent-details-dialog/most-frequent-details-dialog.component';
@@ -15,7 +14,7 @@ export class MostFrequentExceptionsComponent implements OnInit {
   constructor(private logDataServiceService: LogDataServiceService
     , public dialog: MatDialog) { }
 
-  data: MostFrequentLogs[];
+  data: any[];
   environment: string;
   application: string;
 

@@ -5,7 +5,7 @@ import {
   HttpResponse,
   HttpResponseBase
 } from "@angular/common/http";
-import { IterationReport } from "../dto/iterationReport";
+// import { IterationReport } from "../dto/iterationReport";
 import { mergeMap, catchError } from 'rxjs/operators';
 import { Observable, of, throwError } from 'rxjs';
 import { environment } from "src/environments/environment";
@@ -26,7 +26,7 @@ export class IterationService {
     this._http = http;
   }
 
-  getCurrent2(userSettings): Observable<IterationReport> {
+  getCurrent2(userSettings): Observable<any> {
     let url_ = this.baseUrl + "/Iteration/Current2";
 
     //const content_ = JSON.stringify(userSettings);

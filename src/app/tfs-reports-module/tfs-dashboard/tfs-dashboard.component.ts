@@ -1,15 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { faSyncAlt } from '@fortawesome/free-solid-svg-icons'
+import { faSyncAlt, faCog } from '@fortawesome/free-solid-svg-icons'
 
-import { IterationReport } from 'src/app/dto/iterationReport';
 import { StatusService } from 'src/app/services/status.servie';
 import { Settings } from 'src/app/types';
-import { faCog } from '@fortawesome/free-solid-svg-icons';
-//TODO: cleanup dev support
-// import { iterationReport as report } from 'src/app/mock';
-
 import { TfsService } from '../tfs.service';
 
 @Component({
@@ -19,10 +14,8 @@ import { TfsService } from '../tfs.service';
 })
 export class TfsDashboardComponent implements OnInit {
   // TODO: remove dev config
-  // iterationReport: any;
-  iterationReport: IterationReport;
-  allPendingReport: IterationReport;
-  showSpinner = false;
+  iterationReport: any;
+  allPendingReport: any;
   activeTabIndex: number;
   userSettings: Settings = {};
   refreshIcon = faSyncAlt;
@@ -31,7 +24,6 @@ export class TfsDashboardComponent implements OnInit {
   cogIcon = faCog;
 
   constructor(
-    //private cacheService: CacheService,
     private router: Router,
     private status: StatusService,
     private tfs: TfsService,
@@ -41,8 +33,6 @@ export class TfsDashboardComponent implements OnInit {
 
   ngOnInit() {
     this.getProjectDashboard();
-    //TODO: remove dev setup
-    // this.iterationReport = report;
   }
 
   getProjectDashboard() {
@@ -80,11 +70,7 @@ export class TfsDashboardComponent implements OnInit {
   openedChangeHandler($open: boolean) {
     if (!$open) {
       this.settingClosed.next();
-      this.refresh();
+      this.getProjectDashboard();
     }
-  }
-
-  refresh() {
-    this.getProjectDashboard();
   }
 }
