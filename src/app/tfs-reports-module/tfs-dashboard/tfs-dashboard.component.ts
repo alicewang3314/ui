@@ -13,10 +13,8 @@ import { TfsService } from '../tfs.service';
   styleUrls: ['./tfs-dashboard.component.css']
 })
 export class TfsDashboardComponent implements OnInit {
-  // TODO: remove dev config
   iterationReport: any;
   allPendingReport: any;
-  activeTabIndex: number;
   userSettings: Settings = {};
   refreshIcon = faSyncAlt;
   period = 'current';
@@ -28,7 +26,7 @@ export class TfsDashboardComponent implements OnInit {
     private status: StatusService,
     private tfs: TfsService,
   ) {
-    this.status.getActiveTabIndex().subscribe(index => this.activeTabIndex = index);
+    this.period = this.status.TfsDashboardState.period;
   }
 
   ngOnInit() {
@@ -44,15 +42,23 @@ export class TfsDashboardComponent implements OnInit {
       const config = this.userSettings.tfsProjTeams;
 
       if (this.period === 'current') {
-        this.tfs.getCurrent(config).subscribe(
-          report => this.iterationReport = report
-        )
-      } else if (this.period === 'all') {
-        this.tfs.getAll(config).subscribe(
-          report => this.allPendingReport = report
-        )
+        this.tfs.getCurrent(config).subscribe(report => this.iterationReport = report);
+        return;
       }
-    })
+
+      this.tfs.getAll(config).subscribe(report => this.allPendingReport = report);
+    });
+  }
+
+  switchPeriod() {
+    const prevState = this.status.TfsDashboardState;
+    const newState = {
+      ...prevState,
+      period: this.period,
+    };
+    this.status.TfsDashboardState = newState;
+
+    this.getProjectDashboard();
   }
 
   goToResourceStats() {

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { LogReportRoutingModule } from './log-report.routing.module'
@@ -7,6 +7,7 @@ import { ExceptionSearchComponent } from './exception-search/exception-search.co
 import { MostFrequentErrorsDashbComponent } from './most-frequent-errors-dashb/most-frequent-errors-dashb.component';
 import { MostFrequentExceptionsComponent } from './most-frequent-exceptions/most-frequent-exceptions.component';
 import { LogDashboardComponent } from './log-dashboard/log-dashboard.component';
+import { StatusService } from '../services/status.servie';
 
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
@@ -51,4 +52,12 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   ],
 })
 export class LogReportModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: LogReportModule,
+      providers: [
+        { provide: StatusService }
+      ]
+    }
+  }
 }

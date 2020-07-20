@@ -6,7 +6,7 @@
     <div class="field">
       <mat-form-field>
         <mat-label>Environment</mat-label>
-        <mat-select [(value)]="env" (selectionChange)="refreshContent($event)">
+        <mat-select [(value)]="env" (selectionChange)="search()">
           <mat-option value="uat">
             UAT
           </mat-option>
@@ -19,7 +19,7 @@
     <div class="field">
       <mat-form-field>
         <mat-label>Type</mat-label>
-        <mat-select [(value)]="dashBoardType" (selectionChange)="refreshContent($event)">
+        <mat-select [(value)]="dashBoardType" (selectionChange)="search()">
           <mat-option value="chart">
             Chart
           </mat-option>
@@ -31,8 +31,7 @@
     </div>
     <div class="field">
       <mat-form-field>
-        <mat-select placeholder="Application" [(ngModel)]="application" name="application"
-          (selectionChange)="refreshContent($event)">
+        <mat-select placeholder="Application" [(ngModel)]="application" name="application" (selectionChange)="search()">
           <mat-option *ngFor="let item of applications" [value]="item.value">
             {{item.viewValue}}
           </mat-option>
@@ -42,7 +41,7 @@
     <div class="field">
       <mat-form-field>
         <input matInput [matDatepicker]="fromDatePicker" placeholder="From Date" [(ngModel)]="fromDatePickerValue"
-          (ngModelChange)="refreshContent($event)" [disabled]="isLive">
+          (ngModelChange)="search()" [disabled]="isLive">
         <mat-datepicker-toggle matSuffix [for]="fromDatePicker"></mat-datepicker-toggle>
         <mat-datepicker #fromDatePicker></mat-datepicker>
       </mat-form-field>
@@ -50,7 +49,7 @@
     <div class="field">
       <mat-form-field>
         <input matInput [matDatepicker]="toDatePicker" placeholder="To Date" [(ngModel)]="toDatePickerValue"
-          (ngModelChange)="refreshContent($event)" [disabled]="isLive">
+          (ngModelChange)="search()" [disabled]="isLive">
         <mat-datepicker-toggle matSuffix [for]="toDatePicker"></mat-datepicker-toggle>
         <mat-datepicker #toDatePicker></mat-datepicker>
       </mat-form-field>

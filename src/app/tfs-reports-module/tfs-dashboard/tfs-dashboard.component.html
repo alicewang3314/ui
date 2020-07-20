@@ -11,7 +11,7 @@
       <fa-icon [icon]="cogIcon"></fa-icon>
     </button>
     <div class="setting-container">
-      <mat-radio-group [(ngModel)]="period" (change)="getProjectDashboard()">
+      <mat-radio-group [(ngModel)]="period" (change)="switchPeriod()">
         <mat-radio-button value="current">Current Iteration</mat-radio-button>
         <mat-radio-button value="all">All Pending</mat-radio-button>
       </mat-radio-group>
