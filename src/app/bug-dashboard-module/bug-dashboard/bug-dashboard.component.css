@@ -1,12 +1,9 @@
 .bug-dashboard-container {
-  display: flex;
-  justify-content: center;
+  padding: 30px;
 }
 
 .bug-dashboard {
-  flex: 0 1 70%;
-  min-width: 1300px;
-  padding: 2em 3em;
+  width: 100%
 }
 
 mat-card {

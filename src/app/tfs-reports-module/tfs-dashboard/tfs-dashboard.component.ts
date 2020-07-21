@@ -17,9 +17,9 @@ export class TfsDashboardComponent implements OnInit {
   allPendingReport: any;
   userSettings: Settings = {};
   refreshIcon = faSyncAlt;
+  cogIcon = faCog;
   period = 'current';
   settingClosed: Subject<void> = new Subject<void>();
-  cogIcon = faCog;
 
   constructor(
     private router: Router,

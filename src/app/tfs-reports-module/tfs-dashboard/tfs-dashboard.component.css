@@ -1,6 +1,9 @@
 .tfs-report-container {
-  width: 75%;
-  margin: auto;
+  padding: 30px;
+  position: relative;
+  top: calc(15vh + 60px);
+  height: calc(85vh - 60px);
+  overflow-y: auto;
 }
 
 .setting-btn {
@@ -11,17 +14,21 @@
 }
 
 .setting-container {
+  position: fixed;
+  top: 30px;
+  left: 160px;
+  width: calc(100% - 130px - 60px);
+  height: 15vh;
+  border-radius: 8px;
   display: flex;
   flex-flow: row wrap;
-  width: 75%;
+  box-shadow: 0px 3px 9px 4px rgba(238, 178, 224, 0.6) !important;
   margin: auto;
   justify-content: space-between;
   align-items: center;
-  height: 15vh;
-  border-bottom: 1px;
 }
 
-.setting-btn-wrapper > * {
+.setting-btn-wrapper>* {
   margin-left: 15px;
 }
 
@@ -62,7 +69,6 @@ mat-tab-group {
 }
 
 .tfs-tasks-container {
-  height: calc(100vh - 45px);
   background-color: transparent;
 }
 
@@ -70,6 +76,10 @@ mat-drawer {
   min-width: 20vw;
   display: flex;
   background-color: #000000b7;
+}
+
+mat-drawer-content {
+  height: 100vh;
 }
 
 .setting {

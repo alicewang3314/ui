@@ -1,29 +1,34 @@
 <div>
   <mat-toolbar color="primary">
-    <div>
-      <a [routerLink]="[ '/home' ]">
-        <div>Captor Dashboard</div>
-      </a>
-    </div>
+    <a [routerLink]="[ '/home' ]" class="home">
+      <fa-icon [icon]="homeIcon" size="lg"></fa-icon>
+      Home
+    </a>
+    <mat-divider></mat-divider>
     <div class="nav-wrapper">
+      <fa-icon [icon]="cogIcon"></fa-icon>
       <a [routerLink]="[ '/bug-dashboard' ]" [ngClass]="isActive('/bug-dashboard')">
-        Application Bugs
+        <fa-icon [icon]="bugIcon" size="lg"></fa-icon>
+        Bugs
       </a>
       <a [routerLink]="[ '/error-logs-dashboard' ]" [ngClass]="isActive('/error-logs-dashboard')">
-        Error Logs
+        <fa-icon [icon]="logIcon" size="lg"></fa-icon>
+        Logs
       </a>
       <a [routerLink]="[ '/tfs-dashboard' ]" [ngClass]="isActive('/tfs-dashboard')">
+        <fa-icon [icon]="tfsTasksIcon" size="lg"></fa-icon>
         TFS Tasks
       </a>
       <a [routerLink]="[ '/tfs-dashboard/export' ]" [ngClass]="isActive('/tfs-dashboard/export')">
-        Export Reports
+        <fa-icon [icon]="reportIcon" size="lg"></fa-icon>
+        Export
       </a>
     </div>
   </mat-toolbar>
   <div class="baseMaster">
-    <div class="mainMaster">
-      <loader></loader>
-      <router-outlet></router-outlet>
-    </div>
+    <!-- <div class="mainMaster"> -->
+    <loader></loader>
+    <router-outlet></router-outlet>
+    <!-- </div> -->
   </div>
 </div>

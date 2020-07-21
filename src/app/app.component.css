@@ -1,28 +1,22 @@
 mat-toolbar {
-  /* justify-content: center; */
-  /* flex-wrap: wrap; */
-  height: 45px;
+  height: 100vh;
+  width: 130px;
   position: fixed;
+  padding: 0;
   top: 0;
-  right: 0;
+  left: 0;
   z-index: 100;
-
-}
-
-mat-toolbar>div {
-  font-size: smaller;
-  cursor: pointer;
-}
-
-mat-icon {
-  vertical-align: middle;
+  display: inline-flex;
+  flex-direction: column;
 }
 
 .baseMaster {
-  width: 100%;
-  display: flex;
-  justify-content: stretch;
-  margin-top: 40px;
+  position: relative;
+  left: 130px;
+  top: 0;
+  width: calc(100% - 130px);
+  height: 100vh;
+  overflow: auto;
 }
 
 .mainMaster {
@@ -38,68 +32,49 @@ mat-icon {
   z-index: 100;
 }
 
-.sidenav-container {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-mat-sidenav {
-  width: 240px;
-}
-
-.sidenavItem {
-  color: white;
-  padding-top: 10px;
-  vertical-align: middle;
-}
-
-.sidenavItem span {
-  margin-left: 10px;
-}
-
-.menuSettings {
-  flex-grow: 2;
-}
-
-.menuSettings>div {
-  float: right;
-}
-
 a {
   color: inherit;
   text-decoration: none;
+  font-size: smaller;
+  cursor: pointer;
 }
 
-.container {
-  min-width: 1250px !important;
-  overflow: auto;
+.home {
+  padding: 24px 0;
+  border-bottom: 0.4px white solid;
 }
 
 .nav-wrapper {
-  flex-grow: 1;
   height: 100%;
+  width: 100%;
+  overflow: hidden;
   display: flex;
+  flex-direction: column;
   flex-wrap: nowrap;
-  justify-content: flex-end;
-  align-items: center;
-  font-size: x-small;
   margin: 0;
+  margin-top: 15vh;
 }
 
-.settings {
-  width: 60px;
+a {
+  align-self: flex-end;
+  width: 120px;
+  border-radius: 10px 0 0 10px;
+  text-align: center;
+  font-size: small;
+  padding: 8px 0;
 }
 
-.nav-wrapper a {
-  margin-left: 2em;
+a:hover {
+  font-weight: bolder;
+  color: #1A1B20;
 }
 
-.nav-wrapper a:hover,
 .nav-wrapper a.active {
   transition: all .7;
-  font-weight: bolder;
-  color: black;
+  background-color: #1A1B20;
+  color: white;
+}
+
+fa-icon {
+  display: block;
 }
