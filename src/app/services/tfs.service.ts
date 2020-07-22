@@ -5,7 +5,7 @@ import { catchError, retry } from 'rxjs/operators';
 
 import { APIS } from 'src/app/constants';
 import { environment } from 'src/environments/environment';
-import handleError from 'src/app/http-error-handler';
+import handleError from 'src/app/http/http-error-handler';
 
 @Injectable({
   providedIn: 'root'

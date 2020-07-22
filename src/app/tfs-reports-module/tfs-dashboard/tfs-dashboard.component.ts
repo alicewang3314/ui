@@ -5,7 +5,7 @@ import { faSyncAlt, faCog } from '@fortawesome/free-solid-svg-icons'
 
 import { StatusService } from 'src/app/services/status.servie';
 import { Settings } from 'src/app/types';
-import { TfsService } from '../tfs.service';
+import { TfsService } from '../../services/tfs.service';
 
 @Component({
   selector: 'app-tfs-dashboard',

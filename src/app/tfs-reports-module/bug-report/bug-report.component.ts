@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TfsReportService } from '../tfs-report-service';
+import { TfsReportService } from '../../services/tfs-report-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({

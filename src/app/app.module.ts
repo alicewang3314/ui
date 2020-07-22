@@ -33,12 +33,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { InterceptorService } from './interceptor.service';
+import { InterceptorService } from './http/interceptor.service';
 
-
-// import { LogDashboardComponent } from './log-dashboard/log-dashboard.component';
 // TODO: Refactoring cleanup
-import { BugDetailsDialog, LoaderComponent } from './components';
+import { LoaderComponent } from './components';
 import { TfsReportsModule } from './tfs-reports-module/tfs-reports.module';
 import { BugDashboardModule } from 'src/app/bug-dashboard-module/bug-dashboard.module'
 import { LogReportModule } from "./log-report-module/log-report.module";
@@ -49,7 +47,6 @@ import { LogReportModule } from "./log-report-module/log-report.module";
     AppComponent,
     LoaderComponent,
     FilterPipe,
-    BugDetailsDialog,
   ],
   imports: [
     BrowserModule,
@@ -88,9 +85,6 @@ import { LogReportModule } from "./log-report-module/log-report.module";
     TfsReportsModule,
     FontAwesomeModule,
   ],
-  // entryComponents: [
-  //   BugDetailsDialog
-  // ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
   ],

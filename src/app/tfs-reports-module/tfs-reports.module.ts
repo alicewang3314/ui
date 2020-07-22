@@ -94,12 +94,12 @@ import { TFSReportRoutingModule } from './tfs-report.routing.module';
   ]
 })
 export class TfsReportsModule {
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: TfsReportsModule,
-      providers: [
-        { provide: StatusService },
-      ]
-    }
-  }
+  // static forRoot(): ModuleWithProviders {
+  //   return {
+  //     ngModule: TfsReportsModule,
+  //     providers: [
+  //       { provide: StatusService },
+  //     ]
+  //   }
+  // }
 }

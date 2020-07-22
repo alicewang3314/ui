@@ -52,12 +52,12 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   ],
 })
 export class LogReportModule {
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: LogReportModule,
-      providers: [
-        { provide: StatusService }
-      ]
-    }
-  }
+  // static forRoot(): ModuleWithProviders {
+  //   return {
+  //     ngModule: LogReportModule,
+  //     providers: [
+  //       { provide: StatusService }
+  //     ]
+  //   }
+  // }
 }

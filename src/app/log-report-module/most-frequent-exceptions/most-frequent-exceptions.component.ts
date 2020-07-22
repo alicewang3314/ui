@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LogDataServiceService } from '../services/log-data-service.service';
+import { LogDataServiceService } from '../../services/log-data-service.service';
 import { environment } from 'src/environments/environment';
 import { MostFrequentDetailsDialogComponent } from '../most-frequent-details-dialog/most-frequent-details-dialog.component';
 import { MatDialog } from '@angular/material/dialog';

@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 
 import { Settings } from 'src/app/types';
-import { TfsService } from '../tfs.service';
+import { TfsService } from '../../services/tfs.service';
 
 @Component({
   selector: 'app-tfs-dashboard-settings',

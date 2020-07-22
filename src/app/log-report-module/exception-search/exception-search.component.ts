@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LogDataServiceService } from '../services/log-data-service.service';
+import { LogDataServiceService } from '../../services/log-data-service.service';
 import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
@@ -19,10 +19,10 @@ export class ExceptionSearchComponent implements OnInit {
 
   toDatePickerValue: Date = new Date();
   displayedColumns: string[] = [
-    "correlationId",
-    "time",
-    "exceptionMessage",
-    "stackTrace"
+    'correlationId',
+    'time',
+    'exceptionMessage',
+    'stackTrace'
   ];
   pageEvent: PageEvent;
   pagLength: number;
@@ -35,25 +35,21 @@ export class ExceptionSearchComponent implements OnInit {
   }
 
   search() {
-    //console.log(this.fromDatePickerValue.toLocaleDateString() + " to " + this.toDatePickerValue.toLocaleDateString());
-    //console.log(this.fromDatePickerValue.toLocaleDateString("en-us"));
     this.logDataServiceService.searchExceptions(this.environment, this.application, this.fromDatePickerValue.toLocaleDateString().replace(/[^ -~]/g, '')
       , this.toDatePickerValue.toLocaleDateString().replace(/[^ -~]/g, ''), this.pageSize, 1).subscribe(
         resp => {
-          this.dataSource = resp.body["item2"];
-          this.pagLength = parseInt(resp.headers.get("X-Paging-TotalRecordCount"));
-
+          this.dataSource = resp.body['item2'];
+          this.pagLength = parseInt(resp.headers.get('X-Paging-TotalRecordCount'));
         }
       );
   }
-  onPagChange(event: PageEvent) {
 
+  onPagChange(event: PageEvent) {
     this.logDataServiceService.searchExceptions(this.environment, this.application, this.fromDatePickerValue.toLocaleDateString().replace(/[^ -~]/g, '')
       , this.toDatePickerValue.toLocaleDateString().replace(/[^ -~]/g, ''), event.pageSize, event.pageIndex + 1).subscribe(
         resp => {
-          this.dataSource = resp.body["item2"];
-          this.pagLength = parseInt(resp.headers.get("X-Paging-TotalRecordCount"));
-
+          this.dataSource = resp.body['item2'];
+          this.pagLength = parseInt(resp.headers.get('X-Paging-TotalRecordCount'));
         }
       );
   }

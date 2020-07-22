@@ -4,7 +4,7 @@ import { mergeMap as _observableMergeMap, catchError as _observableCatch } from 
 import { catchError, retry } from 'rxjs/operators';
 import { environment } from "src/environments/environment";
 import { APIS } from 'src/app/constants';
-import handleError from 'src/app/http-error-handler';
+import handleError from 'src/app/http/http-error-handler';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,6 @@ export class BugDashboardService {
   constructor(private http: HttpClient) { }
 
   getBugReport() {
-    // return this.http.request('get', this.url, { responseType: 'json' })
     return this.http.request('get', this.url, { responseType: 'json' })
       .pipe(
         retry(2),

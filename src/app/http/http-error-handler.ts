@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from "@angular/common/http";
-import { throwError, } from 'rxjs';
+import { throwError } from 'rxjs';
 
 const handleError = (error: HttpErrorResponse) => {
   if (error.error instanceof ErrorEvent) {

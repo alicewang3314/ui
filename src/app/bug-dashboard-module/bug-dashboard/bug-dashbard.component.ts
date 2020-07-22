@@ -2,10 +2,7 @@ import { Component } from '@angular/core';
 import * as _ from 'lodash';
 
 import { BugReportCard } from 'src/app/types';
-import { BugDashboardService } from '../bug-dashboard.service';
-
-// TODO: remove dev setup
-// import { rawBugReport } from 'src/app/mock';
+import { BugDashboardService } from '../../services/bug-dashboard.service';
 
 @Component({
   selector: 'bug-dashboard',
@@ -79,13 +76,6 @@ export class BugDashboardComponent {
       this.getDonutChartData(resp);
       this.calculateStackData(resp);
     });
-
-    // TODO: remove local dev setup
-    // this.respBugApi = rawBugReport;
-    // console.log(rawBugReport);
-    // this.calculateCardData(rawBugReport);
-    // this.getDonutChartData(rawBugReport);
-    // this.calculateStackData(rawBugReport);
   }
 
   reloadBugDetails(event) {
