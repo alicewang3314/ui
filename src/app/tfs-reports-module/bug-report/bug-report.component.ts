@@ -46,7 +46,6 @@ export class BugReportComponent implements OnInit {
           this.matSnackBar.open("Report downloaded", null, { duration: 3000, horizontalPosition: 'left' })
           this.tfsReportService.downloadFile(resp);
         }
-       
       },
         error => {
           this.matSnackBar.open("Error: Please check input", null, { duration: 5000, horizontalPosition: 'left' })

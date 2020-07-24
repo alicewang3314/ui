@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TfsReportService } from '../../services/tfs-report-service';
-import { formatDate } from '@angular/common';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { TfsService } from '../../services/tfs.service';
 
 @Component({
   selector: 'app-changeset-report',
@@ -15,7 +13,9 @@ export class ChangesetReportComponent implements OnInit {
   projects: ({ viewValue: string, value: string })[];
   project: string;
   path: string;
-  constructor(private tfsReportService: TfsReportService, private matSnackBar: MatSnackBar) { }
+
+  constructor(
+    private tfs: TfsService) { }
 
   ngOnInit() {
     this.fromDate.setDate(this.fromDate.getDate() - 1);
@@ -41,33 +41,13 @@ export class ChangesetReportComponent implements OnInit {
   }
 
   onSubmit() {
-    this.tfsReportService.apiChangesetsReport(this.fromDate, this.toDate, this.project, this.path)
-      .subscribe(
-        resp => {
-          this.matSnackBar.open("Report downloaded", null, { duration: 3000, horizontalPosition: 'left' })
-          this.tfsReportService.downloadFile(resp);
-        },
-        error => {
-          this.matSnackBar.open("Error: Please check input", null, { duration: 5000, horizontalPosition: 'left' })
-        }
-      );
-  }
+    const args = {
+      from: this.fromDate.toISOString(),
+      to: this.toDate.toISOString(),
+      project: this.project,
+      path: this.path,
+    };
 
-  downloadFile(resp: any) {
-    const blob = new Blob([resp], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-
-    if (window.navigator && window.navigator.msSaveOrOpenBlob) {
-      window.navigator.msSaveOrOpenBlob(blob, `Changesets-Report_${formatDate(new Date(), "MMddyy-hhmmss", "en-us")}.xlsx`);
-      return;
-    }
-
-    // Create a link pointing to the ObjectURL containing the blob.
-    const urlBlob = window.URL.createObjectURL(blob);
-
-    var link = document.createElement('a');
-    link.href = urlBlob;
-    link.download = `Changesets-Report_${formatDate(new Date(), "MMddyy-hhmmss", "en-us")}.xlsx`;
-    link.click();
-
+    this.tfs.getChangesetsReport(args).subscribe();
   }
 }

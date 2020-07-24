@@ -17,7 +17,7 @@ export class TfsReportService {
   constructor(private http: HttpClient) { }
 
   apiChangesetsReport(from: Date | undefined, to: Date | undefined, project: string | null | undefined, path: string | null | undefined): Observable<FileResponse> {
-    let url_ = environment.baseUrl + "/api/Changesets/Report?";
+    let url_ = environment.baseUrl + "/Changesets/Report?";
     if (from === null)
       throw new Error("The parameter 'from' cannot be null.");
     else if (from !== undefined)
@@ -61,7 +61,7 @@ export class TfsReportService {
   }
 
   apiBugsReport(from: Date | undefined, to: Date | undefined, project: string | null | undefined, path: string | null | undefined): Observable<FileResponse> {
-    let url_ = environment.baseUrl + "/api/Bugs/Report?";
+    let url_ = environment.baseUrl + "/Bugs/Report?";
     if (from === null)
       throw new Error("The parameter 'from' cannot be null.");
     else if (from !== undefined)
@@ -72,9 +72,13 @@ export class TfsReportService {
       url_ += "to=" + encodeURIComponent(to ? "" + to.toJSON() : "") + "&";
     if (project !== undefined)
       url_ += "project=" + encodeURIComponent("" + project) + "&";
-    if (path !== undefined)
-      url_ += "path=" + encodeURIComponent("" + path) + "&";
+    // if (path !== undefined)
+    //   url_ += "path=" + encodeURIComponent("" + path) + "&";
+    console.log('_url', url_);
+
     url_ = url_.replace(/[?&]$/, "");
+
+    console.log('_url', url_);
 
     let options_: any = {
       observe: "response",
@@ -102,37 +106,8 @@ export class TfsReportService {
       }));
   }
 
-  apiBugsChangesetsReportGet(idsCommaSeparated: string | null): Observable<FileResponse> {
-    let url_ = environment.baseUrl + "/api/Bugs/Changesets/Report/{idsCommaSeparated}";
-    if (idsCommaSeparated === undefined || idsCommaSeparated === null)
-      throw new Error("The parameter 'idsCommaSeparated' must be defined.");
-    url_ = url_.replace("{idsCommaSeparated}", encodeURIComponent("" + idsCommaSeparated));
-    url_ = url_.replace(/[?&]$/, "");
-
-    let options_: any = {
-      observe: "response",
-      responseType: "blob",
-      headers: new HttpHeaders({
-        "Accept": "application/json"
-      })
-    };
-
-    return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_: any) => {
-      return this.processReport(response_);
-    })).pipe(_observableCatch((response_: any) => {
-      if (response_ instanceof HttpResponseBase) {
-        try {
-          return this.processReport(<any>response_);
-        } catch (e) {
-          return <Observable<FileResponse>><any>_observableThrow(e);
-        }
-      } else
-        return <Observable<FileResponse>><any>_observableThrow(response_);
-    }));
-  }
-
   apiBugsTagReport(tag: string | null | undefined): Observable<FileResponse> {
-    let url_ = environment.baseUrl + "/api/Bugs/Tag/Report?";
+    let url_ = environment.baseUrl + "/Bugs/Tag/Report?";
     if (tag !== undefined)
       url_ += "tag=" + encodeURIComponent("" + tag) + "&";
     url_ = url_.replace(/[?&]$/, "");
@@ -202,15 +177,11 @@ export class TfsReportService {
       return;
     }
 
-    // Create a link pointing to the ObjectURL containing the blob.
     const urlBlob = window.URL.createObjectURL(blob);
-
-    var link = document.createElement('a');
+    const link = document.createElement('a');
     link.href = urlBlob;
-    //link.download = `Changesets-Report_${formatDate(new Date(), "MMddyy-hhmmss", "en-us")}.xlsx`;
     link.download = resp.fileName;
     link.click();
-
   }
 
   protected throwException(message: string, status: number, response: string, headers: { [key: string]: any; }, result?: any): Observable<any> {
