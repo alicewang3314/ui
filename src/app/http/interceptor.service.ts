@@ -3,8 +3,8 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } fr
 import { Observable } from 'rxjs';
 import { finalize, tap, catchError } from 'rxjs/operators';
 import { LoaderService } from 'src/app/components';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import ErrorHandler from './http-error-handler';
+import errorHander from './http-error-handler';
+import { MessageService } from '../services/message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +13,14 @@ export class InterceptorService implements HttpInterceptor {
 
   constructor(
     private loaderService: LoaderService,
-    private message: MatSnackBar) { }
+    private message: MessageService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.loaderService.show();
 
     return next.handle(req)
       .pipe(
-        catchError(ErrorHandler),
+        catchError(errorHander),
         // check if its a report export and handle the response
         tap(event => {
           if (!(event instanceof HttpResponse)) return;
@@ -28,7 +28,7 @@ export class InterceptorService implements HttpInterceptor {
           const { body, url, status, statusText } = event;
 
           if (status !== 200) {
-            this.message.open(statusText, null, { duration: 2000, horizontalPosition: 'center' });
+            this.message.message(statusText);
             return;
           }
 

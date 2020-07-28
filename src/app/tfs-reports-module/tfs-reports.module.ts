@@ -1,4 +1,4 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -94,12 +94,4 @@ import { TFSReportRoutingModule } from './tfs-report.routing.module';
   ]
 })
 export class TfsReportsModule {
-  // static forRoot(): ModuleWithProviders {
-  //   return {
-  //     ngModule: TfsReportsModule,
-  //     providers: [
-  //       { provide: StatusService },
-  //     ]
-  //   }
-  // }
 }

@@ -11,7 +11,9 @@ import { CustomEncoder } from '../http/http-params-encoder';
 })
 export class TfsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    ) { }
 
   getCurrent(setting: any): Observable<any> {
     const url = environment.baseUrl + APIS.CURRENT_ITERATION;

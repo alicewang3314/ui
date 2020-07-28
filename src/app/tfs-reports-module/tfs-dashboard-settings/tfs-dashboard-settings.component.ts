@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 
 import { Settings } from 'src/app/types';
 import { TfsService } from '../../services/tfs.service';
+import { MessageService } from '../../services/message.service';
 
 @Component({
   selector: 'app-tfs-dashboard-settings',
@@ -17,7 +17,7 @@ export class TfsDashboardSettingsComponent implements OnInit {
   projects: Project[] = [];
 
   constructor(
-    private matSnackBar: MatSnackBar,
+    private message: MessageService,
     private tfs: TfsService) { }
 
   ngOnInit(): void {
@@ -95,9 +95,9 @@ export class TfsDashboardSettingsComponent implements OnInit {
   updateSetting(newSettings) {
     this.tfs.updateSetting(newSettings).subscribe(resp => {
       if (resp === 1) {
-        this.message('Settings Saved');
+        this.message.message('Settings Saved');
       } else {
-        this.message('Error in updating settings');
+        this.message.message('Error in updating settings');
       }
     });
   }
@@ -106,16 +106,12 @@ export class TfsDashboardSettingsComponent implements OnInit {
     this.tfs.createSetting(newSettings).subscribe(
       resp => {
         if (resp === 1) {
-          this.message('Settings Added');
+          this.message.message('Settings Added');
         } else {
-          this.message('Error in adding settings');
+          this.message.message('Error in adding settings');
         }
       }
     );
-  }
-
-  private message(text: string) {
-    this.matSnackBar.open(text, null, { duration: 2000, horizontalPosition: 'center' });
   }
 }
 

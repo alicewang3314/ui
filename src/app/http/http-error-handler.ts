@@ -1,14 +1,19 @@
 import { throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
-const handleError = (error: HttpErrorResponse | any, logger: any) => {
+const handleError = (error: HttpErrorResponse | any) => {
+  let errorMessage = '';
+
   if (error.error instanceof ErrorEvent) {
-    console.error('An error occurred:', error.error.message);
+
+    errorMessage = `Error: ${error.error.message}`;
   } else {
-    console.error(`Error: ${error.status},  ${error.statusText}`);
+    errorMessage = `Error Code: ${error.status}\nMessage: ${error.statusText}`;
   }
 
-  return throwError('Something bad happened; please try again later.');
+  console.error('An error occurred:', error.error.message);
+
+  return throwError(errorMessage);
 };
 
 export default handleError;
