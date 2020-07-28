@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { faFileExcel, faBug, faTag } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'export-reports',
@@ -6,4 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./export-reports.component.css']
 })
 export class ExportReportsComponent {
+  changesetIcon = faFileExcel;
+  bugIcon = faBug;
+  bugTagIcon = faTag;
 }

@@ -1,11 +1,8 @@
 <form (ngSubmit)="onSubmit()" #formChgSet="ngForm">
-    <div class="main-tfs-report">
-
-        <mat-form-field class="item-tfs-report">
-            <input matInput placeholder="Tag" [(ngModel)]="tag" name="tag" required>
-        </mat-form-field>
-
-    </div>
-
-    <button mat-raised-button color="primary" type="submit" [disabled]="!formChgSet.form.valid">Generate</button>
+  <div class="main-tfs-report">
+    <mat-form-field class="item-tfs-report">
+      <input matInput placeholder="Tag" [(ngModel)]="tag" name="tag" required>
+    </mat-form-field>
+  </div>
+  <button class="submit-btn" mat-raised-button color="primary" type="submit" [disabled]="!formChgSet.form.valid">Generate</button>
 </form>

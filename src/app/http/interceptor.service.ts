@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { finalize, tap, catchError } from 'rxjs/operators';
 import { LoaderService } from 'src/app/components';
@@ -34,20 +34,40 @@ export class InterceptorService implements HttpInterceptor {
 
           if (!(body instanceof Blob)) return;
 
-          const from = /(?:from=)(.+?T)/.exec(url)[1].slice(0, -1);
-          const to = /(?:to=)(.+?T)/.exec(url)[1].slice(0, -1);
-          let project = /(?:project=)(.+?(&|$))/.exec(url)[1];
-          project = project.slice(-1) === '&'
-            ? project.slice(0, -1)
-            : project;
-          const tag = /(?:tag=)(.+?$)/.exec(url)[1];
-          const fileName = `${from || ''}${from ? '_' : ''}${to || ''}${to ? '_' : ''}${project || ''}${tag || ''}`;
-
+          const fileName = this.generateFileName(url);
           this.downloadFile(body, fileName || 'report');
         }),
-
         finalize(() => this.loaderService.hide())
       );
+  }
+
+  private generateFileName(url: string): string {
+    let from: any = /(?:from=)(.+?T)/.exec(url);
+    from = from ? from[1].slice(0, -1) : '';
+
+    let to: any = /(?:to=)(.+?T)/.exec(url);
+    to = to ? to[1].slice(0, -1) : '';
+
+    let project: any = /(?:project=)(.+?(&|$))/.exec(url);
+    project = project ?
+      project[1].slice(-1) === '&'
+        ? project.slice(0, -1)
+        : project
+      : '';
+
+    let path: any = /(?:path=)(.+?(&|$))/.exec(url);
+    path = path ? path[1] : '';
+
+    let tag: any = /(?:tag=)(.+?$)/.exec(url);
+    tag = tag ? tag[1] : '';
+
+    return `
+      ${from ? from : ''}
+      ${to ? '_' + to : ''}
+      ${project ? '_' + project : ''}
+      ${path ? '_' + path : ''}
+      ${tag || ''}
+    `;
   }
 
   private downloadFile(data: any, fileName: string) {
