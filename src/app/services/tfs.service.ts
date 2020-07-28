@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { catchError, retry, tap } from 'rxjs/operators';
+import { catchError, retry } from 'rxjs/operators';
 
 import { APIS } from 'src/app/constants';
 import { environment } from 'src/environments/environment';
-import handleError from 'src/app/http/http-error-handler';
 import { CustomEncoder } from '../http/http-params-encoder';
 
 @Injectable({
@@ -22,9 +21,9 @@ export class TfsService {
         'Content-Type': 'application/json',
       }
     };
+
     return this.http.post(url, setting, options).pipe(
-      retry(2),
-      catchError(handleError)
+      retry(2)
     );
   }
 
@@ -35,9 +34,9 @@ export class TfsService {
         'Content-Type': 'application/json',
       }
     };
+
     return this.http.post(url, setting, options).pipe(
-      retry(2),
-      catchError(handleError)
+      retry(2)
     );
   }
 
@@ -49,8 +48,7 @@ export class TfsService {
       }
     };
     return this.http.get(url, options).pipe(
-      retry(2),
-      catchError(handleError)
+      retry(2)
     );
   }
 
@@ -61,9 +59,9 @@ export class TfsService {
         'Content-Type': 'application/json',
       }
     };
+
     return this.http.put(url, settings, options).pipe(
-      retry(2),
-      catchError(handleError)
+      retry(2)
     );
   }
 
@@ -74,9 +72,9 @@ export class TfsService {
         'Content-Type': 'application/json',
       }
     };
+
     return this.http.post(url, settings, options).pipe(
-      retry(2),
-      catchError(handleError)
+      retry(2)
     );
   }
 
@@ -84,14 +82,14 @@ export class TfsService {
     const url = environment.baseUrl + APIS.TFS_PROJECT;
     return this.http.get(url, { responseType: 'json' })
       .pipe(
-        retry(2),
-        catchError(handleError)
+        retry(2)
       );
   }
 
   getChangesetsReport(args: { from: string, to: string, project: string, path?: string }, ) {
     const { from, to, project, path } = args;
     const url = `${environment.baseUrl}${APIS.BUGS_CHANGESETS_REPORT}`;
+
     let params = new HttpParams({ encoder: new CustomEncoder() });
     params = params.append('from', from);
     params = params.append('to', to);
@@ -104,17 +102,40 @@ export class TfsService {
       params,
     };
 
-    return this.http.get(url, options).pipe(
-      retry(2),
-      catchError(handleError),
-    );
+    return this.http.get(url, options);
   }
 
-  getBugsReport() {
+  getBugsReport(args: { from: string, to: string, project: string }) {
+    const { from, to, project } = args;
+    const url = `${environment.baseUrl}${APIS.BUGS_REPORT}`;
 
+    let params = new HttpParams({ encoder: new CustomEncoder() });
+    params = params.append('from', from);
+    params = params.append('to', to);
+    params = params.append('project', project);
+
+    const options = {
+      observe: 'response' as 'body',
+      responseType: 'blob' as 'json',
+      params,
+    };
+
+    return this.http.get(url, options);
   }
 
-  getBugsTagReport() {
+  getBugsTagReport(args: { tag: string }) {
+    const { tag } = args;
+    const url = `${environment.baseUrl}${APIS.BUGS_TAG_REPORT}`;
 
+    let params = new HttpParams({ encoder: new CustomEncoder() });
+    params = params.append('tag', tag);
+
+    const options = {
+      observe: 'response' as 'body',
+      responseType: 'blob' as 'json',
+      params,
+    };
+
+    return this.http.get(url, options);
   }
 }

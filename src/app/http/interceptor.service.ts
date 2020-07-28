@@ -1,53 +1,67 @@
 import { Injectable } from '@angular/core';
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse, HttpEventType } from '@angular/common/http';
-import { formatDate } from '@angular/common';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { finalize, tap } from 'rxjs/operators';
+import { finalize, tap, catchError } from 'rxjs/operators';
 import { LoaderService } from 'src/app/components';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import ErrorHandler from './http-error-handler';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InterceptorService implements HttpInterceptor {
 
-  constructor(private loaderService: LoaderService) { }
+  constructor(
+    private loaderService: LoaderService,
+    private message: MatSnackBar) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.loaderService.show();
 
-    return next.handle(req).pipe(
-      tap(event => {
+    return next.handle(req)
+      .pipe(
+        catchError(ErrorHandler),
+        // check if its a report export and handle the response
+        tap(event => {
+          if (!(event instanceof HttpResponse)) return;
 
-        const isBlobResponse = (event: any) => {
-          const { body } = event;
+          const { body, url, status, statusText } = event;
 
-          if (!body) return;
+          if (status !== 200) {
+            this.message.open(statusText, null, { duration: 2000, horizontalPosition: 'center' });
+            return;
+          }
 
-          return event instanceof HttpResponse && body instanceof Blob;
-        };
+          if (!(body instanceof Blob)) return;
 
-        if (isBlobResponse(event)) {
-          this.downloadFile(event);
-        }
-      }),
-      finalize(() => this.loaderService.hide())
-    );
+          const from = /(?:from=)(.+?T)/.exec(url)[1].slice(0, -1);
+          const to = /(?:to=)(.+?T)/.exec(url)[1].slice(0, -1);
+          let project = /(?:project=)(.+?(&|$))/.exec(url)[1];
+          project = project.slice(-1) === '&'
+            ? project.slice(0, -1)
+            : project;
+          const tag = /(?:tag=)(.+?$)/.exec(url)[1];
+          const fileName = `${from || ''}${from ? '_' : ''}${to || ''}${to ? '_' : ''}${project || ''}${tag || ''}`;
+
+          this.downloadFile(body, fileName || 'report');
+        }),
+
+        finalize(() => this.loaderService.hide())
+      );
   }
 
-  downloadFile(resp: any) {
-    const blob = new Blob([resp], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+  private downloadFile(data: any, fileName: string) {
+    const blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
 
     if (window.navigator && window.navigator.msSaveOrOpenBlob) {
-      window.navigator.msSaveOrOpenBlob(blob, `Changesets-Report_${formatDate(new Date(), "MMddyy-hhmmss", "en-us")}.xlsx`);
+      window.navigator.msSaveOrOpenBlob(blob, fileName);
       return;
     }
 
-    // Create a link pointing to the ObjectURL containing the blob.
     const urlBlob = window.URL.createObjectURL(blob);
-
     const link = document.createElement('a');
     link.href = urlBlob;
-    link.download = `Changesets-Report_${formatDate(new Date(), "MMddyy-hhmmss", "en-us")}.xlsx`;
+    link.download = fileName;
     link.click();
   }
 }

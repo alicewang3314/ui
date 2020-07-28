@@ -7,19 +7,16 @@ import { TfsService } from '../../services/tfs.service';
   styleUrls: ['./changeset-report.component.css']
 })
 export class ChangesetReportComponent implements OnInit {
-
   fromDate: Date = new Date();
   toDate: Date = new Date();
   projects: ({ viewValue: string, value: string })[];
   project: string;
   path: string;
 
-  constructor(
-    private tfs: TfsService) { }
+  constructor(private tfs: TfsService) { }
 
   ngOnInit() {
     this.fromDate.setDate(this.fromDate.getDate() - 1);
-
     this.projects = [
       { viewValue: "APR", value: "apr" },
       { viewValue: "CAPTOR", value: "captor" },
@@ -35,7 +32,6 @@ export class ChangesetReportComponent implements OnInit {
       { viewValue: "SharePoint", value: "sharepoint" },
       { viewValue: "WorkOrder", value: "workorder" }
     ];
-
     this.project = "captor";
     this.path = "";
   }
@@ -47,7 +43,6 @@ export class ChangesetReportComponent implements OnInit {
       project: this.project,
       path: this.path,
     };
-
     this.tfs.getChangesetsReport(args).subscribe();
   }
 }
