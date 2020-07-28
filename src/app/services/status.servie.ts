@@ -47,7 +47,7 @@ export class StatusService {
 
   set TfsDashboardState(newState: TfsDashboardState) {
     this._tfsDashboardState.next(newState);
-    console.log('save state', newState);
+    // console.log('save state', newState);
     //TODO: move save state to the application state
 
     this.saveState();
@@ -73,7 +73,7 @@ export class StatusService {
       ['/bug-dashboard']: {},
     };
 
-    console.log('save state:', JSON.stringify(this.appState));
+    // console.log('save state:', JSON.stringify(this.appState));
 
     localStorage.setItem('app-state', JSON.stringify(this.appState));
   }
@@ -81,7 +81,7 @@ export class StatusService {
   recoverState() {
     const savedState = localStorage.getItem('app-state');
 
-    console.log('restored state', savedState);
+    //console.log('restored state', savedState);
 
     if (savedState) this.appState = JSON.parse(savedState);
   }

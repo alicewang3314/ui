@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { LogReportRoutingModule } from './log-report.routing.module'
-import { MostFrequentErrorsDashbComponent } from './most-frequent-errors-dashb/most-frequent-errors-dashb.component';
 import { LogDashboardComponent } from './log-dashboard/log-dashboard.component';
 
 import { MatSelectModule } from '@angular/material/select';
@@ -21,7 +20,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
-    MostFrequentErrorsDashbComponent,
     LogDashboardComponent
   ],
   imports: [
