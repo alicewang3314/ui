@@ -17,9 +17,7 @@ export class AppComponent {
   logIcon = faChartLine;
   tfsTasksIcon = faTasks;
 
-
   constructor(private router: Router) {
-
     this.router.events.subscribe(ev => {
       if (ev instanceof NavigationEnd) {
         this.currentRoute = ev.url === '/' ? '/error-logs-dashboard' : ev.url;

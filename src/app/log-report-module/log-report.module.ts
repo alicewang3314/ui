@@ -1,13 +1,11 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { LogReportRoutingModule } from './log-report.routing.module'
 import { MostFrequentDetailsDialogComponent } from './most-frequent-details-dialog/most-frequent-details-dialog.component';
 import { ExceptionSearchComponent } from './exception-search/exception-search.component';
 import { MostFrequentErrorsDashbComponent } from './most-frequent-errors-dashb/most-frequent-errors-dashb.component';
-import { MostFrequentExceptionsComponent } from './most-frequent-exceptions/most-frequent-exceptions.component';
 import { LogDashboardComponent } from './log-dashboard/log-dashboard.component';
-import { StatusService } from '../services/status.servie';
 
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
@@ -23,11 +21,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
-
 @NgModule({
   entryComponents: [MostFrequentDetailsDialogComponent],
   declarations: [
-    MostFrequentExceptionsComponent,
     MostFrequentDetailsDialogComponent,
     ExceptionSearchComponent,
     MostFrequentErrorsDashbComponent,
@@ -51,13 +47,4 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     LogReportRoutingModule
   ],
 })
-export class LogReportModule {
-  // static forRoot(): ModuleWithProviders {
-  //   return {
-  //     ngModule: LogReportModule,
-  //     providers: [
-  //       { provide: StatusService }
-  //     ]
-  //   }
-  // }
-}
+export class LogReportModule { }

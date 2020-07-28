@@ -19,17 +19,7 @@ label {
   display: block;
 }
 
-/* .card-content {
-  max-height: 400px;
-  overflow-y: auto;
-} */
-
-/* .button-submit {
-  position: relative;
-  left: 94%;
-} */
-
-.pageTitle {
+.page-title {
   height: 38px;
   background-color: #9c27b0;
   vertical-align: middle;

@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { ExceptionSearchComponent } from './exception-search/exception-search.component';
 import { LogDashboardComponent } from './log-dashboard/log-dashboard.component';
 import { MostFrequentErrorsDashbComponent } from './most-frequent-errors-dashb/most-frequent-errors-dashb.component';
-import { MostFrequentExceptionsComponent } from './most-frequent-exceptions/most-frequent-exceptions.component';
 
 const routes: Routes = [
   {
@@ -14,10 +13,6 @@ const routes: Routes = [
   {
     path: 'exceptions-search',
     component: ExceptionSearchComponent,
-  },
-  {
-    path: 'log',
-    component: MostFrequentExceptionsComponent,
   },
   {
     path: 'errors',

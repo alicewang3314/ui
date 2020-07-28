@@ -1,36 +1,34 @@
-<div class="pageTitle">
-    <span>Log Dashboard</span>
+<div class="page-title">
+  <span>Log Dashboard</span>
 </div>
 <div>
-    <mat-form-field>
-        <mat-label>Application</mat-label>
-        <mat-select [(value)]="application">          
-            <mat-option value="note">
-                Note
-            </mat-option>
-            <mat-option value="Vans">
-                Vans
-            </mat-option>
-            <mat-option value="captor">
-                Captor
-            </mat-option>
-            <mat-option value="cdws">
-                CDWS
-            </mat-option>
-            <mat-option value="rar">
-                RAR
-            </mat-option>
-            <mat-option value="REPORTSBATCH">
-                REPORTSBATCH
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
+  <mat-form-field>
+    <mat-label>Application</mat-label>
+    <mat-select [(value)]="application">
+      <mat-option value="note">
+        Note
+      </mat-option>
+      <mat-option value="Vans">
+        Vans
+      </mat-option>
+      <mat-option value="captor">
+        Captor
+      </mat-option>
+      <mat-option value="cdws">
+        CDWS
+      </mat-option>
+      <mat-option value="rar">
+        RAR
+      </mat-option>
+      <mat-option value="REPORTSBATCH">
+        REPORTSBATCH
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 </div>
-    <button mat-raised-button (click)="changeUrl()">search</button>
+<button mat-raised-button (click)="changeUrl()">search</button>
 
-    <p></p>
-    <ng-container *ngIf="application && isButtonClicked">
-        <iframe [src]="sourceUrl" height="800px" width="100%" frameborder="0" ></iframe>
-    </ng-container>
-    
-   
+<p></p>
+<ng-container *ngIf="application && isButtonClicked">
+  <iframe [src]="sourceUrl" height="800px" width="100%" frameborder="0"></iframe>
+</ng-container>
