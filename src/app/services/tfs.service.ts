@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
 
 import { APIS } from 'src/app/constants';
 import { environment } from 'src/environments/environment';
@@ -22,9 +21,7 @@ export class TfsService {
       }
     };
 
-    return this.http.post(url, setting, options).pipe(
-      retry(2)
-    );
+    return this.http.post(url, setting, options);
   }
 
   getAll(setting: any): Observable<any> {
@@ -35,9 +32,7 @@ export class TfsService {
       }
     };
 
-    return this.http.post(url, setting, options).pipe(
-      retry(2)
-    );
+    return this.http.post(url, setting, options);
   }
 
   getSetting() {
@@ -47,9 +42,7 @@ export class TfsService {
         'Content-Type': 'application/json',
       }
     };
-    return this.http.get(url, options).pipe(
-      retry(2)
-    );
+    return this.http.get(url, options);
   }
 
   updateSetting(settings: any) {
@@ -60,9 +53,7 @@ export class TfsService {
       }
     };
 
-    return this.http.put(url, settings, options).pipe(
-      retry(2)
-    );
+    return this.http.put(url, settings, options);
   }
 
   createSetting(settings: any) {
@@ -73,17 +64,12 @@ export class TfsService {
       }
     };
 
-    return this.http.post(url, settings, options).pipe(
-      retry(2)
-    );
+    return this.http.post(url, settings, options);
   }
 
   getProjects() {
     const url = environment.baseUrl + APIS.TFS_PROJECT;
-    return this.http.get(url, { responseType: 'json' })
-      .pipe(
-        retry(2)
-      );
+    return this.http.get(url, { responseType: 'json' });
   }
 
   getChangesetsReport(args: { from: string, to: string, project: string, path?: string }, ) {

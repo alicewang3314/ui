@@ -33,7 +33,6 @@ export class TfsDashboardSettingsComponent implements OnInit {
 
           if (!selectedTeams) {
             this.projects.push(project);
-
             return;
           }
 
@@ -67,7 +66,6 @@ export class TfsDashboardSettingsComponent implements OnInit {
         const { selected, name: teamName } = team;
 
         if (selected) {
-
           if (!selectedProjsTeams[projectName]) {
             selectedProjsTeams[projectName] = [];
           }
@@ -97,9 +95,9 @@ export class TfsDashboardSettingsComponent implements OnInit {
   updateSetting(newSettings) {
     this.tfs.updateSetting(newSettings).subscribe(resp => {
       if (resp === 1) {
-        this.matSnackBar.open('Settings Saved', null, { duration: 2000, horizontalPosition: 'center' });
+        this.message('Settings Saved');
       } else {
-        this.matSnackBar.open('Error in updating settings', null, { duration: 2000, horizontalPosition: 'center' });
+        this.message('Error in updating settings');
       }
     });
   }
@@ -108,12 +106,16 @@ export class TfsDashboardSettingsComponent implements OnInit {
     this.tfs.createSetting(newSettings).subscribe(
       resp => {
         if (resp === 1) {
-          this.matSnackBar.open('Settings Added', null, { duration: 2000, horizontalPosition: 'center' });
+          this.message('Settings Added');
         } else {
-          this.matSnackBar.open('Error in adding settings', null, { duration: 2000, horizontalPosition: 'center' });
+          this.message('Error in adding settings');
         }
       }
     );
+  }
+
+  private message(text: string) {
+    this.matSnackBar.open(text, null, { duration: 2000, horizontalPosition: 'center' });
   }
 }
 

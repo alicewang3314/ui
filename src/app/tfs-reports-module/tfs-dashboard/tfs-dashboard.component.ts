@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { faSyncAlt, faCog } from '@fortawesome/free-solid-svg-icons'
+import { faSyncAlt, faCog, faTable } from '@fortawesome/free-solid-svg-icons'
 
 import { StatusService } from 'src/app/services/status.servie';
 import { Settings } from 'src/app/types';
@@ -18,8 +18,10 @@ export class TfsDashboardComponent implements OnInit {
   userSettings: Settings = {};
   refreshIcon = faSyncAlt;
   cogIcon = faCog;
+  resourceIcon = faTable;
   period = 'current';
   settingClosed: Subject<void> = new Subject<void>();
+  errorMessage = null;
 
   constructor(
     private router: Router,
@@ -34,6 +36,8 @@ export class TfsDashboardComponent implements OnInit {
   }
 
   getProjectDashboard() {
+    this.errorMessage = null;
+
     this.tfs.getSetting().subscribe(setting => {
       this.userSettings = setting;
 
@@ -42,11 +46,25 @@ export class TfsDashboardComponent implements OnInit {
       const config = this.userSettings.tfsProjTeams;
 
       if (this.period === 'current') {
-        this.tfs.getCurrent(config).subscribe(report => this.iterationReport = report);
+        this.tfs.getCurrent(config).subscribe(report => {
+          this.iterationReport = report;
+          const { teams } = report;
+
+          if (!teams || teams.length === 0) {
+            this.errorMessage = 'No data for selected projects.'
+          }
+        });
         return;
       }
 
-      this.tfs.getAll(config).subscribe(report => this.allPendingReport = report);
+      this.tfs.getAll(config).subscribe(report => {
+        this.allPendingReport = report;
+        const { teams } = report;
+
+        if (!teams || teams.length === 0) {
+          this.errorMessage = 'No data for selected projects.'
+        }
+      });
     });
   }
 
@@ -61,9 +79,11 @@ export class TfsDashboardComponent implements OnInit {
     this.getProjectDashboard();
   }
 
-  goToResourceStats() {
+  viewByResource() {
+    const current = this.period === 'current' ? 1 : 0;
+
     this.router.navigate(['/tfs-dashboard/resource-stats'], {
-      queryParams: { current: 1 }
+      queryParams: { current }
     });
   }
 

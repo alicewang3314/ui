@@ -13,22 +13,24 @@
         <mat-radio-button value="all">All Pending</mat-radio-button>
       </mat-radio-group>
       <div class="setting-btn-wrapper">
-        <button mat-raised-button color="primary" (click)="goToResourceStats()">
+        <button mat-button color="accent" (click)="viewByResource()">
+          <fa-icon [icon]="resourceIcon"></fa-icon>
           View By Resource
         </button>
         <button mat-raised-button color="primary" (click)="getProjectDashboard()">
           <fa-icon [icon]="refreshIcon"></fa-icon>
+          Reload
         </button>
       </div>
     </div>
     <!-- current iteration -->
-    <div *ngIf="period === 'current'" class="tfs-report-container">
+    <div class="tfs-report-container" *ngIf="period === 'current'">
       <div *ngIf="iterationReport" class="row row-cols-3">
         <div class="col" *ngFor="let team of iterationReport.teams">
           <tfs-report-card [name]="period" [team]="team"></tfs-report-card>
         </div>
       </div>
-      <div *ngIf="!iterationReport" class="status-message"> Please add teams using TFS Team settings</div>
+      <div *ngIf="errorMessage" class="status-message">{{errorMessage}}</div>
     </div>
     <!-- all iteration -->
     <div class="tfs-report-container" *ngIf="period === 'all'">
@@ -37,7 +39,7 @@
           <tfs-report-card [name]="period" [team]="team"></tfs-report-card>
         </div>
       </div>
-      <div *ngIf="!allPendingReport" class="status-message"> No data for selected projects.</div>
+      <div *ngIf="errorMessage" class="status-message">{{errorMessage}}</div>
     </div>
   </mat-drawer-content>
 </mat-drawer-container>
