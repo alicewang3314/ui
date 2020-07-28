@@ -17,7 +17,6 @@ export class BugDashboardService {
   getBugReport() {
     return this.http.request('get', this.url, { responseType: 'json' })
       .pipe(
-        retry(2),
         catchError(handleError)
       );
   }

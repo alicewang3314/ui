@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { LogReportRoutingModule } from './log-report.routing.module'
-import { MostFrequentDetailsDialogComponent } from './most-frequent-details-dialog/most-frequent-details-dialog.component';
-import { ExceptionSearchComponent } from './exception-search/exception-search.component';
 import { MostFrequentErrorsDashbComponent } from './most-frequent-errors-dashb/most-frequent-errors-dashb.component';
 import { LogDashboardComponent } from './log-dashboard/log-dashboard.component';
 
@@ -22,10 +20,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
-  entryComponents: [MostFrequentDetailsDialogComponent],
   declarations: [
-    MostFrequentDetailsDialogComponent,
-    ExceptionSearchComponent,
     MostFrequentErrorsDashbComponent,
     LogDashboardComponent
   ],

@@ -104,8 +104,6 @@ export class BugDashboardComponent {
   }
 
   calculateCardData(total: any[]) {
-    console.log(total);
-
     const filter = (root: any, prop: string, rule: string): any[] => root.filter(i => i[prop] === rule);
 
     const resolved = filter(total, 'state', 'Resolved');
