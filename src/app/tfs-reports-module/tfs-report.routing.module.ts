@@ -7,7 +7,6 @@ import { ProjectDetailsComponent } from './project-details/project-details.compo
 import { ProjectResourceComponent } from './project-resource/project-resource.component';
 import { TfsDashboardSettingsComponent } from './tfs-dashboard-settings/tfs-dashboard-settings.component';
 
-
 const routes: Routes = [
   {
     path: '',

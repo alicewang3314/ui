@@ -1,5 +1,5 @@
 .bug-dashboard-container {
-  padding: 30px 60px;
+  padding: 30px;
 }
 
 .bug-dashboard {
@@ -8,6 +8,7 @@
 
 mat-card {
   font-size: 16px;
+  background-color: rgba(1, 2, 5, 0.274);;
   box-shadow: 0 2px 6px 1px rgba(238, 178, 224, 0.6) !important
 }
 
@@ -89,7 +90,7 @@ th.mat-header-cell {
 }
 
 .lower-wrapper {
-  background-image: linear-gradient(to right, #080808, #5b5858);
+  background-image: linear-gradient(to right, #080808, #5c5b5b6b);
   margin-top: 1.2em;
   display: flex !important;
   flex-direction: row;
@@ -125,15 +126,6 @@ table {
 bug-card:not(:last-child) {
   margin-right: 1.2em;
 }
-
-/* ::ng-deep.mat-tab-body-wrapper {
-  overflow: unset !important;
-} */
-
-
-/* ::ng-deep.mat-tab-body-content {
-  overflow: hidden !important;
-} */
 
 a {
   color: white;
