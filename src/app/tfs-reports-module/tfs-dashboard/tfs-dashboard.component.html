@@ -1,4 +1,4 @@
-<mat-drawer-container class="tfs-tasks-container" [hasBackdrop]="true">
+<mat-drawer-container class="tfs-tasks-container inner-layout" [hasBackdrop]="true">
   <mat-drawer #drawer mode="over" (openedChange)="openedChangeHandler($event)">
     <app-tfs-dashboard-settings [settingClosed]="settingClosed.asObservable()"> </app-tfs-dashboard-settings>
   </mat-drawer>
@@ -7,7 +7,7 @@
     <button mat-raised-button color="primary" class="setting-btn" (click)="drawer.toggle()">
       <fa-icon [icon]="cogIcon"></fa-icon>
     </button>
-    <div class="setting-container">
+    <div class="setting-container inner-layout">
       <mat-radio-group [(ngModel)]="period" (change)="switchPeriod()">
         <mat-radio-button value="current">Current Iteration</mat-radio-button>
         <mat-radio-button value="all">All Pending</mat-radio-button>

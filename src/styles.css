@@ -6,7 +6,6 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: #1A1B20;
   color: white;
-  /* position: relative; */
   box-sizing: border-box;
 }
 
@@ -19,15 +18,6 @@ label {
   display: block;
 }
 
-.page-title {
-  height: 38px;
-  background-color: #9c27b0;
-  vertical-align: middle;
-  padding-left: 10px;
-  padding-top: 12px;
-  margin-bottom: 10px;
-}
-
 .main-tfs-report {
   display: flex;
   flex-flow: row wrap;
@@ -37,11 +27,6 @@ label {
   flex-basis: 90%;
   margin: 20px;
   max-width: 500px;
-}
-
-.mat-tab-group {
-  width: 100%;
-  height: 100vh;
 }
 
 button:focus {
@@ -62,4 +47,9 @@ button:focus {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+.inner-layout {
+  min-width: 1168px;
+  overflow: hidden;
 }

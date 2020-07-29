@@ -16,7 +16,8 @@ mat-toolbar {
   top: 0;
   width: calc(100% - 130px);
   height: 100vh;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .spinner {

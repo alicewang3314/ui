@@ -1,14 +1,13 @@
 .bug-dashboard-container {
   padding: 30px;
-}
-
-.bug-dashboard {
-  width: 100%
+  /* min-width: 1168px;
+  overflow: hidden; */
 }
 
 mat-card {
   font-size: 16px;
-  background-color: rgba(1, 2, 5, 0.274);;
+  background-color: rgba(1, 2, 5, 0.274);
+  ;
   box-shadow: 0 2px 6px 1px rgba(238, 178, 224, 0.6) !important
 }
 
