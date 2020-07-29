@@ -1,3 +1,7 @@
+.error-logs-container {
+  height: 100vh;
+}
+
 .setting-container {
   display: flex;
   flex-flow: row nowrap;

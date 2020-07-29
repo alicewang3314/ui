@@ -1,9 +1,16 @@
 .report-container {
   width: 90%;
   height: max-content;
+  /* height: -webkit-max-content; */
+  /* height: -moz-max-content; */
   margin: 15vh auto;
   background-color: transparent;
   display: flex;
+  /* display: -ms-flexbox; */
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin: 12vh auto;
+  background-color: transparent;
 }
 
 mat-card {

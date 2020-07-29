@@ -48,7 +48,6 @@ button:focus {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-
 .inner-layout {
   min-width: 1168px;
   overflow: hidden;
