@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TfsService } from '../../services/tfs.service';
+import { TfsService, MessageService } from '../../services';
 
 @Component({
   selector: 'app-bug-report',
@@ -14,6 +14,7 @@ export class BugReportComponent implements OnInit {
 
   constructor(
     private tfs: TfsService,
+    private message: MessageService,
   ) { }
 
   ngOnInit(): void {
@@ -42,6 +43,9 @@ export class BugReportComponent implements OnInit {
       to: this.toDate.toISOString(),
       project: this.project,
     };
-    this.tfs.getBugsReport(args).subscribe();
+    this.tfs.getBugsReport(args).subscribe(
+      null,
+      () => this.message.message('Error. Please check your input.')
+    );
   }
 }

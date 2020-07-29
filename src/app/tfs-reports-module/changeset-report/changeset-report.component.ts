@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TfsService } from '../../services/tfs.service';
+import { TfsService, MessageService } from '../../services';
 
 @Component({
   selector: 'app-changeset-report',
@@ -13,7 +13,9 @@ export class ChangesetReportComponent implements OnInit {
   project: string;
   path: string;
 
-  constructor(private tfs: TfsService) { }
+  constructor(
+    private tfs: TfsService,
+    private message: MessageService) { }
 
   ngOnInit() {
     this.fromDate.setDate(this.fromDate.getDate() - 1);
@@ -43,6 +45,9 @@ export class ChangesetReportComponent implements OnInit {
       project: this.project,
       path: this.path,
     };
-    this.tfs.getChangesetsReport(args).subscribe();
+    this.tfs.getChangesetsReport(args).subscribe(
+      null,
+      () => this.message.message('Error. Please check your input.')
+    );
   }
 }

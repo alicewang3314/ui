@@ -1,26 +1,27 @@
 <form (ngSubmit)="onSubmit()" #formChgSet="ngForm">
-    <div class="main-tfs-report">
-        <mat-form-field class="item-tfs-report">
-            <input matInput [matDatepicker]="fromDatee" placeholder="From Date" [(ngModel)]="fromDate" name="fromDate"
-                required>
-            <mat-datepicker-toggle matSuffix [for]="fromDatee"></mat-datepicker-toggle>
-            <mat-datepicker #fromDatee></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field class="item-tfs-report">
-            <input matInput [matDatepicker]="toDatee" placeholder="To Date" [(ngModel)]="toDate" name="todate" required>
-            <mat-datepicker-toggle matSuffix [for]="toDatee"></mat-datepicker-toggle>
-            <mat-datepicker #toDatee></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field class="item-tfs-report">
-            <mat-select placeholder="Project" [(ngModel)]="project" name="project">
-                <mat-option *ngFor="let item of projects" [value]="item.value">
-                    {{item.viewValue}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field class="item-tfs-report">
-            <input matInput placeholder="Path (optional)" [(ngModel)]="path" name="path">
-        </mat-form-field>
-    </div>
-    <button class="submit-btn" mat-raised-button color="primary" type="submit" [disabled]="!formChgSet.form.valid">Generate</button>
+  <div class="main-tfs-report">
+    <mat-form-field class="item-tfs-report">
+      <input matInput [matDatepicker]="fromDatee" placeholder="From Date" [(ngModel)]="fromDate" name="fromDate"
+        required>
+      <mat-datepicker-toggle matSuffix [for]="fromDatee"></mat-datepicker-toggle>
+      <mat-datepicker #fromDatee></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="item-tfs-report">
+      <input matInput [matDatepicker]="toDatee" placeholder="To Date" [(ngModel)]="toDate" name="todate" required>
+      <mat-datepicker-toggle matSuffix [for]="toDatee"></mat-datepicker-toggle>
+      <mat-datepicker #toDatee></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="item-tfs-report">
+      <mat-select placeholder="Project" [(ngModel)]="project" name="project">
+        <mat-option *ngFor="let item of projects" [value]="item.value">
+          {{item.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="item-tfs-report">
+      <input matInput placeholder="Path (optional)" [(ngModel)]="path" name="path">
+    </mat-form-field>
+  </div>
+  <button class="submit-btn" mat-raised-button color="primary" type="submit"
+    [disabled]="!formChgSet.form.valid">Generate</button>
 </form>
