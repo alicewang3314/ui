@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import * as _ from 'lodash';
 
-import { StatusService } from '../../services/status.servie'
+import { StatusService } from 'src/app/services'
 
 @Component({
   selector: 'app-log-dashboard',

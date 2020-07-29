@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { TfsService } from '../../services/tfs.service';
+import { TfsService } from 'src/app/services';
 
 @Component({
   selector: "app-project-resource",

@@ -3,7 +3,7 @@ import { Location } from '@angular/common';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { MatSort } from '@angular/material/sort';
-import { TfsService } from '../../services/tfs.service';
+import { TfsService } from 'src/app/services';
 
 @Component({
   selector: 'app-team-details',

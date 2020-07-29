@@ -3,9 +3,8 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { faSyncAlt, faCog, faTable } from '@fortawesome/free-solid-svg-icons'
 
-import { StatusService } from 'src/app/services/status.servie';
+import { StatusService, TfsService } from 'src/app/services';
 import { Settings } from 'src/app/types';
-import { TfsService } from '../../services/tfs.service';
 
 @Component({
   selector: 'app-tfs-dashboard',

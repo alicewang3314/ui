@@ -42,13 +42,6 @@
   padding: 1em;
 }
 
-.spinner {
-  position: fixed;
-  top: 200px;
-  right: 50%;
-  z-index: 100;
-}
-
 mat-tab-group {
   width: 100%;
 }

@@ -39,8 +39,6 @@ import { ProjectResourceComponent } from './project-resource/project-resource.co
 import { ResourceStatisticsComponent } from './resource-statistics/resource-statistics.component';
 import { TfsDashboardSettingsComponent } from './tfs-dashboard-settings/tfs-dashboard-settings.component';
 
-import { StatusService } from 'src/app/services/status.servie';
-
 import { TFSReportRoutingModule } from './tfs-report.routing.module';
 
 @NgModule({
