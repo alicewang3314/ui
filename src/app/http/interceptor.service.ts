@@ -51,8 +51,8 @@ export class InterceptorService implements HttpInterceptor {
     let project: any = /(?:project=)(.+?(&|$))/.exec(url);
     project = project ?
       project[1].slice(-1) === '&'
-        ? project.slice(0, -1)
-        : project
+        ? project[1].slice(0, -1)
+        : project[1]
       : '';
 
     let path: any = /(?:path=)(.+?(&|$))/.exec(url);
@@ -61,13 +61,7 @@ export class InterceptorService implements HttpInterceptor {
     let tag: any = /(?:tag=)(.+?$)/.exec(url);
     tag = tag ? tag[1] : '';
 
-    return `
-      ${from ? from : ''}
-      ${to ? '_' + to : ''}
-      ${project ? '_' + project : ''}
-      ${path ? '_' + path : ''}
-      ${tag || ''}
-    `;
+    return `${from}${to ? '_' + to : ''}${project ? '_' + project : ''}${path ? '_' + path : ''}${decodeURIComponent(tag) || ''}`;
   }
 
   private downloadFile(data: any, fileName: string) {
