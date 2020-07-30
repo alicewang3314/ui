@@ -23,7 +23,7 @@ export interface BugDashboardState {
   providedIn: 'root',
 })
 export class StatusService {
-  private _appState: BehaviorSubject<any>;
+  // private _appState: BehaviorSubject<any>;
   private _tfsDashboardState: BehaviorSubject<TfsDashboardState>;
   private _errorLogsDashboardState: BehaviorSubject<ErrorLogsDashboardState>;
   private _bugDashboardState: BehaviorSubject<BugDashboardState>;
@@ -76,7 +76,7 @@ export class StatusService {
       ['/bug-dashboard']: this._bugDashboardState.getValue(),
     };
 
-    console.log('save state:', JSON.stringify(this.appState));
+    //console.log('save state:', JSON.stringify(this.appState));
 
     localStorage.setItem('app-state', JSON.stringify(this.appState));
   }
