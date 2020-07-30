@@ -13,9 +13,9 @@
       <mat-card-content>
         <div class="chart-container">
           <ngx-charts-bar-vertical-stacked #chart2 [view]="[700, 350]" [scheme]="stackColorScheme"
-            [results]="bugStackCnt" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [barPadding]="35"
-            [legend]="showLegend" [showXAxisLabel]="false" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
-            [yAxisLabel]="yAxisLabel" [maxXAxisTickLength]="10">
+            [results]="bugStackCnt" [gradient]="false" [xAxis]="true" [yAxis]="true" [barPadding]="35" [legend]="false"
+            [showXAxisLabel]="false" [showYAxisLabel]="true" [xAxisLabel]="'Count'" [yAxisLabel]="''"
+            [maxXAxisTickLength]="10">
           </ngx-charts-bar-vertical-stacked>
         </div>
       </mat-card-content>

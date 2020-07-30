@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import * as _ from 'lodash';
 
 import { BugReportCard } from 'src/app/types';
-import { BugDashboardService } from '../../services/bug-dashboard.service';
+import { BugDashboardService, StatusService } from 'src/app/services';
 
 @Component({
   selector: 'bug-dashboard',
@@ -43,17 +43,6 @@ export class BugDashboardComponent {
     resolved: 0,
     active: 0
   };
-
-  // chart options
-  showXAxis = true;
-  showYAxis = true;
-  gradient = false;
-  showLegend = false;
-  showXAxisLabel = false;
-  xAxisLabel = 'Count';
-  showYAxisLabel = true;
-  yAxisLabel = '';
-  selectedTabIndex = 0;
   filteredBugDetails: any;
   selectedSeverity: any = 'all';
   donutData: any = [];
@@ -67,11 +56,14 @@ export class BugDashboardComponent {
 
   constructor(
     private service: BugDashboardService,
-  ) { }
+    private state: StatusService,
+  ) {
+  }
 
   ngOnInit() {
     this.service.getBugReport().subscribe((resp: any[]) => {
       this.respBugApi = resp;
+      this.restoreState();
       this.calculateCardData(resp);
       this.getDonutChartData(resp);
       this.calculateStackData(resp);
@@ -82,10 +74,13 @@ export class BugDashboardComponent {
     let self = this;
     self.selectedAreaPath = event.name;
 
-    if (this.selectedSeverity !== 'all')
-      this.filteredBugDetails = _.filter(self.respBugApi, function (o) { return o.areaPath == event.name && o.severity == self.selectedSeverity });
-    else
-      this.filteredBugDetails = _.filter(self.respBugApi, function (o) { return o.areaPath == event.name });
+    if (this.selectedSeverity !== 'all') {
+      this.filteredBugDetails = _.filter(self.respBugApi, (o) => o.areaPath == event.name && o.severity == self.selectedSeverity);
+    } else {
+      this.filteredBugDetails = _.filter(self.respBugApi, (o) => o.areaPath == event.name);
+    }
+
+    this.updateState();
   }
 
   getDonutChartData(bugsReport: any[]) {
@@ -173,9 +168,37 @@ export class BugDashboardComponent {
         self.respBugApi.filter(i => i.severity == self.selectedSeverity)
       ) :
       self.respBugApi;
+
+    this.updateState();
   };
 
   getTfsUrl(id) {
     return `https://tfs.py.pa.gov/tfs/DefaultCollection_DOC/CAPTOR/_workitems?id=${id}&fullScreen=true&_a=edit`;
+  }
+
+  private restoreState() {
+    const savedState = this.state.bugDashboardState;
+
+    if (savedState) {
+      const { areaPath, severity } = savedState;
+
+      if (areaPath) this.selectedAreaPath = areaPath;
+      if (severity) this.selectedSeverity = severity;
+
+
+      if (this.selectedSeverity !== 'all') {
+        this.filteredBugDetails = _.filter(this.respBugApi, o => o.areaPath === this.selectedAreaPath && o.severity == this.selectedSeverity);
+      } else {
+        this.filteredBugDetails = _.filter(this.respBugApi, o => o.areaPath === this.selectedAreaPath);
+      }
+    }
+  }
+
+  private updateState() {
+    const newState = {
+      areaPath: this.selectedAreaPath,
+      severity: this.selectedSeverity,
+    };
+    this.state.bugDashboardState = newState;
   }
 }

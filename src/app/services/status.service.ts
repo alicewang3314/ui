@@ -14,18 +14,24 @@ export interface ErrorLogsDashboardState {
   isLive: boolean;
 }
 
+export interface BugDashboardState {
+  areaPath: string;
+  severity: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class StatusService {
   private _appState: BehaviorSubject<any>;
   private _tfsDashboardState: BehaviorSubject<TfsDashboardState>;
-  private _errorLogsDashboardState: BehaviorSubject<ErrorLogsDashboardState>
+  private _errorLogsDashboardState: BehaviorSubject<ErrorLogsDashboardState>;
+  private _bugDashboardState: BehaviorSubject<BugDashboardState>;
 
   appState = {
-    ['/tfs-dashboard']: <TfsDashboardState>{ period: 'current' },
+    ['/tfs-dashboard']: <TfsDashboardState>{},
     ['/error-logs-dashboard']: <ErrorLogsDashboardState>{},
-    ['/bug-dashboard']: {},
+    ['/bug-dashboard']: <BugDashboardState>{},
   };
 
   constructor() {
@@ -33,54 +39,50 @@ export class StatusService {
 
     this._tfsDashboardState = new BehaviorSubject(this.appState['/tfs-dashboard']);
     this._errorLogsDashboardState = new BehaviorSubject(this.appState['/error-logs-dashboard']);
+    this._bugDashboardState = new BehaviorSubject(this.appState['/bug-dashboard']);
   }
 
-  // getTfsDashboardState(): Observable<TfsDashboardState> {
-  //   return this._tfsDashboard.asObservable();
-  // }
-
-  get TfsDashboardState(): TfsDashboardState {
+  get tfsDashboardState(): TfsDashboardState {
     return this._tfsDashboardState.getValue();
-    //return this._tfsDashboardState;
   }
 
-  set TfsDashboardState(newState: TfsDashboardState) {
+  set tfsDashboardState(newState: TfsDashboardState) {
     this._tfsDashboardState.next(newState);
-    // console.log('save state', newState);
-    //TODO: move save state to the application state
-
     this.saveState();
   }
 
-  get ErrorLogsDashboardState(): ErrorLogsDashboardState {
+  get errorLogsDashboardState(): ErrorLogsDashboardState {
     return this._errorLogsDashboardState.getValue();
   }
 
-  set ErrorLogsDashboardState(newState: ErrorLogsDashboardState) {
+  set errorLogsDashboardState(newState: ErrorLogsDashboardState) {
     this._errorLogsDashboardState.next(newState);
-
-    //TODO: move save state to the application state
-
     this.saveState();
   }
 
-  // TODO: if any state changed, save state
+  get bugDashboardState(): BugDashboardState {
+    return this._bugDashboardState.getValue();
+  }
+
+  set bugDashboardState(newState: BugDashboardState) {
+    this._bugDashboardState.next(newState);
+    this.saveState();
+  }
+
   saveState() {
     this.appState = {
-      ['/tfs-dashboard']: this._tfsDashboardState.getValue(),//this._tfsDashboard.getValue(),
+      ['/tfs-dashboard']: this._tfsDashboardState.getValue(),
       ['/error-logs-dashboard']: this._errorLogsDashboardState.getValue(),
-      ['/bug-dashboard']: {},
+      ['/bug-dashboard']: this._bugDashboardState.getValue(),
     };
 
-    // console.log('save state:', JSON.stringify(this.appState));
+    console.log('save state:', JSON.stringify(this.appState));
 
     localStorage.setItem('app-state', JSON.stringify(this.appState));
   }
 
   recoverState() {
     const savedState = localStorage.getItem('app-state');
-
-    //console.log('restored state', savedState);
 
     if (savedState) this.appState = JSON.parse(savedState);
   }

@@ -45,7 +45,7 @@ export class LogDashboardComponent implements OnInit {
   }
 
   restoreState() {
-    const { app, env, type, to, from, isLive } = this.state.ErrorLogsDashboardState;
+    const { app, env, type, to, from, isLive } = this.state.errorLogsDashboardState;
 
     this.application = app || this.application;
     this.env = env || this.env;
@@ -56,7 +56,7 @@ export class LogDashboardComponent implements OnInit {
   }
 
   updateState() {
-    this.state.ErrorLogsDashboardState = {
+    this.state.errorLogsDashboardState = {
       app: this.application,
       env: this.env,
       type: this.dashBoardType,

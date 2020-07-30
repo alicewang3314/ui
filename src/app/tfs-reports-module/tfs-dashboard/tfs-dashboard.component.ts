@@ -26,11 +26,10 @@ export class TfsDashboardComponent implements OnInit {
     private router: Router,
     private status: StatusService,
     private tfs: TfsService,
-  ) {
-    this.period = this.status.TfsDashboardState.period;
-  }
+  ) { }
 
   ngOnInit() {
+    this.restoreState();
     this.getProjectDashboard();
   }
 
@@ -68,12 +67,10 @@ export class TfsDashboardComponent implements OnInit {
   }
 
   switchPeriod() {
-    const prevState = this.status.TfsDashboardState;
     const newState = {
-      ...prevState,
       period: this.period,
     };
-    this.status.TfsDashboardState = newState;
+    this.status.tfsDashboardState = newState;
 
     this.getProjectDashboard();
   }
@@ -96,6 +93,14 @@ export class TfsDashboardComponent implements OnInit {
     if (!$open) {
       this.settingClosed.next();
       this.getProjectDashboard();
+    }
+  }
+
+  private restoreState() {
+    const prevState = this.status.tfsDashboardState;
+
+    if (prevState) {
+      this.period = prevState.period;
     }
   }
 }
