@@ -37,9 +37,14 @@ export class TfsDashboardComponent implements OnInit {
     this.errorMessage = null;
 
     this.tfs.getSetting().subscribe(setting => {
+      console.log('user setting', setting);
+
       this.userSettings = setting;
 
-      if (!this.userSettings || !this.userSettings.tfsProjTeams) return;
+      if (!this.userSettings || !this.userSettings.tfsProjTeams) {
+        this.errorMessage = 'No project selected. Please add project to setting.'
+        return;
+      }
 
       const config = this.userSettings.tfsProjTeams;
 
@@ -97,10 +102,10 @@ export class TfsDashboardComponent implements OnInit {
   }
 
   private restoreState() {
-    const prevState = this.status.tfsDashboardState;
+    const { period } = this.status.tfsDashboardState;
 
-    if (prevState) {
-      this.period = prevState.period;
+    if (period) {
+      this.period = period;
     }
   }
 }
